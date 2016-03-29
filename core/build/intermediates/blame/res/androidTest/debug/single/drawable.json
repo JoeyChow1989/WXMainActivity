@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "I:\\MyStudioWork\\WXMainActivity\\core\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\cube_material_card_nos.xml",
+        "source": "I:\\MyStudioWork\\WXMainActivity\\core\\build\\intermediates\\bundles\\debug\\res\\drawable\\cube_material_card_nos.xml"
+    },
+    {
+        "merged": "I:\\MyStudioWork\\WXMainActivity\\core\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\cube_material_card.xml",
+        "source": "I:\\MyStudioWork\\WXMainActivity\\core\\build\\intermediates\\bundles\\debug\\res\\drawable\\cube_material_card.xml"
+    },
+    {
+        "merged": "I:\\MyStudioWork\\WXMainActivity\\core\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\cube_dialog_button.xml",
+        "source": "I:\\MyStudioWork\\WXMainActivity\\core\\build\\intermediates\\bundles\\debug\\res\\drawable\\cube_dialog_button.xml"
+    },
+    {
+        "merged": "I:\\MyStudioWork\\WXMainActivity\\core\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\cube_material_dialog_window.xml",
+        "source": "I:\\MyStudioWork\\WXMainActivity\\core\\build\\intermediates\\bundles\\debug\\res\\drawable\\cube_material_dialog_window.xml"
+    },
+    {
+        "merged": "I:\\MyStudioWork\\WXMainActivity\\core\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\cube_mints_update_progressbar.xml",
+        "source": "I:\\MyStudioWork\\WXMainActivity\\core\\build\\intermediates\\bundles\\debug\\res\\drawable\\cube_mints_update_progressbar.xml"
+    },
+    {
+        "merged": "I:\\MyStudioWork\\WXMainActivity\\core\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\cube_material_card_nos_pressed.xml",
+        "source": "I:\\MyStudioWork\\WXMainActivity\\core\\build\\intermediates\\bundles\\debug\\res\\drawable\\cube_material_card_nos_pressed.xml"
+    }
+]

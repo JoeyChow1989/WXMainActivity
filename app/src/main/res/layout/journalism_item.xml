@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dip"
+            android:background="@drawable/item_border" >
+
+            <TextView
+                android:id="@+id/context_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:layout_marginRight="10dip"
+                android:layout_marginLeft="5dip"
+                android:text="王宝强家人车祸"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+            <TextView
+                android:id="@+id/author_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/context_view"
+                android:layout_marginTop="2dip"
+                android:text="中国日报网"
+                android:textColor="#DBDBDB"
+                android:layout_marginLeft="5dip"
+                android:textSize="11sp" />
+
+            <View
+                android:layout_width="1dip"
+                android:layout_height="60dp"
+                android:background="#DBDBDB"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dip"
+                android:id="@+id/br_view"
+                android:visibility="gone"
+                >
+                
+            </View>
+            
+        </RelativeLayout>
+    </FrameLayout>
+
+</FrameLayout>

@@ -1,0 +1,153 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E23A39"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+                android:id="@+id/help_layout"
+                android:layout_width="70dip"
+                android:layout_height="30dip"
+                android:orientation="horizontal" >
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/help"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="帮助>>"
+                android:textColor="#FFC760"
+                android:textSize="17sp" />
+
+            <LinearLayout
+                android:id="@+id/more_layout"
+                android:layout_width="60dip"
+                android:layout_height="30dip"
+                android:layout_alignParentRight="true"
+                android:orientation="horizontal" >
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/more_text"
+                android:layout_width="25dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/shezhi" >
+            </ImageView>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/no_commit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dip"
+                android:layout_marginRight="20dip"
+                android:text="为了超级抢红包助手的正常运行，请点击这里到调置-辅助服务-开启抢红包服务"
+                android:textColor="#FFC95F"
+                android:textSize="14sp" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/start_but"
+                android:layout_width="130dip"
+                android:layout_height="30dip"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dip"
+                android:background="@drawable/start_border"
+                android:gravity="center"
+                android:text="立即开启"
+                android:textColor="#E03B37" >
+            </TextView>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/yes_commit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="30dp"
+            android:visibility="gone" >
+
+            <com.hb.qx.GifMovieView
+                android:id="@+id/gif_iamge"
+                android:layout_width="match_parent"
+                android:layout_height="13dip"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="10dip"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/gif_iamge"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dip"
+                android:text="正在抢红包"
+                android:textColor="#ffffff"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#D63432" >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/fghnbg" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true" >
+
+                <ImageView
+                    android:id="@+id/share_id"
+                    android:layout_width="30dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="10dip"
+                    android:layout_marginTop="12dip"
+                    android:src="@drawable/share_yes" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/gif_qiang_iamge"
+                android:layout_width="90dp"
+                android:layout_height="90dip"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="110dip"
+                android:scaleType="fitXY"
+                android:src="@drawable/check_no"></ImageView>
+
+       
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/context_view"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:background="#88000000"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/main_linearlayout"
+        android:layout_width="300dp"
+        android:layout_height="195dip"
+        android:background="@drawable/bg_circle_corner_white"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:text="请开启超级抢红包助手的辅助服务"
+            android:textColor="#000000"
+            android:textSize="14sp" >
+        </TextView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="11dp"
+            android:background="#DFDFDF" />
+
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="开启“辅助功能”可支持超级抢红包自动抢和自动回复功能，为了更快的抢红包，请务必开启辅助服务。"
+            android:textSize="14sp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="18dip"
+            android:layout_marginRight="18dip"
+            android:textColor="#D1D1D1"
+            />
+
+        
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dip"
+            android:layout_marginRight="20dip"
+            android:layout_height="40dip"
+            android:layout_marginTop="25dip"
+            android:text="开启"
+            android:textSize="17sp"
+            android:gravity="center"
+            android:background="@drawable/open_border"
+            android:textColor="#ffffff"
+            android:id="@+id/open_server"
+            >
+            
+        </TextView>
+        
+        
+        
+    </LinearLayout>
+
+</LinearLayout>

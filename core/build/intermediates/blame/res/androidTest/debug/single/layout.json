@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "I:\\MyStudioWork\\WXMainActivity\\core\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\cube_mints_base_content_frame_with_title_header.xml",
+        "source": "I:\\MyStudioWork\\WXMainActivity\\core\\build\\intermediates\\bundles\\debug\\res\\layout\\cube_mints_base_content_frame_with_title_header.xml"
+    },
+    {
+        "merged": "I:\\MyStudioWork\\WXMainActivity\\core\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\cube_mints_base_list_menu_item.xml",
+        "source": "I:\\MyStudioWork\\WXMainActivity\\core\\build\\intermediates\\bundles\\debug\\res\\layout\\cube_mints_base_list_menu_item.xml"
+    },
+    {
+        "merged": "I:\\MyStudioWork\\WXMainActivity\\core\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\cube_material_dialog.xml",
+        "source": "I:\\MyStudioWork\\WXMainActivity\\core\\build\\intermediates\\bundles\\debug\\res\\layout\\cube_material_dialog.xml"
+    },
+    {
+        "merged": "I:\\MyStudioWork\\WXMainActivity\\core\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\cube_mints_base_fragment_block_menu.xml",
+        "source": "I:\\MyStudioWork\\WXMainActivity\\core\\build\\intermediates\\bundles\\debug\\res\\layout\\cube_mints_base_fragment_block_menu.xml"
+    },
+    {
+        "merged": "I:\\MyStudioWork\\WXMainActivity\\core\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\cube_mints_base_block_menu_item.xml",
+        "source": "I:\\MyStudioWork\\WXMainActivity\\core\\build\\intermediates\\bundles\\debug\\res\\layout\\cube_mints_base_block_menu_item.xml"
+    },
+    {
+        "merged": "I:\\MyStudioWork\\WXMainActivity\\core\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\cube_views_load_more_default_footer.xml",
+        "source": "I:\\MyStudioWork\\WXMainActivity\\core\\build\\intermediates\\bundles\\debug\\res\\layout\\cube_views_load_more_default_footer.xml"
+    },
+    {
+        "merged": "I:\\MyStudioWork\\WXMainActivity\\core\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\cube_mints_update_notify.xml",
+        "source": "I:\\MyStudioWork\\WXMainActivity\\core\\build\\intermediates\\bundles\\debug\\res\\layout\\cube_mints_update_notify.xml"
+    },
+    {
+        "merged": "I:\\MyStudioWork\\WXMainActivity\\core\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\cube_mints_base_header_bar_title.xml",
+        "source": "I:\\MyStudioWork\\WXMainActivity\\core\\build\\intermediates\\bundles\\debug\\res\\layout\\cube_mints_base_header_bar_title.xml"
+    }
+]

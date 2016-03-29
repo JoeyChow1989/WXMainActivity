@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:background="#E23A39" >
+
+        <LinearLayout
+            android:id="@+id/more_layout"
+            android:layout_width="50dip"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_back"
+            android:clickable="true"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/more_view_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dip"
+            android:src="@drawable/back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/more_view_back"
+            android:text="抢红包帮助"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="10dip"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18sp"
+                android:layout_marginTop="15dip"
+                android:text="免责说明"
+                android:textColor="#000000"
+                android:textSize="15sp" >
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18sp"
+                android:layout_marginRight="18dip"
+                android:layout_marginTop="5dip"
+                android:text="@string/hp"
+                android:textColor="#999999"
+                android:textSize="14sp" >
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18sp"
+                android:layout_marginTop="20dip"
+                android:text="使用步骤"
+                android:textColor="#000000"
+                android:textSize="15sp" >
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18sp"
+                android:layout_marginTop="5dip"
+                android:text="1.必选应用设置"
+                android:textColor="#000000"
+                android:textSize="14sp" >
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18sp"
+                android:layout_marginRight="18sp"
+                android:layout_marginTop="5dip"
+                android:text="@string/qd_str"
+                android:textColor="#000000"
+                android:textSize="14sp" >
+            </TextView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dip"
+                android:layout_marginRight="18dip"
+                android:layout_marginTop="5dip"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="0dip"
+                    android:layout_height="150dip"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/bx_a" />
+                <ImageView
+                    android:layout_width="0dip"
+                    android:layout_height="150dip"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/bx_b" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18sp"
+                android:layout_marginTop="15dip"
+                android:text="2.可选增加设置"
+                android:textColor="#000000"
+                android:textSize="14sp" >
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18sp"
+                android:layout_marginTop="5dip"
+                android:text="1.防止封号设置"
+                android:textColor="#000000"
+                android:textSize="14sp" >
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18sp"
+                android:layout_marginRight="18sp"
+                android:text="@string/cq_str_a"
+                android:textColor="#000000"
+                android:textSize="14sp" >
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18sp"
+                android:text="@string/cq_str_b"
+                android:textColor="#000000"
+                android:textSize="14sp" >
+            </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18sp"
+                android:layout_marginRight="18sp"
+                android:text="@string/cq_str_c"
+                android:textColor="#000000"
+                android:textSize="14sp" >
+            </TextView>
+             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dip"
+                android:layout_marginRight="18dip"
+                android:layout_marginTop="5dip"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="0dip"
+                    android:layout_height="150dip"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/bx_c" />
+
+                <ImageView
+                    android:layout_width="0dip"
+                    android:layout_height="150dip"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/bx_d" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,8 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="gradient_view_margin_left">0dip</dimen>
+    <dimen name="slide_bar_height">65.5dip</dimen>
+    <dimen name="gradient_text_size">23.6sp</dimen>
+</resources>

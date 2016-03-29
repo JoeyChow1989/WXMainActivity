@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="GifMoviewView">
+        <attr name="gif" format="reference" />
+        <attr name="paused" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="CustomTheme">
+        <attr name="gifMoviewViewStyle" format="reference" />
+    </declare-styleable>
+    
+      <declare-styleable name="GradientView">
+        <attr name="StringToShow" format="reference"/>
+        <attr name="TextSize" format="dimension"/>
+        <attr name="TextColor" format="integer"/>
+        <attr name="SlideColor" format="integer"/>
+    </declare-styleable>
+    
+    
+    <declare-styleable name="SlideBar">
+        <attr name="MinVelocityXToUnlock" format="integer"/>
+        <attr name="MinDistanceToUnlock" format="integer"/>
+        <attr name="LeftAnimationDuratioin" format="integer"/>
+        <attr name="RightAnimationDuratioin" format="integer"/>
+    </declare-styleable>
+</resources>

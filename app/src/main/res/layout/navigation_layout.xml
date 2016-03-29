@@ -1,0 +1,191 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dip" >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/pic_yin_small" />
+
+        <ImageView
+            android:id="@+id/tq_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/icon_104_big" />
+
+        <TextView
+            android:id="@+id/munuber_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/tq_img"
+            android:text=" "
+            android:textColor="#ffffff"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/tianqi_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/munuber_text"
+            android:layout_marginBottom="5dip"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="22dp"
+            android:layout_toRightOf="@id/munuber_text"
+            android:text="  "
+            android:textColor="#ffffff"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tianqing_img"
+            android:layout_width="65dp"
+            android:layout_height="18dp"
+            android:layout_alignLeft="@+id/munuber_text"
+            android:layout_below="@+id/munuber_text"
+            android:background="@drawable/ti_border"
+            android:gravity="center"
+            android:text="    "
+            android:textColor="#ffffff"
+            android:textSize="13sp" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/district_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/tianqing_img"
+            android:layout_marginLeft="15dip"
+            android:layout_toRightOf="@id/tianqing_img"
+            android:text=""
+            android:textColor="#ffffff"
+            android:textSize="25sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/tq_img"
+            android:layout_marginLeft="15dip"
+            android:layout_marginRight="15dip"
+            android:layout_marginTop="20dip"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dip"
+                android:src="@drawable/ic_baidu_icon" />
+
+            <EditText
+                android:layout_width="200dip"
+                android:layout_height="30dip"
+                android:gravity="center_vertical"
+                android:background="@null"
+                android:hint="百度一下，你就知道"
+                android:paddingLeft="10dp"
+                android:textColor="#000000"
+                android:textColorHint = "#E6E6E6" 
+                android:id="@+id/baidu_text"
+                android:textSize="11sp" >
+            </EditText>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dip"
+                android:layout_marginTop="10dip"
+                android:background="#EDEDED" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dip"
+                android:id="@+id/search_img"
+                android:src="@drawable/icon_search" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dip"
+        android:background="#ffffff" >
+
+        <ImageView 
+            android:layout_width="35dip"
+            android:layout_height="15dip"
+            android:src="@drawable/today"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dip"
+            android:id="@+id/tody_img"
+            />
+        
+        
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="0dp"
+            android:text="今日看点"
+            android:layout_toRightOf="@id/tody_img"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+        <View
+            android:id="@+id/right_view"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="35dip"
+            android:background="#ffffff" />
+
+        <TextView
+            android:id="@+id/update_ivew"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dip"
+            android:layout_toLeftOf="@id/right_view"
+            android:text="换一批"
+            android:textColor="#A3A3A3"
+            android:textSize="14sp" >
+        </TextView>
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/update_ivew"
+            android:src="@drawable/bg_hot_point_refresh_nor" />
+    </RelativeLayout>
+
+    <in.srain.cube.views.GridViewWithHeaderAndFooter
+        android:id="@+id/gridView"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginTop="5dip"
+        android:layout_weight="1"
+        android:fadingEdge="none"
+        android:focusable="false"
+        android:listSelector="@android:color/transparent"
+        android:numColumns="2"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbars="none"
+        android:stretchMode="columnWidth" />
+
+</LinearLayout>

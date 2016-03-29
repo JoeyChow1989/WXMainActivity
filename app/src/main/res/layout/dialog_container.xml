@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300.0dip"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:gravity="center"
+    android:minWidth="280.0dip"
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dip"
+        android:layout_height="wrap_content" >
+        <TextView
+            android:id="@+id/titleLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
+            android:gravity="left"
+            android:orientation="horizontal"
+            android:textColor="#444444"
+            android:text="haochu"
+            android:textSize="15.0sp" />
+        <ImageView
+            android:layout_width="30dip"
+            android:layout_height="22dip"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="2dip"
+            android:layout_toLeftOf="@id/titleLabel"
+            android:src="@drawable/icon" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/alert_br"
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:layout_marginTop="10dip"
+        android:background="#EEEEEE"
+         />
+
+    <FrameLayout
+        android:id="@+id/layout_container"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10.0dip"
+        android:paddingLeft="15.0dip"
+        android:paddingRight="15.0dip" />
+ 
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20.0dip"
+        android:background="@android:color/transparent"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:paddingLeft="15.0dip"
+        android:paddingRight="15.0dip"
+        android:layout_marginBottom="10dip" >
+
+        <Button
+            android:id="@+id/submitButton"
+            android:layout_width="fill_parent"
+            android:layout_height="40.0dip"
+            android:layout_weight="1.0"
+            android:background="#E23A39"
+            android:gravity="center"
+            android:text="连接"
+            android:textColor="#ffffffff"
+            android:textSize="17.0sp" />
+
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="fill_parent"
+            android:layout_height="40.0dip"
+            android:layout_marginLeft="15.0dip"
+            android:layout_weight="1.0"
+            android:background="@drawable/btn_no_boder"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="#666666"
+            android:textSize="17.0sp" />
+    </LinearLayout>
+
+</LinearLayout>

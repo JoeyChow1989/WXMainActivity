@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/context_view"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:background="#88000000"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/main_linearlayout"
+        android:layout_width="300dp"
+        android:layout_height="350dip"
+        android:background="@drawable/bg_circle_corner_white"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:text="分享一次可加50%抢红包速度"
+            android:textColor="#E65E5B"
+            android:textSize="15sp" >
+        </TextView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="11dp"
+            android:background="#DFDFDF" />
+
+        <ImageView
+            android:id="@+id/tow_code"
+            android:layout_width="150dip"
+            android:layout_height="150dip"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dip"
+            android:src="@drawable/temp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dip"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="50dip"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/wx_image"
+                    android:layout_width="40dip"
+                    android:layout_height="40dip"
+                    android:layout_marginRight="15dip"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/weixin" />
+
+                <TextView
+                    android:id="@+id/wx_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginRight="8dip"
+                    android:layout_marginTop="12dip"
+                    android:text="微信"
+                    android:textSize="13sp" >
+                </TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/wx_py_image"
+                    android:layout_width="40dip"
+                    android:layout_height="40dip"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/pengyouquan" />
+
+                <TextView
+                    android:id="@+id/wx_py_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="12dip"
+                    android:text="朋友圈"
+                    android:textSize="13sp" >
+                </TextView>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
