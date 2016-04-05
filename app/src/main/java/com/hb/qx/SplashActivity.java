@@ -71,7 +71,7 @@ public class SplashActivity extends XActivity {
                     if (data != null) {
                         int vsercode = data.optInt("vsercode");
                         System.out.println(application.vsercode);
-                        if (vsercode > application.vsercode || !application.vsername.equals(data.optString("vsername"))) {
+                        if (vsercode > application.vsercode ) {
                             View view = getLayoutInflater().inflate(R.layout.dialog_update, null);
                             AlertDialogContainer container = new AlertDialogContainer(SplashActivity.this, view);
                             container.setNoText("否");

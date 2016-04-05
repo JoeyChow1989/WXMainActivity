@@ -75,7 +75,6 @@ public class QQHongbaoService extends AccessibilityService {
             // Log.e(TAG, "showDialog:" + info.canOpenPopup());
             // Log.e(TAG, "Text：" + info.getText());
             // Log.e(TAG, "windowId:" + info.getWindowId());
-
             if (info.getText() != null
                     && info.getText().toString()
                     .equals(QQ_CLICK_TO_PASTE_PASSWORD)) {
@@ -163,8 +162,16 @@ public class QQHongbaoService extends AccessibilityService {
                     }, 3000);
 
                 } else if (cellNode.getPackageName().equals("com.tencent.mm") || cellNode.getPackageName().equals("com.tencent.mobileqq")) {
-                    cellNode.getParent().performAction(
-                            AccessibilityNodeInfo.ACTION_CLICK);
+
+                    new Handler().postDelayed(new Runnable() {
+                        public void run() {
+                            // execute the task
+                            if (cellNode != null) {
+                                cellNode.getParent().performAction(
+                                        AccessibilityNodeInfo.ACTION_CLICK);
+                            }
+                        }
+                    }, 200);
                 }
 
                 // Log.e(TAG, "---------开始----------");
@@ -200,6 +207,7 @@ public class QQHongbaoService extends AccessibilityService {
                 mLuckyMoneyReceived = false;
             }
         }
+
         /* 如果戳开但还未领取 */
         if (mNeedUnpack
                 && (mUnpackNode != null)
@@ -210,12 +218,11 @@ public class QQHongbaoService extends AccessibilityService {
 
             System.out.println("rootNodeInfo=================" + rootNodeInfo);
 
-            if (cellNode.getText() != null){
+            if (cellNode.getText() != null) {
                 if (cellNode.getText().toString().equals(WECHAT_EXPIRES_CH)) {
                     return;
                 }
             }
-
             // 发送百度统计
             if (cellNode.getPackageName().equals("com.tencent.mm")) {
                 new Handler().postDelayed(new Runnable() {
@@ -230,34 +237,43 @@ public class QQHongbaoService extends AccessibilityService {
         } else if (event.getClassName().equals(
                 "com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyReceiveUI")) {
             int count = rootNodeInfo.getChildCount();
-            AccessibilityNodeInfo resultInfo = null;
-            AccessibilityNodeInfo cellNodeInfo = rootNodeInfo
-                    .getChild(count - 1);
-            int count_text = cellNodeInfo.getChildCount();
-            for (int i = 0; i < count_text; i++) {
-                AccessibilityNodeInfo temp = cellNodeInfo.getChild(i);
-                String class_name = temp.getClassName().toString();
-                if (class_name.equals("android.widget.Button")) {
-                    resultInfo = temp;
-                    break;
-                }
-            }
-            resultInfo.performAction(AccessibilityNodeInfo.ACTION_CLICK);
 
-            if (cellNodeInfo.getText() != null){
-                if (cellNodeInfo.getText().toString().equals(WECHAT_EXPIRES_CH)) {
-                    return;
-                }
-            }
+            System.out.println("count======================================:" + count);
 
-            System.out.println("rootNodeInfo=================" + rootNodeInfo);
-            if (resultInfo.getPackageName().equals("com.tencent.mm")) {
-                new Handler().postDelayed(new Runnable() {
-                    public void run() {
-                        //execute the task
-                        sendBaidu();
+            if (count != 0) {
+                AccessibilityNodeInfo resultInfo = null;
+                AccessibilityNodeInfo cellNodeInfo = rootNodeInfo
+                        .getChild(count - 1);
+                int count_text = cellNodeInfo.getChildCount();
+                for (int i = 0; i < count_text; i++) {
+                    AccessibilityNodeInfo temp = cellNodeInfo.getChild(i);
+                    String class_name = temp.getClassName().toString();
+                    if (class_name.equals("android.widget.Button")) {
+                        resultInfo = temp;
+                        break;
                     }
-                }, 2000);
+                }
+                if (resultInfo != null) {
+                    resultInfo.performAction(AccessibilityNodeInfo.ACTION_CLICK);
+                }
+
+                if (cellNodeInfo.getText() != null) {
+                    if (cellNodeInfo.getText().toString().equals(WECHAT_EXPIRES_CH)) {
+                        return;
+                    }
+                }
+
+                System.out.println("rootNodeInfo=================" + rootNodeInfo);
+                if (resultInfo != null){
+                    if (resultInfo.getPackageName().equals("com.tencent.mm")) {
+                        new Handler().postDelayed(new Runnable() {
+                            public void run() {
+                                //execute the task
+                                sendBaidu();
+                            }
+                        }, 2000);
+                    }
+                }
             }
             // 发送百度统计
             //sendBaidu();
