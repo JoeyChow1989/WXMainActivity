@@ -1,6 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.hb.qx"
-    >
+    package="com.hb.qx">
 
     <!-- 友盟分享权限 -->
     <!-- ###################声明SDK使用的相关权限###################### -->
@@ -19,8 +18,7 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" >
-    </uses-permission>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.READ_LOGS" />
@@ -38,11 +36,12 @@
         <!-- 您从百度网站获取的APP KEY -->
         <meta-data
             android:name="BaiduMobAd_STAT_ID"
-            android:value="2z9IZNPsZH7fOgxg6l8BRNIKk4fU75mO" /> <!-- abcd1234 -->
+            android:value="2z9IZNPsZH7fOgxg6l8BRNIKk4fU75mO" />
+        <!-- abcd1234 -->
         <!-- 渠道商编号 -->
         <meta-data
             android:name="BaiduMobAd_CHANNEL"
-            android:value="S001" />
+            android:value="s001" />
 
         <!-- 是否开启错误日志统计，默认为false -->
         <meta-data
@@ -75,7 +74,7 @@
             android:name="com.hb.qx.SplashActivity"
             android:configChanges="keyboardHidden|orientation"
             android:label="@string/app_name"
-            android:theme="@style/FullBleedTheme" >
+            android:theme="@style/FullBleedTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -87,8 +86,7 @@
             android:name="com.hb.qx.NewADActivity"
             android:configChanges="keyboardHidden|orientation"
             android:label="@string/app_name"
-            android:theme="@style/FullBleedTheme"
-            />
+            android:theme="@style/FullBleedTheme" />
 
         <!-- 百度广告 -->
         <meta-data
@@ -122,8 +120,7 @@
             android:launchMode="singleTask"
             android:noHistory="true"
             android:theme="@style/Theme.UMDialog"
-            android:windowSoftInputMode="stateVisible|adjustResize" >
-        </activity>
+            android:windowSoftInputMode="stateVisible|adjustResize"></activity>
 
         <!-- 微信和微信朋友圈的回调 -->
         <activity
@@ -140,39 +137,34 @@
             android:name="com.hb.qx.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@style/FullBleedTheme" >
-        </activity>
+            android:theme="@style/FullBleedTheme"></activity>
         <activity
             android:name="com.hb.qx.MoreActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@style/FullBleedTheme" >
-        </activity>
+            android:theme="@style/FullBleedTheme"></activity>
         <activity
             android:name="com.hb.qx.LockMainActvity"
             android:label="@string/app_name"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:theme="@style/FullBleedTheme" >
-        </activity>
+            android:theme="@style/FullBleedTheme"></activity>
         <activity
             android:name="com.hb.qx.HelpSettingActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@style/FullBleedTheme" >
-        </activity>
+            android:theme="@style/FullBleedTheme"></activity>
         <activity
             android:name="com.hb.qx.WebViewActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@style/FullBleedTheme" >
-        </activity>
+            android:theme="@style/FullBleedTheme"></activity>
 
         <!-- 锁屏广播接收器 -->
         <receiver
             android:name="com.hb.qx.ScreenReceiver"
             android:enabled="true"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
@@ -188,7 +180,7 @@
         </receiver>
 
         <!-- 锁屏服务 -->
-        <service android:name="com.hb.qx.LockService" >
+        <service android:name="com.hb.qx.LockService">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -200,7 +192,7 @@
             android:enabled="true"
             android:exported="true"
             android:label="@string/app_name"
-            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE" >
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
             <intent-filter>
                 <action android:name="android.accessibilityservice.AccessibilityService" />
             </intent-filter>
@@ -230,10 +222,9 @@
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
-            android:process=":remote" >
-        </service>
+            android:process=":remote"></service>
 
-        <receiver android:name="com.baidu.bottom.service.BottomReceiver" >
+        <receiver android:name="com.baidu.bottom.service.BottomReceiver">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
                 <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
