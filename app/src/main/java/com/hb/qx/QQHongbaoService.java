@@ -352,6 +352,7 @@ public class QQHongbaoService extends AccessibilityService
             // 发送百度统计
             // sendBaidu();
             mNeedUnpack = false;
+            System.out.print("mNeedUnpack");
         }
     }
 
