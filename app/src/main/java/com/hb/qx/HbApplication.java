@@ -46,15 +46,11 @@ public class HbApplication extends Application {
 		}
 		sp = getSharedPreferences("common", MODE_PRIVATE);
 		editor = sp.edit();
-
 	}
-	
-	
+
 	public static synchronized HbApplication getInstance() {
 		return instance;
 	}
-	
-	
 	
 	public synchronized LocationClient getLocationClient() {
 		if (mLocationClient == null)

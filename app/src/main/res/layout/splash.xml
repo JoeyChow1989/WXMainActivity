@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:baiduadsdk="http://schemas.android.com/apk/res/com.sdkdemo"
 	android:layout_width="fill_parent"
 	android:background="#fdfefa"
 	android:layout_height="fill_parent" >
-	
-	
+
 	<RelativeLayout android:id="@+id/adsRl"
 	    android:layout_height="fill_parent"
 	    android:layout_width="fill_parent"
-	    ></RelativeLayout>
+	    >
+	</RelativeLayout>
 </RelativeLayout>

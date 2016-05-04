@@ -18,7 +18,7 @@ public class HelpSettingActivity extends Activity {
 		setContentView(R.layout.activity_help);
 		backlayout = (LinearLayout) findViewById(R.id.more_layout);
 		backlayout.setOnClickListener(backlayou);
-		handleMIUIStatusBar();
+		//handleMIUIStatusBar();
 	
 	}
 	public OnClickListener backlayou = new OnClickListener() {
@@ -43,20 +43,20 @@ public class HelpSettingActivity extends Activity {
 		
 	}
 	
-	/**
-	 * 适配MIUI沉浸状态栏
-	 */
-	private void handleMIUIStatusBar() {
-		try {
-			SystemBarTintManager tintManager = new SystemBarTintManager(this);
-			tintManager = new SystemBarTintManager(this);
-			tintManager.setStatusBarTintEnabled(true);
-			tintManager.setNavigationBarTintEnabled(true);
-
-		} catch (Exception e) {
-
-		}
-	}
+//	/**
+//	 * 适配MIUI沉浸状态栏
+//	 */
+//	private void handleMIUIStatusBar() {
+//		try {
+//			SystemBarTintManager tintManager = new SystemBarTintManager(this);
+//			tintManager = new SystemBarTintManager(this);
+//			tintManager.setStatusBarTintEnabled(true);
+//			tintManager.setNavigationBarTintEnabled(true);
+//
+//		} catch (Exception e) {
+//
+//		}
+//	}
 	@Override
 	protected void onDestroy() {
 		getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);

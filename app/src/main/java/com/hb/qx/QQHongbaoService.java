@@ -5,6 +5,7 @@ import android.annotation.TargetApi;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Handler;
 import android.view.accessibility.AccessibilityEvent;
@@ -56,10 +57,14 @@ public class QQHongbaoService extends AccessibilityService
 
     public int eventTime;
 
+    SharedPreferences sp;
+
+
     @Override
     public void onCreate()
     {
         mApplication = HbApplication.getInstance();
+        sp = getSharedPreferences("chatpage",MODE_PRIVATE);
         eventTime = 0;
         super.onCreate();
     }
@@ -507,9 +512,21 @@ public class QQHongbaoService extends AccessibilityService
     {
         mApplication.editor.putString("show_ad_type", "yes");
         mApplication.editor.commit();
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+
+        System.out.println("chatpage======================" + mApplication.sp.getInt("chatpage", 0));
+
+        if (sp.getInt("chatpage", 0) == 1)
+        {
+            Intent intent = new Intent(getApplicationContext(), NewADActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        } else if (sp.getInt("chatpage", 0) == 0)
+        {
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }
+        // NewsAdDialog.showDialog(getApplicationContext());
     }
 
     @Override

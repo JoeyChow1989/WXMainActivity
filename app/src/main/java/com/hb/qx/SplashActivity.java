@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.text.Html;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -35,16 +37,18 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 
-public class SplashActivity extends XActivity {
+public class SplashActivity extends XActivity
+{
 
     private HbApplication application;
+    View view;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.trial_run_activity);
         application = HbApplication.getInstance();
-
         //new HttpAsyncTask().execute(URL.UP_URL);
         showAd();
         //request();
@@ -53,25 +57,33 @@ public class SplashActivity extends XActivity {
     }
 
     @Override
-    protected String getCloseWarning() {
+    protected String getCloseWarning()
+    {
         return null;
     }
 
     @Override
-    protected int getFragmentContainerId() {
+    protected int getFragmentContainerId()
+    {
         return 0;
     }
 
-    public void request() {
-        RequestUtil.reverseget(URL.UP_URL, new RequestJsonHandler() {
+    public void request()
+    {
+        RequestUtil.reverseget(URL.UP_URL, new RequestJsonHandler()
+        {
             @Override
-            public void onRequestFinish(final JsonData data) {
-                try {
+            public void onRequestFinish(final JsonData data)
+            {
+                try
+                {
                     System.out.println("data======================" + data);
-                    if (data != null) {
+                    if (data != null)
+                    {
                         int vsercode = data.optInt("vsercode");
                         System.out.println(application.vsercode);
-                        if (vsercode > application.vsercode ) {
+                        if (vsercode > application.vsercode)
+                        {
                             View view = getLayoutInflater().inflate(R.layout.dialog_update, null);
                             AlertDialogContainer container = new AlertDialogContainer(SplashActivity.this, view);
                             container.setNoText("否");
@@ -79,66 +91,83 @@ public class SplashActivity extends XActivity {
                             container.setTitle("更新通知");
                             TextView textView = (TextView) view.findViewById(R.id.msg);
                             textView.setText(Html.fromHtml(data.optString("msg")));
-                            container.setCallBack(new AlertDialogCallBack() {
+                            container.setCallBack(new AlertDialogCallBack()
+                            {
                                 @Override
-                                public boolean ok() {
+                                public boolean ok()
+                                {
                                     Intent intent = new Intent(SplashActivity.this, UpdateService.class);
                                     intent.putExtra("dowurl", data.optString("dowurl"));
                                     startService(intent);
-                                    if (data.optString("compulsory").equals("no")) {
+                                    if (data.optString("compulsory").equals("no"))
+                                    {
                                         jump();
                                     }
                                     return false;
                                 }
 
                                 @Override
-                                public boolean no() {
-                                    if (data.optString("compulsory").equals("no")) {
+                                public boolean no()
+                                {
+                                    if (data.optString("compulsory").equals("no"))
+                                    {
                                         jump();
                                         return true;
-                                    } else {
+                                    } else
+                                    {
                                         return false;
                                     }
                                 }
                             });
-                        } else {
+                        } else
+                        {
                             jump();
                         }
                     }
-                } catch (Exception e) {
+                } catch (Exception e)
+                {
                     e.printStackTrace();
                 }
             }
 
             @Override
-            public void onRequestFail(FailData failData) {
+            public void onRequestFail(FailData failData)
+            {
                 System.out.println("failData:=========" + failData);
                 jump();
             }
         });
     }
 
-    public void request_new() {
-        RequestUtil.reverseget(URL.NEW_URL, new RequestJsonHandler() {
+    public void request_new()
+    {
+        RequestUtil.reverseget(URL.NEW_URL, new RequestJsonHandler()
+        {
             @Override
-            public void onRequestFinish(final JsonData data) {
+            public void onRequestFinish(final JsonData data)
+            {
                 JsonData listJsonData = data.optJson("data").optJson("list");
                 System.out.println(listJsonData.toString());
                 Commonutil.writeData("new_text.txt", listJsonData.toString(), getApplicationContext());
             }
 
             @Override
-            public void onRequestFail(FailData failData) {
+            public void onRequestFail(FailData failData)
+            {
 
             }
         });
     }
 
-    public void request_lock_type() {
-        RequestUtil.reverseget(URL.LOCK_URL, new RequestJsonHandler() {
+    public void request_lock_type()
+    {
+        RequestUtil.reverseget(URL.LOCK_URL, new RequestJsonHandler()
+        {
             @Override
-            public void onRequestFinish(final JsonData data) {
-                if (data != null) {
+            public void onRequestFinish(final JsonData data)
+            {
+                if (data != null)
+                {
                     String lock = data.optString("lock_type");
                     application.editor.putString("lock_type", lock);
                     application.editor.commit();
@@ -146,39 +175,58 @@ public class SplashActivity extends XActivity {
             }
 
             @Override
-            public void onRequestFail(FailData failData) {
+            public void onRequestFail(FailData failData)
+            {
 
             }
         });
     }
 
-    public void showAd() {
+    public void showAd()
+    {
         // adUnitContainer
-        RelativeLayout adsParent = (RelativeLayout) this.findViewById(R.id.adsRl);
+        final RelativeLayout adsParent = (RelativeLayout) this.findViewById(R.id.adsRl);
         // the observer of AD
-        SplashAdListener listener = new SplashAdListener() {
+        SplashAdListener listener = new SplashAdListener()
+        {
             @Override
-            public void onAdDismissed() {
+            public void onAdDismissed()
+            {
                 Log.i("RSplashActivity", "onAdDismissed");
                 jumpWhenCanClick(); // 跳转至您的应用主界面
             }
 
             @Override
-            public void onAdFailed(String arg0) {
+            public void onAdFailed(String arg0)
+            {
                 Log.i("RSplashActivity", "onAdFailed");
                 request();
             }
 
             @Override
-            public void onAdPresent() {
+            public void onAdPresent()
+            {
                 Log.i("RSplashActivity", "onAdPresent");
+                view = LayoutInflater.from(SplashActivity.this).inflate(R.layout.jumpin, null);
+                adsParent.addView(view);
+                RelativeLayout textView = (RelativeLayout) view.findViewById(R.id.jumpin);
+
+                textView.setOnClickListener(new View.OnClickListener()
+                {
+                    @Override
+                    public void onClick(View view)
+                    {
+                        jump();
+                    }
+                });
             }
 
+
             @Override
-            public void onAdClick() {
+            public void onAdClick()
+            {
                 Log.i("RSplashActivity", "onAdClick");
                 // 设置开屏可接受点击时，该回调可用
-
             }
         };
 
@@ -192,21 +240,25 @@ public class SplashActivity extends XActivity {
      */
     public boolean canJumpImmediately = false;
 
-    private void jumpWhenCanClick() {
+    private void jumpWhenCanClick()
+    {
         Log.d("test", "this.hasWindowFocus():" + this.hasWindowFocus());
-        if (canJumpImmediately) {
+        if (canJumpImmediately)
+        {
             request();
             // this.startActivity(new Intent(SplashActivity.this,
             // MainActivity.class));
             // this.finish();
-        } else {
+        } else
+        {
             canJumpImmediately = true;
         }
 
     }
 
     @Override
-    protected void onPause() {
+    protected void onPause()
+    {
         super.onPause();
         canJumpImmediately = false;
     }
@@ -214,15 +266,18 @@ public class SplashActivity extends XActivity {
     /**
      * 不可点击的开屏，使用该jump方法，而不是用jumpWhenCanClick
      */
-    private void jump() {
+    private void jump()
+    {
         this.startActivity(new Intent(SplashActivity.this, MainActivity.class));
         this.finish();
     }
 
     @Override
-    protected void onResume() {
+    protected void onResume()
+    {
         super.onResume();
-        if (canJumpImmediately) {
+        if (canJumpImmediately)
+        {
             jumpWhenCanClick();
         }
         canJumpImmediately = true;
@@ -232,18 +287,22 @@ public class SplashActivity extends XActivity {
     public ByteArrayOutputStream bos;
     String s;
 
-    class HttpAsyncTask extends AsyncTask<String, Void, String> {
+    class HttpAsyncTask extends AsyncTask<String, Void, String>
+    {
         @Override
-        protected void onPreExecute() {
+        protected void onPreExecute()
+        {
             super.onPreExecute();
         }
 
         @Override
-        protected void onPostExecute(String s) {
+        protected void onPostExecute(String s)
+        {
             super.onPostExecute(s);
 
             System.out.println("------------onPostExecute-------------");
-            try {
+            try
+            {
                 JSONObject object = new JSONObject(s);
 
                 String s1 = object.getString("dowurl");
@@ -251,29 +310,34 @@ public class SplashActivity extends XActivity {
                 System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" + s1);
 
 
-            } catch (JSONException e) {
+            } catch (JSONException e)
+            {
                 e.printStackTrace();
             }
 
         }
 
         @Override
-        protected String doInBackground(String... strings) {
+        protected String doInBackground(String... strings)
+        {
 
             HttpClient httpclient = new DefaultHttpClient();
-            try {
+            try
+            {
                 // 创建httpget.
                 HttpGet httpget = new HttpGet(strings[0]);
                 System.out.println("executing request " + httpget.getURI());
                 // 执行get请求.
                 HttpResponse response = httpclient.execute(httpget);
-                try {
+                try
+                {
                     // 获取响应实体
                     HttpEntity entity = response.getEntity();
                     System.out.println("--------------------------------------");
                     // 打印响应状态
                     System.out.println(response.getStatusLine());
-                    if (entity != null) {
+                    if (entity != null)
+                    {
                         // 打印响应内容长度
                         System.out.println("Response content length: " + entity.getContentLength());
                         // 打印响应内容
@@ -286,7 +350,8 @@ public class SplashActivity extends XActivity {
                         byte[] buffer = new byte[1024];
 
                         int len = -1;
-                        while ((len = inputStream.read(buffer)) != -1) {
+                        while ((len = inputStream.read(buffer)) != -1)
+                        {
                             bos.write(buffer, 0, len);
                         }
 
@@ -298,15 +363,20 @@ public class SplashActivity extends XActivity {
 
                     }
                     System.out.println("------------------------------------");
-                } finally {
+                } finally
+                {
                 }
-            } catch (ClientProtocolException e) {
+            } catch (ClientProtocolException e)
+            {
                 e.printStackTrace();
-            } catch (ParseException e) {
+            } catch (ParseException e)
+            {
                 e.printStackTrace();
-            } catch (IOException e) {
+            } catch (IOException e)
+            {
                 e.printStackTrace();
-            } finally {
+            } finally
+            {
                 // 关闭连接,释放资源
             }
 
