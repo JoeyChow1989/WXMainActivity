@@ -7,9 +7,11 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Handler;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
+import android.widget.EditText;
 
 import com.baidu.mobstat.StatService;
 
@@ -55,16 +57,16 @@ public class QQHongbaoService extends AccessibilityService
     private AccessibilityNodeInfo rootNodeInfo;
     private List<AccessibilityNodeInfo> mReceiveNode;
 
+    private boolean huifu = false;
     public int eventTime;
 
     SharedPreferences sp;
-
 
     @Override
     public void onCreate()
     {
         mApplication = HbApplication.getInstance();
-        sp = getSharedPreferences("chatpage",MODE_PRIVATE);
+        sp = getSharedPreferences("chatpage", MODE_PRIVATE);
         eventTime = 0;
         super.onCreate();
     }
@@ -80,12 +82,6 @@ public class QQHongbaoService extends AccessibilityService
     {
         if (info.getChildCount() == 0)
         {
-            // Log.e(TAG, "child widget----------------------------" +
-            // info.getClassName());
-            // Log.e(TAG, "showDialog:" + info.canOpenPopup());
-            // Log.e(TAG, "Text：" + info.getText());
-            // Log.e(TAG, "windowId:" + info.getWindowId());
-
             if (info.getText() != null
                     && info.getText().toString()
                     .equals(QQ_CLICK_TO_PASTE_PASSWORD))
@@ -115,8 +111,7 @@ public class QQHongbaoService extends AccessibilityService
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event)
     {
-
-		/* 检测通知消息 */
+        /* 检测通知消息 */
         switch (event.getEventType())
         {
             case AccessibilityEvent.TYPE_NOTIFICATION_STATE_CHANGED:
@@ -173,6 +168,8 @@ public class QQHongbaoService extends AccessibilityService
                 final AccessibilityNodeInfo cellNode = mReceiveNode
                         .get(size - 1);
 
+                System.out.println("cellNode=======================:" + cellNode);
+
                 if (cellNode.getText().toString().equals("口令红包已拆开"))
                 {
                     return;
@@ -202,6 +199,19 @@ public class QQHongbaoService extends AccessibilityService
                     {
                         cellNode.getParent().performAction(
                                 AccessibilityNodeInfo.ACTION_CLICK);
+//                        AccessibilityNodeInfo rowNode = getRootInActiveWindow();
+//                        if (huifu == true && rowNode.getChild(7) != null && rowNode.getChild(8) != null)
+//                        {
+//                            System.out.println("ClassName=====================" + rowNode.getChild(7).getChild(0).getClassName());
+//                            Bundle arguments = new Bundle();
+//                            arguments.putCharSequence(AccessibilityNodeInfo.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, "谢谢");
+//                            if (rowNode.getChild(7).getChild(0) != null)
+//                            {
+//                                rowNode.getChild(7).getChild(0).performAction(AccessibilityNodeInfo.ACTION_SET_TEXT, arguments);
+//                                rowNode.getChild(7).getChild(1).getParent().performAction(AccessibilityNodeInfo.ACTION_CLICK);
+//                            }
+//                            huifu = false;
+//                        }
                     }
                 } else if (cellNode.getPackageName().equals("com.tencent.mm"))
                 {
@@ -235,19 +245,10 @@ public class QQHongbaoService extends AccessibilityService
                 // Log.e(TAG, "-----------结束------------");
                 // Log.e(TAG, "text = " + cellNode.getText().toString());
 
-                System.out
-                        .println("rootNodeInfo================================================="
-                                + rootNodeInfo);
-                eventTime++;
-
-                System.out
-                        .println("eventTime======================================================"
-                                + eventTime);
-
                 if (rootNodeInfo.getPackageName()
                         .equals("com.tencent.mobileqq"))
                 {
-                    if (eventTime % 3 == 0)
+                    if (eventTime % 5 == 0)
                     {
                         System.out
                                 .println("jump.............................................................");
@@ -258,7 +259,7 @@ public class QQHongbaoService extends AccessibilityService
                                 // execute the task
                                 sendBaidu();
                             }
-                        }, 1500);
+                        }, 2000);
                     }
                 }
                 mLuckyMoneyReceived = false;
@@ -400,6 +401,7 @@ public class QQHongbaoService extends AccessibilityService
         {
             mUnpackNode = node2;
             mNeedUnpack = true;
+            huifu = true;
             return;
         }
 
