@@ -1,17 +1,10 @@
 package com.hb.qx;
 
-import in.srain.cube.app.XActivity;
-import in.srain.cube.request.FailData;
-import in.srain.cube.request.JsonData;
-import in.srain.cube.request.RequestJsonHandler;
-
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.text.Html;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -20,6 +13,7 @@ import android.widget.TextView;
 import com.baidu.mobads.SplashAd;
 import com.baidu.mobads.SplashAdListener;
 import com.hb.tool.Commonutil;
+import com.hb.ui.CircleView;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -28,14 +22,17 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.HttpURLConnection;
+
+import in.srain.cube.app.XActivity;
+import in.srain.cube.request.FailData;
+import in.srain.cube.request.JsonData;
+import in.srain.cube.request.RequestJsonHandler;
 
 public class SplashActivity extends XActivity
 {
@@ -209,8 +206,8 @@ public class SplashActivity extends XActivity
                 Log.i("RSplashActivity", "onAdPresent");
                 view = LayoutInflater.from(SplashActivity.this).inflate(R.layout.jumpin, null);
                 adsParent.addView(view);
-                RelativeLayout textView = (RelativeLayout) view.findViewById(R.id.jumpin);
-
+                CircleView textView = (CircleView) view.findViewById(R.id.jumpin);
+                textView.setBackgroundColor(getResources().getColor(R.color.gradient_text_color2));
                 textView.setOnClickListener(new View.OnClickListener()
                 {
                     @Override
@@ -304,11 +301,7 @@ public class SplashActivity extends XActivity
             try
             {
                 JSONObject object = new JSONObject(s);
-
                 String s1 = object.getString("dowurl");
-
-                System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" + s1);
-
 
             } catch (JSONException e)
             {
@@ -354,9 +347,7 @@ public class SplashActivity extends XActivity
                         {
                             bos.write(buffer, 0, len);
                         }
-
                         s = new String(bos.toByteArray(), "UTF-8");
-
                         System.out.println("size" + s.length());
 
                         System.out.println("content===========================" + s);
