@@ -176,7 +176,45 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"></LinearLayout>
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1.3"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="20dp"
+                            android:text="延时抢红包"
+                            android:textColor="@android:color/black"
+                            android:textSize="15sp"
+                            />
+
+                        <SeekBar
+                            android:id="@+id/seekbar_yanshi"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:maxHeight="1dp"
+                            android:minHeight="1dp"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:layout_weight="1"
+                            android:max="10"
+                            android:layout_gravity="center_vertical"
+                            android:progressDrawable="@drawable/seekbar_por"
+                            android:thumb="@drawable/seekbar_thumb"
+                            />
+
+                        <TextView
+                            android:id="@+id/nokick_tv_yanshi"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textColor="@android:color/black"
+                            android:textSize="18dp"
+                            android:gravity="center"
+                            android:layout_weight="1.6"
+                            />
+
+                    </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
@@ -189,7 +227,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1">
+                        android:layout_weight="4">
 
                         <TextView
                             android:layout_width="match_parent"
@@ -222,118 +260,166 @@
                         android:background="#bbbbbb"
                         />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"></LinearLayout>
+                   <LinearLayout
+                       android:id="@+id/ly_auto_huifu"
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent"
+                       android:layout_weight="1"
+                       android:orientation="vertical"
+                       >
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="#bbbbbb"
-                        />
+                       <LinearLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="match_parent"
+                           android:layout_weight="1">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1">
+                           <TextView
+                               android:layout_width="match_parent"
+                               android:layout_height="match_parent"
+                               android:layout_weight="1.3"
+                               android:gravity="center_vertical"
+                               android:paddingLeft="20dp"
+                               android:text="回复的速度"
+                               android:textColor="@android:color/black"
+                               android:textSize="15sp"
+                               />
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="20dp"
-                            android:text="回复抢到钱的钱数"
-                            android:textColor="@android:color/black"
-                            android:textSize="15sp"/>
+                           <SeekBar
+                               android:id="@+id/seekbar_huifu"
+                               android:layout_width="match_parent"
+                               android:layout_height="30dp"
+                               android:maxHeight="1dp"
+                               android:minHeight="1dp"
+                               android:paddingLeft="8dp"
+                               android:paddingRight="8dp"
+                               android:layout_weight="1"
+                               android:max="10"
+                               android:layout_gravity="center_vertical"
+                               android:progressDrawable="@drawable/seekbar_por"
+                               android:thumb="@drawable/seekbar_thumb"
+                               />
 
-                        <ToggleButton
-                            android:id="@+id/accessibility_kick_huifuqianshu"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="5"
-                            android:background="@android:color/transparent"
-                            android:button="@drawable/toggle_btn"
-                            android:gravity="center"
-                            android:padding="10dp"
-                            android:text=""
-                            android:textOff=""
-                            android:textOn=""/>
+                           <TextView
+                               android:id="@+id/nokick_tv_huifu"
+                               android:layout_width="match_parent"
+                               android:layout_height="match_parent"
+                               android:textColor="@android:color/black"
+                               android:textSize="18dp"
+                               android:gravity="center"
+                               android:layout_weight="1.6"
+                               />
 
-                    </LinearLayout>
+                       </LinearLayout>
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="#bbbbbb"
-                        />
+                       <View
+                           android:layout_width="match_parent"
+                           android:layout_height="1dp"
+                           android:background="#bbbbbb"
+                           />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1">
+                       <LinearLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="match_parent"
+                           android:layout_weight="1">
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="15dp"
-                            android:text=" @发红包的人"
-                            android:textColor="@android:color/black"
-                            android:textSize="15sp"/>
+                           <TextView
+                               android:layout_width="match_parent"
+                               android:layout_height="match_parent"
+                               android:layout_weight="1"
+                               android:gravity="center_vertical"
+                               android:paddingLeft="20dp"
+                               android:text="回复抢到钱的钱数"
+                               android:textColor="@android:color/black"
+                               android:textSize="15sp"/>
 
-                        <ToggleButton
-                            android:id="@+id/accessibility_kick_huifuhongbaoren"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="5"
-                            android:background="@android:color/transparent"
-                            android:button="@drawable/toggle_btn"
-                            android:gravity="center"
-                            android:padding="10dp"
-                            android:text=""
-                            android:textOff=""
-                            android:textOn=""/>
+                           <ToggleButton
+                               android:id="@+id/accessibility_kick_huifuqianshu"
+                               android:layout_width="match_parent"
+                               android:layout_height="match_parent"
+                               android:layout_weight="5"
+                               android:background="@android:color/transparent"
+                               android:button="@drawable/toggle_btn"
+                               android:gravity="center"
+                               android:padding="10dp"
+                               android:text=""
+                               android:textOff=""
+                               android:textOn=""/>
 
-                    </LinearLayout>
+                       </LinearLayout>
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="#bbbbbb"
-                        />
+                       <View
+                           android:layout_width="match_parent"
+                           android:layout_height="1dp"
+                           android:background="#bbbbbb"
+                           />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1">
+                       <LinearLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="match_parent"
+                           android:layout_weight="1">
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="20dp"
-                            android:text="自定义感谢语"
-                            android:textColor="@android:color/black"
-                            android:textSize="15sp"/>
+                           <TextView
+                               android:layout_width="match_parent"
+                               android:layout_height="match_parent"
+                               android:layout_weight="1"
+                               android:gravity="center_vertical"
+                               android:paddingLeft="15dp"
+                               android:text=" @发红包的人"
+                               android:textColor="@android:color/black"
+                               android:textSize="15sp"/>
 
-                        <ToggleButton
-                            android:id="@+id/accessibility_kick_zidingyiganxieyu"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="5"
-                            android:background="@android:color/transparent"
-                            android:button="@drawable/toggle_btn"
-                            android:gravity="center"
-                            android:padding="10dp"
-                            android:text=""
-                            android:textOff=""
-                            android:textOn=""/>
+                           <ToggleButton
+                               android:id="@+id/accessibility_kick_huifuhongbaoren"
+                               android:layout_width="match_parent"
+                               android:layout_height="match_parent"
+                               android:layout_weight="5"
+                               android:background="@android:color/transparent"
+                               android:button="@drawable/toggle_btn"
+                               android:gravity="center"
+                               android:padding="10dp"
+                               android:text=""
+                               android:textOff=""
+                               android:textOn=""/>
 
-                    </LinearLayout>
+                       </LinearLayout>
+
+                       <View
+                           android:layout_width="match_parent"
+                           android:layout_height="1dp"
+                           android:background="#bbbbbb"
+                           />
+
+                       <LinearLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="match_parent"
+                           android:layout_weight="1">
+
+                           <TextView
+                               android:layout_width="match_parent"
+                               android:layout_height="match_parent"
+                               android:layout_weight="1"
+                               android:gravity="center_vertical"
+                               android:paddingLeft="20dp"
+                               android:text="自定义感谢语"
+                               android:textColor="@android:color/black"
+                               android:textSize="15sp"/>
+
+                           <ToggleButton
+                               android:id="@+id/accessibility_kick_zidingyiganxieyu"
+                               android:layout_width="match_parent"
+                               android:layout_height="match_parent"
+                               android:layout_weight="5"
+                               android:background="@android:color/transparent"
+                               android:button="@drawable/toggle_btn"
+                               android:gravity="center"
+                               android:padding="10dp"
+                               android:text=""
+                               android:textOff=""
+                               android:textOn=""/>
+
+                       </LinearLayout>
+
+                   </LinearLayout>
 
                 </LinearLayout>
 

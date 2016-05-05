@@ -49,8 +49,22 @@ android {
         s010{
             manifestPlaceholders = [BaiduMobAd_CHANNEL:"s010"]
         }
+        s011{
+            manifestPlaceholders = [BaiduMobAd_CHANNEL:"s011"]
+        }
+        s012{
+            manifestPlaceholders = [BaiduMobAd_CHANNEL:"s012"]
+        }
+        s013{
+            manifestPlaceholders = [BaiduMobAd_CHANNEL:"s013"]
+        }
+        s014{
+            manifestPlaceholders = [BaiduMobAd_CHANNEL:"s014"]
+        }
+        s015{
+            manifestPlaceholders = [BaiduMobAd_CHANNEL:"s015"]
+        }
     }
-
 }
 
 dependencies {

@@ -122,6 +122,7 @@ public class QQHongbaoService extends AccessibilityService
                 if (tip.contains(WECHAT_NOTIFICATION_TIP)
                         || tip.contains(QQ_NOTIFICATION_TIP))
                 {
+                    huifu = true;
                     if (event.getParcelableData() != null
                             && event.getParcelableData() instanceof Notification)
                     {
@@ -170,6 +171,11 @@ public class QQHongbaoService extends AccessibilityService
 
                 System.out.println("cellNode=======================:" + cellNode);
 
+                if (cellNode.getText().toString().equals("已拆开"))
+                {
+                    return;
+                }
+
                 if (cellNode.getText().toString().equals("口令红包已拆开"))
                 {
                     return;
@@ -199,20 +205,31 @@ public class QQHongbaoService extends AccessibilityService
                     {
                         cellNode.getParent().performAction(
                                 AccessibilityNodeInfo.ACTION_CLICK);
-//                        AccessibilityNodeInfo rowNode = getRootInActiveWindow();
-//                        if (huifu == true && rowNode.getChild(7) != null && rowNode.getChild(8) != null)
-//                        {
-//                            System.out.println("ClassName=====================" + rowNode.getChild(7).getChild(0).getClassName());
-//                            Bundle arguments = new Bundle();
-//                            arguments.putCharSequence(AccessibilityNodeInfo.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, "谢谢");
-//                            if (rowNode.getChild(7).getChild(0) != null)
-//                            {
-//                                rowNode.getChild(7).getChild(0).performAction(AccessibilityNodeInfo.ACTION_SET_TEXT, arguments);
-//                                rowNode.getChild(7).getChild(1).getParent().performAction(AccessibilityNodeInfo.ACTION_CLICK);
-//                            }
-//                            huifu = false;
-//                        }
                     }
+
+
+                    AccessibilityNodeInfo rowNode = getRootInActiveWindow();
+
+                    System.out.println("huifu=========================" + huifu);
+                    System.out.println("getChildCount=========================" + rowNode.getChildCount());
+
+                    if (huifu == true && sp.getInt("huifu",0) == 1)
+                    {
+                        for (int i = 0; i < rowNode.getChildCount(); i++)
+                        {
+                            System.out.println(rowNode.getChild(i).getClassName());
+                        }
+
+                        Bundle arguments = new Bundle();
+                        arguments.putCharSequence(AccessibilityNodeInfo.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, "谢谢");
+                        if (rowNode.getChildCount() > 8)
+                        {
+                            rowNode.getChild(7).getChild(0).performAction(AccessibilityNodeInfo.ACTION_SET_TEXT, arguments);
+                            rowNode.getChild(7).getChild(1).performAction(AccessibilityNodeInfo.ACTION_CLICK);
+                        }
+                        huifu = false;
+                    }
+
                 } else if (cellNode.getPackageName().equals("com.tencent.mm"))
                 {
                     new Handler().postDelayed(new Runnable()
@@ -234,6 +251,12 @@ public class QQHongbaoService extends AccessibilityService
                 {
                     // Log.e(TAG, "///////////");
                     AccessibilityNodeInfo rowNode = getRootInActiveWindow();
+
+                    for (int i = 0; i < rowNode.getChildCount(); i++)
+                    {
+                        System.out.println(rowNode.getChild(i).getClassName());
+                    }
+
                     if (rowNode == null)
                     {
                         return;
@@ -244,11 +267,15 @@ public class QQHongbaoService extends AccessibilityService
                 }
                 // Log.e(TAG, "-----------结束------------");
                 // Log.e(TAG, "text = " + cellNode.getText().toString());
+                eventTime++;
 
                 if (rootNodeInfo.getPackageName()
                         .equals("com.tencent.mobileqq"))
                 {
-                    if (eventTime % 5 == 0)
+
+                    System.out.println("eventTime----------------------------------" + eventTime);
+
+                    if (eventTime % 7 == 0)
                     {
                         System.out
                                 .println("jump.............................................................");
@@ -401,7 +428,6 @@ public class QQHongbaoService extends AccessibilityService
         {
             mUnpackNode = node2;
             mNeedUnpack = true;
-            huifu = true;
             return;
         }
 

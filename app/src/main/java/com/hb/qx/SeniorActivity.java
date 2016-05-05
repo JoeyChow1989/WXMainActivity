@@ -12,7 +12,7 @@ public class SeniorActivity extends Activity implements OnClickListener
 {
 
     private ImageView mBack;
-    private LinearLayout ly_open, ly_nokick,ly_about;
+    private LinearLayout ly_open, ly_nokick, ly_about;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -48,7 +48,7 @@ public class SeniorActivity extends Activity implements OnClickListener
         mBack = (ImageView) findViewById(R.id.img_senior_back);
         ly_open = (LinearLayout) findViewById(R.id.id_openclick);
         ly_nokick = (LinearLayout) findViewById(R.id.id_nokick);
-       // ly_about = (LinearLayout) findViewById(R.id.id_about);
+        // ly_about = (LinearLayout) findViewById(R.id.id_about);
     }
 
     @Override
