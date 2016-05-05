@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="12"
+        android:background="#E23A39"
+        >
+
+        <ImageView
+            android:id="@+id/nokick_view_back"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:padding="12dp"
+            android:src="@drawable/back"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="防踢与优化"
+            android:textColor="#ffffff"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="3"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:scrollbars="none"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="566dp"
+                android:background="#efefef"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1.5"
+                    android:background="@android:color/white"
+                    android:orientation="vertical"
+                    >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="20dp"
+                            android:text="只提醒而不自动抢"
+                            android:textColor="@android:color/black"
+                            android:textSize="15sp"/>
+
+                        <ToggleButton
+                            android:id="@+id/accessibility_kick_buzidong"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="5"
+                            android:background="@android:color/transparent"
+                            android:button="@drawable/toggle_btn"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text=""
+                            android:textOff=""
+                            android:textOn=""/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1.2"
+                    android:background="@android:color/white"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="20dp"
+                            android:text="QQ红包自动点赞"
+                            android:textColor="@android:color/black"
+                            android:textSize="15sp"/>
+
+                        <ToggleButton
+                            android:id="@+id/accessibility_kick_dianzan"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="5"
+                            android:background="@android:color/transparent"
+                            android:button="@drawable/toggle_btn"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text=""
+                            android:textOff=""
+                            android:textOn=""/>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#bbbbbb"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="20dp"
+                            android:text="口令消息自动撤回"
+                            android:textColor="@android:color/black"
+                            android:textSize="15sp"/>
+
+                        <ToggleButton
+                            android:id="@+id/accessibility_kick_zidongchehui"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="5"
+                            android:background="@android:color/transparent"
+                            android:button="@drawable/toggle_btn"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text=""
+                            android:textOff=""
+                            android:textOn=""/>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#bbbbbb"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"></LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@android:color/white"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="20dp"
+                            android:text="自动回复"
+                            android:textColor="@android:color/black"
+                            android:textSize="15sp"/>
+
+                        <ToggleButton
+                            android:id="@+id/accessibility_kick_zidonghuifu"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="5"
+                            android:background="@android:color/transparent"
+                            android:button="@drawable/toggle_btn"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text=""
+                            android:textOff=""
+                            android:textOn=""/>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#bbbbbb"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"></LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#bbbbbb"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="20dp"
+                            android:text="回复抢到钱的钱数"
+                            android:textColor="@android:color/black"
+                            android:textSize="15sp"/>
+
+                        <ToggleButton
+                            android:id="@+id/accessibility_kick_huifuqianshu"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="5"
+                            android:background="@android:color/transparent"
+                            android:button="@drawable/toggle_btn"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text=""
+                            android:textOff=""
+                            android:textOn=""/>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#bbbbbb"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="15dp"
+                            android:text=" @发红包的人"
+                            android:textColor="@android:color/black"
+                            android:textSize="15sp"/>
+
+                        <ToggleButton
+                            android:id="@+id/accessibility_kick_huifuhongbaoren"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="5"
+                            android:background="@android:color/transparent"
+                            android:button="@drawable/toggle_btn"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text=""
+                            android:textOff=""
+                            android:textOn=""/>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#bbbbbb"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="20dp"
+                            android:text="自定义感谢语"
+                            android:textColor="@android:color/black"
+                            android:textSize="15sp"/>
+
+                        <ToggleButton
+                            android:id="@+id/accessibility_kick_zidingyiganxieyu"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="5"
+                            android:background="@android:color/transparent"
+                            android:button="@drawable/toggle_btn"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text=""
+                            android:textOff=""
+                            android:textOn=""/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.3"></LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
