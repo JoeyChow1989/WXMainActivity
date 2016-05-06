@@ -30,6 +30,7 @@ import com.baidu.mobads.InterstitialAd;
 import com.baidu.mobads.InterstitialAdListener;
 import com.baidu.mobads.SplashAd;
 import com.baidu.mobads.SplashAdListener;
+import com.hb.qx.wxapi.RightActivity;
 
 @SuppressLint("NewApi")
 public class MainActivity extends Activity
@@ -203,7 +204,7 @@ public class MainActivity extends Activity
         public void onClick(View v)
         {
             Intent intent = new Intent(getApplicationContext(),
-                    SeniorActivity.class);
+                    RightActivity.class);
             startActivity(intent);
 
         }
