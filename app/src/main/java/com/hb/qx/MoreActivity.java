@@ -8,15 +8,12 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 public class MoreActivity extends Activity {
-	private final Intent mAccessibleIntent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
 	private TextView v_code;
 	private String code_name;
-	private HbApplication mApplication;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		mApplication = HbApplication.getInstance();
 		setContentView(R.layout.activity_more);
 		v_code = (TextView) findViewById(R.id.v_code);
 		code_name = HbApplication.instance.vsername;

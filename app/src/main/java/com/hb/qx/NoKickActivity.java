@@ -41,40 +41,38 @@ public class NoKickActivity extends Activity
             }
         });
 
-
-        mAutoHuiFu.setOnClickListener(new View.OnClickListener()
+        mAutoHuiFu.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
         {
             @Override
-            public void onClick(View view)
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b)
             {
-                Toast.makeText(NoKickActivity.this, "敬请期待", Toast.LENGTH_SHORT).show();
+                if (b)
+                {
+                    editor.putInt("huifu", 1);
+                    ly_huifu.setVisibility(View.VISIBLE);
+                } else
+                {
+                    editor.putInt("huifu", 0);
+                    ly_huifu.setVisibility(View.INVISIBLE);
+                }
+
+                editor.commit();
             }
         });
 
-
-//        mAutoHuiFu.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-//        {
-//            @Override
-//            public void onCheckedChanged(CompoundButton compoundButton, boolean b)
-//            {
-//                if (b)
-//                {
-//                    editor.putInt("huifu", 1);
-//                    ly_huifu.setVisibility(View.VISIBLE);
-//                } else
-//                {
-//                    editor.putInt("huifu", 0);
-//                    ly_huifu.setVisibility(View.INVISIBLE);
-//                }
-//            }
-//        });
-
-        mBuzidong.setOnClickListener(new View.OnClickListener()
+        mBuzidong.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
         {
             @Override
-            public void onClick(View view)
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b)
             {
-                Toast.makeText(NoKickActivity.this, "敬请期待", Toast.LENGTH_SHORT).show();
+                if (b)
+                {
+                    editor.putInt("buzidong", 1);
+                } else
+                {
+                    editor.putInt("buzidong", 0);
+                }
+                editor.commit();
             }
         });
 
@@ -133,6 +131,7 @@ public class NoKickActivity extends Activity
                 double pro = seekBar.getProgress();
 
                 tv_yanshi.setText(String.valueOf((pro / max) * 10));
+                MainActivity.YANSHI = (int) ((pro / max) * 10);
             }
 
             @Override
@@ -171,7 +170,6 @@ public class NoKickActivity extends Activity
 
             }
         });
-
     }
 
     private void initViews()
@@ -192,6 +190,9 @@ public class NoKickActivity extends Activity
         mSeekBar_huifu = (SeekBar) findViewById(R.id.seekbar_huifu);
         tv_huifu = (TextView) findViewById(R.id.nokick_tv_huifu);
 
+
+        System.out.println("huifu------------------" + sp.getInt("huifu", 0));
+
         if (sp.getInt("huifu", 0) == 1)
         {
             mAutoHuiFu.setChecked(true);
@@ -203,9 +204,17 @@ public class NoKickActivity extends Activity
             ly_huifu.setVisibility(View.INVISIBLE);
         }
 
+        if (sp.getInt("buzidong", 0) == 1)
+        {
+            mBuzidong.setChecked(true);
 
+        } else if (sp.getInt("buzidong", 0) == 0)
+        {
+            mBuzidong.setChecked(false);
+        }
 
+        System.out.println("YANSHI============================" + MainActivity.YANSHI);
 
-
+        mSeekBar_yanshi.setProgress(MainActivity.YANSHI);
     }
 }

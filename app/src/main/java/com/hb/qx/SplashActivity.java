@@ -65,74 +65,68 @@ public class SplashActivity extends XActivity
         return 0;
     }
 
-    public void request()
-    {
-        RequestUtil.reverseget(URL.UP_URL, new RequestJsonHandler()
-        {
-            @Override
-            public void onRequestFinish(final JsonData data)
-            {
-                try
-                {
-                    System.out.println("data======================" + data);
-                    if (data != null)
-                    {
-                        int vsercode = data.optInt("vsercode");
-                        System.out.println(application.vsercode);
-                        if (vsercode > application.vsercode)
-                        {
-                            View view = getLayoutInflater().inflate(R.layout.dialog_update, null);
-                            AlertDialogContainer container = new AlertDialogContainer(SplashActivity.this, view);
-                            container.setNoText("否");
-                            container.setOkText("是");
-                            container.setTitle("更新通知");
-                            TextView textView = (TextView) view.findViewById(R.id.msg);
-                            textView.setText(Html.fromHtml(data.optString("msg")));
-                            container.setCallBack(new AlertDialogCallBack()
-                            {
-                                @Override
-                                public boolean ok()
-                                {
-                                    Intent intent = new Intent(SplashActivity.this, UpdateService.class);
-                                    intent.putExtra("dowurl", data.optString("dowurl"));
-                                    startService(intent);
-                                    if (data.optString("compulsory").equals("no"))
-                                    {
-                                        jump();
-                                    }
+    public void request() {
+        RequestUtil.reverseget(URL.UP_URL, new RequestJsonHandler() {
+            public void onRequestFinish(final JsonData data) {
+                System.out.println("data=============================" + data);
+                System.out.println("vsername========================="
+                        + Float.parseFloat(application.vsername));
+                try {
+                    int vsercode = data.optInt("vsercode");
+                    float vsername = Float.parseFloat(data
+                            .optString("vsername"));
+                    System.out.println("ssssssssssssssssssssssss"+vsername);
+                    if (vsercode > application.vsercode || vsername > Float.parseFloat(application.vsername)) {
+                        View view = getLayoutInflater().inflate(
+                                R.layout.dialog_update, null);
+                        AlertDialogContainer container = new AlertDialogContainer(
+                                SplashActivity.this, view);
+                        container.setNoText("否");
+                        container.setOkText("是");
+                        container.setTitle("更新通知");
+                        TextView textView = (TextView) view
+                                .findViewById(R.id.msg);
+                        textView.setText(Html.fromHtml(data.optString("msg")));
+                        container.setCallBack(new AlertDialogCallBack() {
+                            @Override
+                            public boolean ok() {
+                                Intent intent = new Intent(SplashActivity.this,
+                                        UpdateService.class);
+                                intent.putExtra("dowurl",
+                                        data.optString("dowurl"));
+                                startService(intent);
+                                if (data.optString("compulsory").equals("no")) {
+                                    jump();
+                                }
+                                return false;
+                            }
+
+                            @Override
+                            public boolean no() {
+                                if (data.optString("compulsory").equals("no")) {
+                                    jump();
+                                    return true;
+                                } else {
                                     return false;
                                 }
-
-                                @Override
-                                public boolean no()
-                                {
-                                    if (data.optString("compulsory").equals("no"))
-                                    {
-                                        jump();
-                                        return true;
-                                    } else
-                                    {
-                                        return false;
-                                    }
-                                }
-                            });
-                        } else
-                        {
-                            jump();
-                        }
+                            }
+                        });
                     }
-                } catch (Exception e)
-                {
-                    e.printStackTrace();
+                    // execute the task
+                    else {
+                        jump();
+                    }
+                } catch (Exception e) {
+
                 }
+
             }
 
             @Override
-            public void onRequestFail(FailData failData)
-            {
-                System.out.println("failData:=========" + failData);
+            public void onRequestFail(FailData failData) {
                 jump();
             }
+
         });
     }
 

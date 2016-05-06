@@ -58,7 +58,7 @@ public class MainActivity extends Activity
     private PowerManager.WakeLock wakeLock = null;
 
     SharedPreferences sp;
-
+    public static int YANSHI = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -131,6 +131,7 @@ public class MainActivity extends Activity
     protected void onStart()
     {
         super.onStart();
+        System.out.println("yanshi---------------Main"+YANSHI);
     }
 
     public void baidu_ad()
@@ -277,10 +278,10 @@ public class MainActivity extends Activity
 //            tintManager.setStatusBarTintEnabled(true);
 //            tintManager.setNavigationBarTintEnabled(true);
 //
-//        } catch (Exception e) {
-//
+//       } catch (Exception e) {
 //        }
 //    }
+
     @Override
     protected void onPause()
     {

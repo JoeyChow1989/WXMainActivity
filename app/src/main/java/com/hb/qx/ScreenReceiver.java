@@ -25,14 +25,6 @@ public class ScreenReceiver extends BroadcastReceiver {
 			isOFF = true;
 			return;
 		}
-
-		//if (action.equals("android.intent.action.BOOT_COMPLETED")) {
-			
-			
-		//}
-
-	
-
 	}
 
 	public void startOFFIntent(Context paramContext) {
