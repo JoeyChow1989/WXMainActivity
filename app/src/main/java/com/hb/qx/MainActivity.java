@@ -67,11 +67,7 @@ public class MainActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_ui);
         // switchPlugin = (Button) findViewById(R.id.button_accessible);
-
         sp = getSharedPreferences("chatpage", MODE_PRIVATE);
-        powerManager = (PowerManager) this.getSystemService(this.POWER_SERVICE);
-        wakeLock = this.powerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK, "My Lock");
-
         gifImage = (GifMovieView) findViewById(R.id.gif_iamge);
         more = (ImageView) findViewById(R.id.more_text);
         more_layout = (LinearLayout) findViewById(R.id.more_layout);
