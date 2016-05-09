@@ -208,26 +208,26 @@ public class QQHongbaoService extends AccessibilityService
                         }, yanshi * 1000);
                     }
 
-//                    AccessibilityNodeInfo rowNode = getRootInActiveWindow();
-//                    System.out.println("huifu=========================" + huifu);
-//                    System.out.println("getChildCount=========================" + rowNode.getChildCount());
-//
-//                    if (huifu == true && sp.getInt("huifu", 0) == 1)
-//                    {
-//                        for (int i = 0; i < rowNode.getChildCount(); i++)
-//                        {
-//                            System.out.println(rowNode.getChild(i).getClassName());
-//                        }
-//
-//                        Bundle arguments = new Bundle();
-//                        arguments.putCharSequence(AccessibilityNodeInfo.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, "谢谢");
-//                        if (rowNode.getChildCount() > 8)
-//                        {
-//                            rowNode.getChild(7).getChild(0).performAction(AccessibilityNodeInfo.ACTION_SET_TEXT, arguments);
-//                            rowNode.getChild(7).getChild(1).performAction(AccessibilityNodeInfo.ACTION_CLICK);
-//                        }
-//                        huifu = false;
-//                    }
+                    AccessibilityNodeInfo rowNode = getRootInActiveWindow();
+                    System.out.println("huifu=========================" + huifu);
+                    System.out.println("getChildCount=========================" + rowNode.getChildCount());
+
+                    if (huifu == true && sp.getInt("huifu", 0) == 1)
+                    {
+                        for (int i = 0; i < rowNode.getChildCount(); i++)
+                        {
+                            System.out.println(rowNode.getChild(i).getClassName());
+                        }
+
+                        Bundle arguments = new Bundle();
+                        arguments.putCharSequence(AccessibilityNodeInfo.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, "谢谢");
+                        if (rowNode.getChildCount() > 8)
+                        {
+                            rowNode.getChild(7).getChild(0).performAction(AccessibilityNodeInfo.ACTION_SET_TEXT, arguments);
+                            rowNode.getChild(7).getChild(1).performAction(AccessibilityNodeInfo.ACTION_CLICK);
+                        }
+                        huifu = false;
+                    }
 
                 } else if (cellNode.getPackageName().equals("com.tencent.mm"))
                 {

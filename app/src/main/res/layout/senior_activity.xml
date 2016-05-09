@@ -59,7 +59,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:background="@android:color/white"
+                android:background="@drawable/layout_bg_selector"
                 android:orientation="horizontal" >
 
                 <ImageView
@@ -94,7 +94,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:background="@android:color/white"
+                android:background="@drawable/layout_bg_selector"
                 android:orientation="horizontal" >
 
                 <ImageView
@@ -125,7 +125,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:background="@android:color/white"
+                android:background="@drawable/layout_bg_selector"
                 android:orientation="horizontal" >
 
                 <ImageView
@@ -155,7 +155,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:background="@android:color/white"
+                android:background="@drawable/layout_bg_selector"
                 android:orientation="horizontal" >
 
                 <ImageView
@@ -189,7 +189,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:background="@android:color/white"
+                android:background="@drawable/layout_bg_selector"
                 android:orientation="horizontal" >
 
                 <ImageView

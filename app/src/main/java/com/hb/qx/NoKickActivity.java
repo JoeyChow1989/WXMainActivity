@@ -216,5 +216,6 @@ public class NoKickActivity extends Activity
         System.out.println("YANSHI============================" + MainActivity.YANSHI);
 
         mSeekBar_yanshi.setProgress(MainActivity.YANSHI);
+        tv_yanshi.setText(String.valueOf(MainActivity.YANSHI));
     }
 }

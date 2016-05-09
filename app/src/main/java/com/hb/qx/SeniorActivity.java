@@ -64,9 +64,9 @@ public class SeniorActivity extends Activity implements OnClickListener
             case R.id.id_nokick:
                 intent.setClass(SeniorActivity.this, NoKickActivity.class);
                 break;
-//            case R.id.id_about:
-//                intent.setClass(SeniorActivity.this, MoreActivity.class);
-//                break;
+//           case R.id.id_about:
+//              intent.setClass(SeniorActivity.this, MoreActivity.class);
+//              break;
         }
         startActivity(intent);
     }

@@ -55,8 +55,8 @@ public class MainActivity extends Activity
     private RelativeLayout.LayoutParams reLayoutParams;
     private long mExitTime;
 
-    private PowerManager powerManager = null;
-    private PowerManager.WakeLock wakeLock = null;
+    // private PowerManager powerManager = null;
+    //private PowerManager.WakeLock wakeLock = null;
 
     SharedPreferences sp;
     public static int YANSHI = 0;
@@ -128,7 +128,7 @@ public class MainActivity extends Activity
     protected void onStart()
     {
         super.onStart();
-        System.out.println("yanshi---------------Main"+YANSHI);
+        System.out.println("yanshi---------------Main" + YANSHI);
     }
 
     public void baidu_ad()
@@ -173,6 +173,12 @@ public class MainActivity extends Activity
 
             });
             interAd.loadAd();
+
+            if (interAd.isAdReady())
+            {
+            }
+
+
             mApplication.editor.putString("show_ad_type", "no");
             mApplication.editor.commit();
         }
@@ -200,7 +206,7 @@ public class MainActivity extends Activity
         public void onClick(View v)
         {
             Intent intent = new Intent(getApplicationContext(),
-                    RightActivity.class);
+                    SeniorActivity.class);
             startActivity(intent);
 
         }
@@ -278,7 +284,6 @@ public class MainActivity extends Activity
 //       } catch (Exception e) {
 //        }
 //    }
-
     @Override
     protected void onPause()
     {
@@ -314,10 +319,10 @@ public class MainActivity extends Activity
         com.baidu.mobstat.StatService.onResume(this);
         updateServiceStatus();
         isShare();
-        if (sp.getInt("sreen", 0) == 1)
-        {
-            wakeLock.acquire();
-        }
+//        if (sp.getInt("sreen", 0) == 1)
+//        {
+//            wakeLock.acquire();
+//        }
     }
 
     @Override
@@ -325,10 +330,10 @@ public class MainActivity extends Activity
     {
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         super.onDestroy();
-        if (sp.getInt("sreen", 0) == 1)
-        {
-            wakeLock.release();
-        }
+//        if (sp.getInt("sreen", 0) == 1)
+//        {
+//            wakeLock.release();
+//        }
     }
 
     @SuppressLint("NewApi")

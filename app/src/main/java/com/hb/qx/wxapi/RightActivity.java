@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.hb.qx.AlertDialogCallBack;
 import com.hb.qx.AlertDialogContainer;
@@ -42,11 +43,10 @@ public class RightActivity extends Activity implements View.OnClickListener
 
     private ImageView back;
     private LinearLayout about_layout;
-    private RelativeLayout relativelayout;
-    private ImageView open_img_view;
+    private ToggleButton open_img_view;
     private TextView v_code;
     private String code_name;
-    private ImageView start_sp;
+    private ToggleButton start_sp;
     private HbApplication mApplication;
 
     @Override
@@ -60,20 +60,28 @@ public class RightActivity extends Activity implements View.OnClickListener
 
     private void initViews()
     {
-        open_img_view = (ImageView) findViewById(R.id.open_img_view);
+        open_img_view = (ToggleButton) findViewById(R.id.open_img_view);
+        open_img_view.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(
+                        Settings.ACTION_ACCESSIBILITY_SETTINGS);
+                startActivity(intent);
+            }
+        });
         v_code = (TextView) findViewById(R.id.v_code);
         code_name = HbApplication.instance.vsername;
         v_code.setText(code_name);
 
         back = (ImageView) findViewById(R.id.right_back);
         about_layout = (LinearLayout) findViewById(R.id.about_layout);
-        relativelayout = (RelativeLayout) findViewById(R.id.right_start_layout);
 
         back.setOnClickListener(this);
         about_layout.setOnClickListener(this);
-        relativelayout.setOnClickListener(this);
 
-        // start_sp = (ImageView) findViewById(R.id.lock_image);
+        // start_sp = (ToggleButton) findViewById(R.id.lock_image);
         /*
 		 * start_sp.setOnClickListener(new OnClickListener() {
 		 *
@@ -112,24 +120,28 @@ public class RightActivity extends Activity implements View.OnClickListener
 
             if (serviceEnabled)
             {
-                open_img_view.setImageResource(R.drawable.open);
+                open_img_view.setChecked(true);
+                getWindow().addFlags(
+                        WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
             } else
             {
-                open_img_view.setImageResource(R.drawable.off);
+                open_img_view.setChecked(false);
+                getWindow().addFlags(
+                        WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
             }
 
             String locktype = mApplication.sp.getString("lock", "");
             if (locktype.equals("yes"))
             {
-                start_sp.setImageResource(R.drawable.open);
+                start_sp.setChecked(true);
             } else
             {
-                start_sp.setImageResource(R.drawable.off);
+                start_sp.setChecked(false);
             }
 
         } catch (Exception e)
         {
-
+            e.printStackTrace();
         }
 
     }
@@ -146,8 +158,15 @@ public class RightActivity extends Activity implements View.OnClickListener
     protected void onResume()
     {
         super.onResume();
-        updateServiceStatus();
         com.baidu.mobstat.StatService.onResume(this);
+    }
+
+
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
+        updateServiceStatus();
     }
 
     @Override
