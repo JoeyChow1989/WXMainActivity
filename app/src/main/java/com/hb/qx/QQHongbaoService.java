@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.EditText;
@@ -49,7 +50,7 @@ public class QQHongbaoService extends AccessibilityService
 
     // 延时抢红包
     private HbApplication mApplication;
-
+    int size;
     private boolean mLuckyMoneyReceived;
     private String lastFetchedHongbaoId = null;
     private long lastFetchedTime = 0;
@@ -58,12 +59,15 @@ public class QQHongbaoService extends AccessibilityService
     private AccessibilityNodeInfo rootNodeInfo;
     private List<AccessibilityNodeInfo> mReceiveNode;
 
+    String tip;
     private boolean huifu = false;
+    private boolean aite = false;
     public int eventTime;
+
+    String user;
 
     private int yanshi;
     private int buzidong;
-
     SharedPreferences sp;
 
     @Override
@@ -111,6 +115,37 @@ public class QQHongbaoService extends AccessibilityService
         }
     }
 
+    @TargetApi(Build.VERSION_CODES.KITKAT)
+    public void recycle1(AccessibilityNodeInfo info)
+    {
+        if (info.getChildCount() == 0)
+        {
+            if (info.getClassName().toString().equals("android.widget.EditText"))
+            {
+                Bundle arguments = new Bundle();
+                arguments.putCharSequence(AccessibilityNodeInfo.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, MainActivity.qianshu + "    谢谢");
+                info.performAction(AccessibilityNodeInfo.ACTION_SET_TEXT, arguments);
+            }
+
+            if (info.getClassName().toString().equals("android.widget.Button"))
+            {
+                info.performAction(AccessibilityNodeInfo.ACTION_CLICK);
+            }
+
+            huifu = false;
+
+        } else
+        {
+            for (int i = 0; i < info.getChildCount(); i++)
+            {
+                if (info.getChild(i) != null)
+                {
+                    recycle1(info.getChild(i));
+                }
+            }
+        }
+    }
+
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event)
@@ -121,12 +156,16 @@ public class QQHongbaoService extends AccessibilityService
             case AccessibilityEvent.TYPE_NOTIFICATION_STATE_CHANGED:
 
                 System.out.println("--------进来了22222-----------------");
-                String tip = event.getText().toString();
+                tip = event.getText().toString();
                 System.out.println("-----------------------" + tip);
+
                 if (tip.contains(WECHAT_NOTIFICATION_TIP)
                         || tip.contains(QQ_NOTIFICATION_TIP))
                 {
+
                     huifu = true;
+                    aite = true;
+
                     if (event.getParcelableData() != null
                             && event.getParcelableData() instanceof Notification)
                     {
@@ -150,28 +189,51 @@ public class QQHongbaoService extends AccessibilityService
         {
             return;
         }
+
+        //System.out.println("rootNodeInfo-----------------------------" + rootNodeInfo);
+        if (rootNodeInfo.getText() != null)
+        {
+            if (rootNodeInfo.getText().toString().contains(".") && rootNodeInfo.getText().toString().length() == 4)
+            {
+                System.out.println("rootNodeInfo---------------text" + rootNodeInfo.getText());
+                MainActivity.qianshu = rootNodeInfo.getText().toString();
+            }
+        }
+
         mReceiveNode = null;
         checkNodeInfo();
 
 		/* 如果已经接收到红包并且还没有戳开 */
         if (mLuckyMoneyReceived && (mReceiveNode != null))
         {
-            int size = mReceiveNode.size();
+            size = mReceiveNode.size();
             if (size > 0)
             {
+                final AccessibilityNodeInfo cellNode = mReceiveNode
+                        .get(size - 1);
+
                 String id = getHongbaoText(mReceiveNode.get(size - 1));
                 long now = System.currentTimeMillis();
+
+                if (cellNode.getPackageName().equals("com.tencent.mm") && MainActivity.qianshu != null)
+                {
+                    AccessibilityNodeInfo rowNode = getRootInActiveWindow();
+                    System.out.println("huifu-----------mm----------" + huifu);
+
+                    if (rowNode == null)
+                    {
+                        return;
+                    } else if (huifu == true && sp.getInt("huifu", 0) == 1)
+                    {
+                        recycle1(rowNode);
+                    }
+                }
 
                 if (this.shouldReturn(id, now - lastFetchedTime))
                     return;
 
                 lastFetchedHongbaoId = id;
                 lastFetchedTime = now;
-
-                final AccessibilityNodeInfo cellNode = mReceiveNode
-                        .get(size - 1);
-
-                System.out.println("cellNode=======================:" + cellNode);
 
                 if (cellNode.getText().toString().equals(QQ_DEFAULT_HAVE_OPENED))
                 {
@@ -186,9 +248,9 @@ public class QQHongbaoService extends AccessibilityService
                 if (cellNode.getPackageName().equals(
                         "com.tencent.mobileqq"))
                 {
-
+                    AccessibilityNodeInfo rowNode = getRootInActiveWindow();
                     yanshi = MainActivity.YANSHI;
-                    buzidong = sp.getInt("buzidong",0);
+                    buzidong = sp.getInt("buzidong", 0);
 
                     System.out.println("yanshi------------service:" + yanshi);
                     // execute the task
@@ -208,35 +270,64 @@ public class QQHongbaoService extends AccessibilityService
                         }, yanshi * 1000);
                     }
 
-                    AccessibilityNodeInfo rowNode = getRootInActiveWindow();
-                    System.out.println("huifu=========================" + huifu);
-                    System.out.println("getChildCount=========================" + rowNode.getChildCount());
+                    System.out.println("huifu--------------------------" + huifu);
+                    System.out.println("aite----------------------------" + aite);
+
 
                     if (huifu == true && sp.getInt("huifu", 0) == 1)
                     {
-                        for (int i = 0; i < rowNode.getChildCount(); i++)
-                        {
-                            System.out.println(rowNode.getChild(i).getClassName());
-                        }
-
                         Bundle arguments = new Bundle();
                         arguments.putCharSequence(AccessibilityNodeInfo.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, "谢谢");
                         if (rowNode.getChildCount() > 8)
                         {
-                            rowNode.getChild(7).getChild(0).performAction(AccessibilityNodeInfo.ACTION_SET_TEXT, arguments);
-                            rowNode.getChild(7).getChild(1).performAction(AccessibilityNodeInfo.ACTION_CLICK);
+                            if (rowNode.getChild(7).getChild(0) != null && rowNode.getChild(7).getChild(1) != null)
+                            {
+                                rowNode.getChild(7).getChild(0).performAction(AccessibilityNodeInfo.ACTION_SET_TEXT, arguments);
+                                rowNode.getChild(7).getChild(1).performAction(AccessibilityNodeInfo.ACTION_CLICK);
+                                performGlobalAction(GLOBAL_ACTION_BACK);
+                            }
                         }
                         huifu = false;
                     }
 
+                    if (cellNode.getText().length() > 40 && aite == true && sp.getInt("aite", 0) == 1)
+                    {
+                        // System.out.println("cellNode--------------text--------------:" + cellNode.getText().toString());
+                        user = cellNode.getText().toString().substring(49).replace("你领取了", "").replace("的红包", "");
+                        Bundle arguments = new Bundle();
+                        arguments.putCharSequence(AccessibilityNodeInfo.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, "@" + user + "谢谢");
+
+                        if (rowNode.getChildCount() > 8)
+                        {
+                            if (rowNode.getChild(6).getChild(0) != null && rowNode.getChild(6).getChild(1) != null)
+                            {
+                                rowNode.getChild(6).getChild(0).performAction(AccessibilityNodeInfo.ACTION_SET_TEXT, arguments);
+                                rowNode.getChild(6).getChild(1).performAction(AccessibilityNodeInfo.ACTION_CLICK);
+                                performGlobalAction(GLOBAL_ACTION_BACK);
+                            }
+                        }
+                        aite = false;
+                    }
+
+
                 } else if (cellNode.getPackageName().equals("com.tencent.mm"))
                 {
-
-
                     yanshi = MainActivity.YANSHI;
-                    buzidong = sp.getInt("buzidong",0);
-
+                    buzidong = sp.getInt("buzidong", 0);
                     System.out.println("yanshi------------service:" + yanshi);
+
+//                    // TODO: 2016/5/11 微信回复
+//                    AccessibilityNodeInfo rowNode = getRootInActiveWindow();
+//                    System.out.println("huifu-----------mm----------" + huifu);
+//
+//                    if (rowNode == null)
+//                    {
+//                        return;
+//                    } else if (huifu == true && sp.getInt("huifu", 0) == 1)
+//                    {
+//                        recycle1(rowNode);
+//                    }
+
                     new Handler().postDelayed(new Runnable()
                     {
                         public void run()
@@ -248,7 +339,7 @@ public class QQHongbaoService extends AccessibilityService
                                         AccessibilityNodeInfo.ACTION_CLICK);
                             }
                         }
-                    }, yanshi * 1000);
+                    }, yanshi * 1000 + 100);
                 }
 
                 // Log.e(TAG, "---------开始----------");
@@ -256,16 +347,10 @@ public class QQHongbaoService extends AccessibilityService
                 {
                     // Log.e(TAG, "///////////");
                     AccessibilityNodeInfo rowNode = getRootInActiveWindow();
-
-                    for (int i = 0; i < rowNode.getChildCount(); i++)
-                    {
-                        System.out.println(rowNode.getChild(i).getClassName());
-                    }
-
                     if (rowNode == null)
                     {
                         return;
-                    } else
+                    } else if (huifu == true && sp.getInt("huifu", 0) == 1)
                     {
                         recycle(rowNode);
                     }
@@ -277,7 +362,6 @@ public class QQHongbaoService extends AccessibilityService
                 if (rootNodeInfo.getPackageName()
                         .equals("com.tencent.mobileqq"))
                 {
-
                     System.out.println("eventTime----------------------------------" + eventTime);
 
                     if (eventTime % 7 == 0)
@@ -288,15 +372,16 @@ public class QQHongbaoService extends AccessibilityService
                         {
                             public void run()
                             {
-                                // execute the task
+                                // 发送百度统计
                                 sendBaidu();
                             }
-                        }, 2000);
+                        }, 4000);
                     }
                 }
                 mLuckyMoneyReceived = false;
             }
         }
+
         /* 如果戳开但还未领取 */
         if (mNeedUnpack
                 && (mUnpackNode != null)
@@ -305,8 +390,6 @@ public class QQHongbaoService extends AccessibilityService
         {
             AccessibilityNodeInfo cellNode = mUnpackNode;
             cellNode.performAction(AccessibilityNodeInfo.ACTION_CLICK);
-
-            System.out.println("rootNodeInfo=================" + rootNodeInfo);
 
             if (cellNode.getText() != null)
             {
@@ -325,7 +408,7 @@ public class QQHongbaoService extends AccessibilityService
                         // execute the task
                         sendBaidu();
                     }
-                }, 2000);
+                }, 4000);
             }
             // sendBaidu();
             mNeedUnpack = false;
@@ -333,9 +416,6 @@ public class QQHongbaoService extends AccessibilityService
                 "com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyReceiveUI"))
         {
             int count = rootNodeInfo.getChildCount();
-
-            System.out.println("count======================================:"
-                    + count);
 
             if (count != 0)
             {
@@ -359,7 +439,6 @@ public class QQHongbaoService extends AccessibilityService
                     resultInfo
                             .performAction(AccessibilityNodeInfo.ACTION_CLICK);
                 }
-
                 if (cellNodeInfo.getText() != null)
                 {
                     if (cellNodeInfo.getText().toString()
@@ -369,8 +448,6 @@ public class QQHongbaoService extends AccessibilityService
                     }
                 }
 
-                System.out.println("rootNodeInfo================="
-                        + rootNodeInfo);
                 if (resultInfo != null)
                 {
                     if (resultInfo.getPackageName().equals("com.tencent.mm"))
@@ -379,7 +456,7 @@ public class QQHongbaoService extends AccessibilityService
                         {
                             public void run()
                             {
-                                // execute the task
+                                // 发送百度统计
                                 sendBaidu();
                             }
                         }, 2000);
@@ -393,24 +470,39 @@ public class QQHongbaoService extends AccessibilityService
         }
     }
 
+
+    List<AccessibilityNodeInfo> nodes1;
+
     /**
      * 检查节点信息
      */
     private void checkNodeInfo()
     {
-
         if (rootNodeInfo == null)
         {
             return;
         }
 
-		/* 聊天会话窗口，遍历节点匹配“点击拆开”，“口令红包”，“点击输入口令” */
-        List<AccessibilityNodeInfo> nodes1 = this
-                .findAccessibilityNodeInfosByTexts(this.rootNodeInfo,
-                        new String[]{WECHAT_VIEW_OTHERS_CH,
-                                WECHAT_VIEW_SELF_CH, QQ_DEFAULT_CLICK_OPEN,
-                                QQ_HONG_BAO_PASSWORD,
-                                QQ_CLICK_TO_PASTE_PASSWORD, QQ_SEND});
+        if (rootNodeInfo.getPackageName().equals("com.tencent.mm"))
+        {
+            /* 聊天会话窗口，遍历节点匹配“点击拆开”，“口令红包”，“点击输入口令” */
+            nodes1 = this
+                    .findAccessibilityNodeInfosByTexts(this.rootNodeInfo,
+                            new String[]{WECHAT_VIEW_OTHERS_CH,
+                                    WECHAT_VIEW_SELF_CH, QQ_DEFAULT_CLICK_OPEN,
+                                    QQ_HONG_BAO_PASSWORD,
+                                    QQ_CLICK_TO_PASTE_PASSWORD, QQ_SEND});
+        } else
+        {
+             /* 聊天会话窗口，遍历节点匹配“点击拆开”，“口令红包”，“点击输入口令” */
+            nodes1 = this
+                    .findAccessibilityNodeInfosByTexts(this.rootNodeInfo,
+                            new String[]{WECHAT_VIEW_OTHERS_CH,
+                                    WECHAT_VIEW_SELF_CH, QQ_DEFAULT_CLICK_OPEN,
+                                    QQ_HONG_BAO_PASSWORD,
+                                    QQ_CLICK_TO_PASTE_PASSWORD, QQ_SEND, "你领取了"});
+        }
+
 
         if (!nodes1.isEmpty())
         {

@@ -15,19 +15,12 @@ import com.baidu.mobads.SplashAdListener;
 import com.hb.tool.Commonutil;
 import com.hb.ui.CircleView;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.ParseException;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
 
 import in.srain.cube.app.XActivity;
 import in.srain.cube.request.FailData;
@@ -65,18 +58,23 @@ public class SplashActivity extends XActivity
         return 0;
     }
 
-    public void request() {
-        RequestUtil.reverseget(URL.UP_URL, new RequestJsonHandler() {
-            public void onRequestFinish(final JsonData data) {
+    public void request()
+    {
+        RequestUtil.reverseget(URL.UP_URL, new RequestJsonHandler()
+        {
+            public void onRequestFinish(final JsonData data)
+            {
                 System.out.println("data=============================" + data);
                 System.out.println("vsername========================="
                         + Float.parseFloat(application.vsername));
-                try {
+                try
+                {
                     int vsercode = data.optInt("vsercode");
                     float vsername = Float.parseFloat(data
                             .optString("vsername"));
-                    System.out.println("ssssssssssssssssssssssss"+vsername);
-                    if (vsercode > application.vsercode || vsername > Float.parseFloat(application.vsername)) {
+                    System.out.println("ssssssssssssssssssssssss" + vsername);
+                    if (vsercode > application.vsercode || vsername > Float.parseFloat(application.vsername))
+                    {
                         View view = getLayoutInflater().inflate(
                                 R.layout.dialog_update, null);
                         AlertDialogContainer container = new AlertDialogContainer(
@@ -87,43 +85,52 @@ public class SplashActivity extends XActivity
                         TextView textView = (TextView) view
                                 .findViewById(R.id.msg);
                         textView.setText(Html.fromHtml(data.optString("msg")));
-                        container.setCallBack(new AlertDialogCallBack() {
+                        container.setCallBack(new AlertDialogCallBack()
+                        {
                             @Override
-                            public boolean ok() {
+                            public boolean ok()
+                            {
                                 Intent intent = new Intent(SplashActivity.this,
                                         UpdateService.class);
                                 intent.putExtra("dowurl",
                                         data.optString("dowurl"));
                                 startService(intent);
-                                if (data.optString("compulsory").equals("no")) {
+                                if (data.optString("compulsory").equals("no"))
+                                {
                                     jump();
                                 }
                                 return false;
                             }
 
                             @Override
-                            public boolean no() {
-                                if (data.optString("compulsory").equals("no")) {
+                            public boolean no()
+                            {
+                                if (data.optString("compulsory").equals("no"))
+                                {
                                     jump();
                                     return true;
-                                } else {
+                                } else
+                                {
                                     return false;
                                 }
                             }
                         });
                     }
                     // execute the task
-                    else {
+                    else
+                    {
                         jump();
                     }
-                } catch (Exception e) {
+                } catch (Exception e)
+                {
 
                 }
 
             }
 
             @Override
-            public void onRequestFail(FailData failData) {
+            public void onRequestFail(FailData failData)
+            {
                 jump();
             }
 
@@ -274,8 +281,6 @@ public class SplashActivity extends XActivity
         canJumpImmediately = true;
     }
 
-    public InputStream inputStream;
-    public ByteArrayOutputStream bos;
     String s;
 
     class HttpAsyncTask extends AsyncTask<String, Void, String>
@@ -301,72 +306,40 @@ public class SplashActivity extends XActivity
             {
                 e.printStackTrace();
             }
-
         }
 
         @Override
         protected String doInBackground(String... strings)
         {
 
-            HttpClient httpclient = new DefaultHttpClient();
+            InputStream inputStream = null;
+            ByteArrayOutputStream bos = null;
             try
             {
-                // 创建httpget.
-                HttpGet httpget = new HttpGet(strings[0]);
-                System.out.println("executing request " + httpget.getURI());
-                // 执行get请求.
-                HttpResponse response = httpclient.execute(httpget);
-                try
+                java.net.URL url = new java.net.URL(strings[0]);
+                HttpURLConnection httpURLConnection1 = (HttpURLConnection) url
+                        .openConnection();
+
+                httpURLConnection1.setConnectTimeout(5000);
+                httpURLConnection1.setRequestMethod("GET");
+
+                if (httpURLConnection1.getResponseCode() == 200)
                 {
-                    // 获取响应实体
-                    HttpEntity entity = response.getEntity();
-                    System.out.println("--------------------------------------");
-                    // 打印响应状态
-                    System.out.println(response.getStatusLine());
-                    if (entity != null)
+                    inputStream = httpURLConnection1.getInputStream();
+                    bos = new ByteArrayOutputStream();
+                    byte[] buffer = new byte[1024];
+                    int len = -1;
+                    while ((len = inputStream.read(buffer)) != -1)
                     {
-                        // 打印响应内容长度
-                        System.out.println("Response content length: " + entity.getContentLength());
-                        // 打印响应内容
-                        //System.out.println("Response content: " + EntityUtils.toString(entity, "utf-8"));
-
-                        inputStream = entity.getContent();
-
-                        bos = new ByteArrayOutputStream();
-
-                        byte[] buffer = new byte[1024];
-
-                        int len = -1;
-                        while ((len = inputStream.read(buffer)) != -1)
-                        {
-                            bos.write(buffer, 0, len);
-                        }
-                        s = new String(bos.toByteArray(), "UTF-8");
-                        System.out.println("size" + s.length());
-
-                        System.out.println("content===========================" + s);
-
+                        bos.write(buffer, 0, len);
                     }
-                    System.out.println("------------------------------------");
-                } finally
-                {
+                    s = new String(bos.toByteArray(), "gb2312");
                 }
-            } catch (ClientProtocolException e)
+            } catch (Exception e)
             {
                 e.printStackTrace();
-            } catch (ParseException e)
-            {
-                e.printStackTrace();
-            } catch (IOException e)
-            {
-                e.printStackTrace();
-            } finally
-            {
-                // 关闭连接,释放资源
             }
-
             return s;
         }
     }
-
 }

@@ -55,6 +55,8 @@ public class MainActivity extends Activity
     private RelativeLayout.LayoutParams reLayoutParams;
     private long mExitTime;
 
+    static String qianshu;
+
     // private PowerManager powerManager = null;
     //private PowerManager.WakeLock wakeLock = null;
 
@@ -173,12 +175,6 @@ public class MainActivity extends Activity
 
             });
             interAd.loadAd();
-
-            if (interAd.isAdReady())
-            {
-            }
-
-
             mApplication.editor.putString("show_ad_type", "no");
             mApplication.editor.commit();
         }

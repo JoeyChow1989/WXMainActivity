@@ -3,6 +3,7 @@ package com.hb.qx;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
@@ -40,6 +41,9 @@ public class SeniorActivity extends Activity implements OnClickListener
         ly_open.setOnClickListener(this);
         ly_nokick.setOnClickListener(this);
         //ly_about.setOnClickListener(this);
+
+
+        //Intent intent = new Intent(Settings.ACTION_SECURITY_SETTINGS);
     }
 
     private void init()

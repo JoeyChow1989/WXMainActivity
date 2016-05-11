@@ -27,8 +27,8 @@ public class OpenUseActivity extends Activity
 {
 
     private ToggleButton mTB_open;
-    private ToggleButton mOpenLock, mChatpage, mSreenLight, mVoise;
-    private LinearLayout ly_fangfenghao, ly_jiasu;
+    private ToggleButton mOpenLock, mChatpage, mSreenLight,mVoise;
+    private LinearLayout ly_fangfenghao,ly_jiasu;
     private ImageView mBack;
 
     private SharedPreferences sp;
@@ -84,11 +84,11 @@ public class OpenUseActivity extends Activity
                 if (isChecked)
                 {
                     editor.putInt("chatpage", 1);
-                    Toast.makeText(OpenUseActivity.this, "已开启", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(OpenUseActivity.this,"已开启",Toast.LENGTH_SHORT).show();
                 } else
                 {
                     editor.putInt("chatpage", 0);
-                    Toast.makeText(OpenUseActivity.this, "已关闭", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(OpenUseActivity.this,"已关闭",Toast.LENGTH_SHORT).show();
                 }
                 editor.commit();
             }
@@ -102,11 +102,11 @@ public class OpenUseActivity extends Activity
                 if (b)
                 {
                     editor.putInt("sreen", 1);
-                    Toast.makeText(OpenUseActivity.this, "已开启", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(OpenUseActivity.this,"已开启",Toast.LENGTH_SHORT).show();
                 } else
                 {
                     editor.putInt("sreen", 0);
-                    Toast.makeText(OpenUseActivity.this, "已关闭", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(OpenUseActivity.this,"已关闭",Toast.LENGTH_SHORT).show();
                 }
                 editor.commit();
             }
@@ -117,7 +117,7 @@ public class OpenUseActivity extends Activity
             @Override
             public void onClick(View view)
             {
-                Toast.makeText(OpenUseActivity.this, "敬请期待", Toast.LENGTH_SHORT).show();
+                Toast.makeText(OpenUseActivity.this,"敬请期待",Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -126,21 +126,18 @@ public class OpenUseActivity extends Activity
             @Override
             public void onClick(View view)
             {
-                Toast.makeText(OpenUseActivity.this, "敬请期待", Toast.LENGTH_SHORT).show();
+                Toast.makeText(OpenUseActivity.this,"敬请期待",Toast.LENGTH_SHORT).show();
             }
         });
 
 
-        if (isNoOption())
-        {
+        if (isNoOption()){
             ly_jiasu.setOnClickListener(new OnClickListener()
             {
                 @Override
                 public void onClick(View view)
                 {
-                    // Toast.makeText(OpenUseActivity.this,"敬请期待",Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(
-                            Settings.ACTION_USAGE_ACCESS_SETTINGS);
+                    Intent intent = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS);
                     startActivity(intent);
                 }
             });
@@ -190,8 +187,7 @@ public class OpenUseActivity extends Activity
         }
     }
 
-    private boolean isNoOption()
-    {
+    private boolean isNoOption() {
         PackageManager packageManager = getApplicationContext()
                 .getPackageManager();
         Intent intent = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS);
