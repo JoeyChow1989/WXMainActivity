@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
@@ -23,8 +24,9 @@ public class NoKickActivity extends Activity
     private ToggleButton mAutoHuiFu, mBuzidong, mChehui, mHuifuqiangshu, mHuifuHongbaoren, mGanxieyu;
     private SeekBar mSeekBar_yanshi, mSeekBar_huifu;
     private TextView tv_yanshi, tv_huifu;
-    private LinearLayout ly_huifu;
     private InterstitialAd interAd;
+    private LinearLayout ganxieyu;
+    private EditText tv_GanXieyu;
 
     SharedPreferences sp;
     SharedPreferences.Editor editor;
@@ -55,13 +57,10 @@ public class NoKickActivity extends Activity
                 if (b)
                 {
                     editor.putInt("huifu", 1);
-                    ly_huifu.setVisibility(View.VISIBLE);
                 } else
                 {
                     editor.putInt("huifu", 0);
-                    ly_huifu.setVisibility(View.INVISIBLE);
                 }
-
                 editor.commit();
             }
         });
@@ -91,12 +90,19 @@ public class NoKickActivity extends Activity
             }
         });
 
-        mHuifuqiangshu.setOnClickListener(new View.OnClickListener()
+        mHuifuqiangshu.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
         {
             @Override
-            public void onClick(View view)
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b)
             {
-                Toast.makeText(NoKickActivity.this, "敬请期待", Toast.LENGTH_SHORT).show();
+                if (b)
+                {
+                    editor.putInt("qianshu", 1);
+                } else
+                {
+                    editor.putInt("qianshu", 0);
+                }
+                editor.commit();
             }
         });
 
@@ -116,12 +122,22 @@ public class NoKickActivity extends Activity
             }
         });
 
-        mGanxieyu.setOnClickListener(new View.OnClickListener()
+        mGanxieyu.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
         {
             @Override
-            public void onClick(View view)
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b)
             {
-                Toast.makeText(NoKickActivity.this, "敬请期待", Toast.LENGTH_SHORT).show();
+                if (b)
+                {
+                    editor.putInt("ganxie", 1);
+                    ganxieyu.setVisibility(View.VISIBLE);
+
+                } else
+                {
+                    editor.putInt("ganxie", 0);
+                    ganxieyu.setVisibility(View.GONE);
+                }
+                editor.commit();
             }
         });
 
@@ -180,7 +196,6 @@ public class NoKickActivity extends Activity
     {
         sp = getSharedPreferences("chatpage", MODE_PRIVATE);
         editor = sp.edit();
-        ly_huifu = (LinearLayout) findViewById(R.id.ly_auto_huifu);
         nokick_view_back = (ImageView) findViewById(R.id.nokick_view_back);
         mAutoHuiFu = (ToggleButton) findViewById(R.id.accessibility_kick_zidonghuifu);
         mBuzidong = (ToggleButton) findViewById(R.id.accessibility_kick_buzidong);
@@ -193,6 +208,8 @@ public class NoKickActivity extends Activity
         tv_yanshi = (TextView) findViewById(R.id.nokick_tv_yanshi);
         mSeekBar_huifu = (SeekBar) findViewById(R.id.seekbar_huifu);
         tv_huifu = (TextView) findViewById(R.id.nokick_tv_huifu);
+        ganxieyu = (LinearLayout) findViewById(R.id.ganxieyu);
+        tv_GanXieyu = (EditText) findViewById(R.id.tv_ganxieyu);
 
 
         System.out.println("huifu------------------" + sp.getInt("huifu", 0));
@@ -200,12 +217,10 @@ public class NoKickActivity extends Activity
         if (sp.getInt("huifu", 0) == 1)
         {
             mAutoHuiFu.setChecked(true);
-            ly_huifu.setVisibility(View.VISIBLE);
 
         } else if (sp.getInt("huifu", 0) == 0)
         {
             mAutoHuiFu.setChecked(false);
-            ly_huifu.setVisibility(View.INVISIBLE);
         }
 
         if (sp.getInt("buzidong", 0) == 1)
@@ -220,13 +235,31 @@ public class NoKickActivity extends Activity
         if (sp.getInt("aite", 0) == 1)
         {
             mHuifuHongbaoren.setChecked(true);
-
         } else if (sp.getInt("aite", 0) == 0)
         {
             mHuifuHongbaoren.setChecked(false);
         }
 
-        System.out.println("YANSHI============================" + MainActivity.YANSHI);
+        if (sp.getInt("qianshu", 0) == 1)
+        {
+            mHuifuqiangshu.setChecked(true);
+
+        } else if (sp.getInt("qianshu", 0) == 0)
+        {
+            mHuifuqiangshu.setChecked(false);
+        }
+
+        if (sp.getInt("ganxie", 0) == 1)
+        {
+            mGanxieyu.setChecked(true);
+            ganxieyu.setVisibility(View.VISIBLE);
+            tv_GanXieyu.setText(sp.getString("ganxieyu", "谢谢"));
+
+        } else if (sp.getInt("ganxie", 0) == 0)
+        {
+            mGanxieyu.setChecked(false);
+            ganxieyu.setVisibility(View.GONE);
+        }
 
         mSeekBar_yanshi.setProgress(MainActivity.YANSHI);
         tv_yanshi.setText(String.valueOf(MainActivity.YANSHI));
@@ -270,5 +303,13 @@ public class NoKickActivity extends Activity
             }
         });
         interAd.loadAd();
+    }
+
+    @Override
+    protected void onDestroy()
+    {
+        super.onDestroy();
+        editor.putString("ganxieyu", tv_GanXieyu.getText().toString().trim());
+        editor.commit();
     }
 }

@@ -6,6 +6,7 @@ import android.accessibilityservice.AccessibilityServiceInfo;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -56,10 +57,6 @@ public class MainActivity extends Activity
     private long mExitTime;
 
     static String qianshu;
-
-    // private PowerManager powerManager = null;
-    //private PowerManager.WakeLock wakeLock = null;
-
     SharedPreferences sp;
     public static int YANSHI = 0;
 
@@ -68,7 +65,7 @@ public class MainActivity extends Activity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_ui);
-        // switchPlugin = (Button) findViewById(R.id.button_accessible);
+
         sp = getSharedPreferences("chatpage", MODE_PRIVATE);
         gifImage = (GifMovieView) findViewById(R.id.gif_iamge);
         more = (ImageView) findViewById(R.id.more_text);
@@ -124,6 +121,9 @@ public class MainActivity extends Activity
             startService(lockservice);
         }
         baidu_ad();
+
+        System.out.println("---------------light--------------" + sp.getInt("sreen", 0));
+
     }
 
     @Override
@@ -315,10 +315,6 @@ public class MainActivity extends Activity
         com.baidu.mobstat.StatService.onResume(this);
         updateServiceStatus();
         isShare();
-//        if (sp.getInt("sreen", 0) == 1)
-//        {
-//            wakeLock.acquire();
-//        }
     }
 
     @Override
@@ -326,10 +322,6 @@ public class MainActivity extends Activity
     {
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         super.onDestroy();
-//        if (sp.getInt("sreen", 0) == 1)
-//        {
-//            wakeLock.release();
-//        }
     }
 
     @SuppressLint("NewApi")
