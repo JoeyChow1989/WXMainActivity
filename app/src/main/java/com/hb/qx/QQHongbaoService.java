@@ -695,6 +695,7 @@ public class QQHongbaoService extends AccessibilityService
 
         System.out.println("chatpage======================" + mApplication.sp.getInt("chatpage", 0));
 
+        //自动跳转聊天页
         if (sp.getInt("chatpage", 0) == 1)
         {
             Intent intent = new Intent(getApplicationContext(), NewADActivity.class);
