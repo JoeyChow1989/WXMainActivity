@@ -343,10 +343,18 @@ public class QQHongbaoService extends AccessibilityService
             }
         }
 
+
+//        if (rootNodeInfo.getClassName().equals("android.widget.TextView") && rootNodeInfo.isLongClickable() && rootNodeInfo.getText() != null && !rootNodeInfo.getText().toString().contains("你领取了"))
+//        {
+//            System.out.println("-----------------root------------" + rootNodeInfo);
+//            rootNodeInfo.performAction(AccessibilityNodeInfo.ACTION_LONG_CLICK);
+//        }
+
+
         //消息撤回
         if (huiche == true && rootNodeInfo.getText() != null && sp.getInt("chexiao", 1) == 1)
         {
-            if (rootNodeInfo.getClassName().equals("android.widget.TextView") && rootNodeInfo.getContentDescription() != null && rootNodeInfo.isLongClickable())
+            if (rootNodeInfo.getClassName().equals("android.widget.TextView") && rootNodeInfo.isLongClickable() && !rootNodeInfo.getText().toString().contains("你领取了"))
             {
                 System.out.println("--------------------rootNodeInfo------------撤销------" + rootNodeInfo);
                 rootNodeInfo.performAction(AccessibilityNodeInfo.ACTION_LONG_CLICK);
@@ -417,6 +425,20 @@ public class QQHongbaoService extends AccessibilityService
                     }
                 }
 
+                //触发@发红包人的事件
+                if (huifu == true && cellNode.getPackageName().equals("com.tencent.mobileqq") && user != null)
+                {
+                    if (rowNode == null)
+                    {
+                        return;
+                    } else if (huifu_QQ == true && sp.getInt("aite", 0) == 1)
+                    {
+                        recycle3(rowNode);
+                        huifu_QQ = false;
+                    }
+                    aite = false;
+                }
+
                 //缓存判断是否再次点击
                 if (this.shouldReturn(id, now - lastFetchedTime))
                     return;
@@ -462,19 +484,6 @@ public class QQHongbaoService extends AccessibilityService
                     System.out.println("huifu--------------------------" + huifu);
                     System.out.println("aite----------------------------" + aite);
 
-                    //触发@发红包人的事件
-                    if (huifu == true && cellNode.getPackageName().equals("com.tencent.mobileqq") && user != null)
-                    {
-                        if (rowNode == null)
-                        {
-                            return;
-                        } else if (huifu_QQ == true && sp.getInt("aite", 0) == 1)
-                        {
-                            recycle3(rowNode);
-                            huifu_QQ = false;
-                        }
-                        aite = false;
-                    }
                 }
 
                 /**
