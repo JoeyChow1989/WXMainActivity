@@ -99,6 +99,7 @@ public class QQHongbaoService extends AccessibilityService
     private int yanshi;
     //判断是否是否自动抢
     private int buzidong;
+    private boolean huiche = false;
 
     //配置文件
     SharedPreferences sp;
@@ -117,10 +118,6 @@ public class QQHongbaoService extends AccessibilityService
     public void onStart(Intent intent, int startId)
     {
         super.onStart(intent, startId);
-
-        //自定义感谢语
-
-
     }
 
 
@@ -134,15 +131,14 @@ public class QQHongbaoService extends AccessibilityService
     {
         if (info.getChildCount() == 0)
         {
-            if (info.getText() != null
-                    && info.getText().toString()
+            if (info.getText() != null && info.getText().toString()
                     .equals(QQ_CLICK_TO_PASTE_PASSWORD))
             {
                 info.getParent().performAction(
                         AccessibilityNodeInfo.ACTION_CLICK);
             }
 
-            if (info.getClassName().toString().equals("android.widget.Button")
+            if (info.getText() != null && info.getClassName().toString().equals("android.widget.Button")
                     && info.getText().toString().equals(QQ_SEND))
             {
                 info.performAction(AccessibilityNodeInfo.ACTION_CLICK);
@@ -172,7 +168,7 @@ public class QQHongbaoService extends AccessibilityService
             if (info.getClassName().toString().equals("android.widget.EditText"))
             {
                 Bundle arguments = new Bundle();
-                arguments.putCharSequence(AccessibilityNodeInfo.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, MainActivity.qianshu + "    " + sp.getString("ganxieyu","谢谢"));
+                arguments.putCharSequence(AccessibilityNodeInfo.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, MainActivity.qianshu + "    " + sp.getString("ganxieyu", "谢谢"));
                 info.performAction(AccessibilityNodeInfo.ACTION_SET_TEXT, arguments);
                 MainActivity.qianshu = null;
             }
@@ -209,7 +205,7 @@ public class QQHongbaoService extends AccessibilityService
             if (info.getClassName().toString().equals("android.widget.EditText"))
             {
                 Bundle arguments = new Bundle();
-                arguments.putCharSequence(AccessibilityNodeInfo.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, sp.getString("ganxieyu","谢谢"));
+                arguments.putCharSequence(AccessibilityNodeInfo.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, sp.getString("ganxieyu", "谢谢"));
                 info.performAction(AccessibilityNodeInfo.ACTION_SET_TEXT, arguments);
                 MainActivity.qianshu = null;
             }
@@ -218,7 +214,6 @@ public class QQHongbaoService extends AccessibilityService
             {
                 info.performAction(AccessibilityNodeInfo.ACTION_CLICK);
             }
-
             huifu = false;
 
         } else
@@ -233,7 +228,6 @@ public class QQHongbaoService extends AccessibilityService
         }
     }
 
-
     /**
      * 艾特发红包的人的判断
      *
@@ -247,7 +241,7 @@ public class QQHongbaoService extends AccessibilityService
             if (info.getClassName().toString().equals("android.widget.EditText"))
             {
                 Bundle arguments = new Bundle();
-                arguments.putCharSequence(AccessibilityNodeInfo.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, "@" + user + "   " + sp.getString("ganxieyu","谢谢"));
+                arguments.putCharSequence(AccessibilityNodeInfo.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, "@" + user + "   " + sp.getString("ganxieyu", "谢谢"));
                 info.performAction(AccessibilityNodeInfo.ACTION_SET_TEXT, arguments);
                 user = null;
             }
@@ -269,7 +263,6 @@ public class QQHongbaoService extends AccessibilityService
             }
         }
     }
-
 
     /**
      * 接收事件过滤红包并处理的核心方法
@@ -323,7 +316,6 @@ public class QQHongbaoService extends AccessibilityService
         {
             if (rootNodeInfo.getText().toString().contains(".") && rootNodeInfo.getText().toString().length() == 4)
             {
-                System.out.println("rootNodeInfo---------------text" + rootNodeInfo.getText());
                 MainActivity.qianshu = rootNodeInfo.getText().toString();
                 huifu_weixin = true;
                 huifu_mm = true;
@@ -335,7 +327,6 @@ public class QQHongbaoService extends AccessibilityService
         {
             if (rootNodeInfo.getText().toString().contains(".") && rootNodeInfo.getText().toString().length() == 5)
             {
-                System.out.println("rootNodeInfo-------qq--------text" + rootNodeInfo.getText());
                 MainActivity.qianshu = rootNodeInfo.getText().toString();
                 huifu_QQ = true;
                 huifu = true;
@@ -348,11 +339,25 @@ public class QQHongbaoService extends AccessibilityService
         {
             if (rootNodeInfo.getText().toString().contains("来自"))
             {
-                System.out.println("--------------------------user-----------------------" + rootNodeInfo.getText().toString().replace("来自", ""));
                 user = rootNodeInfo.getText().toString().replace("来自", "");
             }
         }
 
+        //消息撤回
+        if (huiche == true && rootNodeInfo.getText() != null && sp.getInt("chexiao", 1) == 1)
+        {
+            if (rootNodeInfo.getClassName().equals("android.widget.TextView") && rootNodeInfo.getContentDescription() != null && rootNodeInfo.isLongClickable())
+            {
+                System.out.println("--------------------rootNodeInfo------------撤销------" + rootNodeInfo);
+                rootNodeInfo.performAction(AccessibilityNodeInfo.ACTION_LONG_CLICK);
+            }
+
+            if (rootNodeInfo.getClassName().equals("android.widget.TextView") && rootNodeInfo.getText().toString().equals("撤回"))
+            {
+                rootNodeInfo.performAction(AccessibilityNodeInfo.ACTION_CLICK);
+                huiche = false;
+            }
+        }
 
         //list先初始化;
         mReceiveNode = null;
@@ -374,8 +379,6 @@ public class QQHongbaoService extends AccessibilityService
                 String id = getHongbaoText(mReceiveNode.get(size - 1));
                 long now = System.currentTimeMillis();
 
-                System.out.println("------------huifu----------sp--------" + sp.getInt("huifu", 0));
-                System.out.println("------------huifu------------------" + huifu);
 
                 /**
                  * 触发微信回复
@@ -395,6 +398,21 @@ public class QQHongbaoService extends AccessibilityService
                         huifu_mm = false;
                     }
                 }
+
+//                //消息撤回
+//                if (rowNode.getText() != null)
+//                {
+//                    if (rowNode.getClassName().equals("android.widget.TextView") && rowNode.getContentDescription() != null && rowNode.isLongClickable())
+//                    {
+//                        System.out.println("--------------------rootNodeInfo------------撤销------" + rowNode);
+//                        rowNode.performAction(AccessibilityNodeInfo.ACTION_LONG_CLICK);
+//                    }
+//
+//                    if (rowNode.getClassName().equals("android.widget.TextView") && rowNode.getText().toString().equals("撤回"))
+//                    {
+//                        rowNode.performAction(AccessibilityNodeInfo.ACTION_CLICK);
+//                    }
+//                }
 
                 /**
                  * 触发QQ的回复
@@ -509,6 +527,7 @@ public class QQHongbaoService extends AccessibilityService
                         return;
                     } else
                     {
+                        huiche = true;
                         recycle(rowNode1);
                     }
                 }

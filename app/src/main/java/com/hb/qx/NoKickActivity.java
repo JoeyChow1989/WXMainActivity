@@ -81,12 +81,19 @@ public class NoKickActivity extends Activity
             }
         });
 
-        mChehui.setOnClickListener(new View.OnClickListener()
+        mChehui.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
         {
             @Override
-            public void onClick(View view)
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b)
             {
-                Toast.makeText(NoKickActivity.this, "敬请期待", Toast.LENGTH_SHORT).show();
+                if (b)
+                {
+                    editor.putInt("chexiao", 1);
+                } else
+                {
+                    editor.putInt("chexiao", 0);
+                }
+                editor.commit();
             }
         });
 
@@ -259,6 +266,14 @@ public class NoKickActivity extends Activity
         {
             mGanxieyu.setChecked(false);
             ganxieyu.setVisibility(View.GONE);
+        }
+
+        if (sp.getInt("", 0) == 1)
+        {
+            mChehui.setChecked(true);
+        } else if (sp.getInt("", 0) == 0)
+        {
+            mChehui.setChecked(false);
         }
 
         mSeekBar_yanshi.setProgress(MainActivity.YANSHI);

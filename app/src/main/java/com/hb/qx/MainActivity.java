@@ -202,7 +202,7 @@ public class MainActivity extends Activity
         public void onClick(View v)
         {
             Intent intent = new Intent(getApplicationContext(),
-                    SeniorActivity.class);
+                    RightActivity.class);
             startActivity(intent);
 
         }
