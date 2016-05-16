@@ -268,10 +268,10 @@ public class NoKickActivity extends Activity
             ganxieyu.setVisibility(View.GONE);
         }
 
-        if (sp.getInt("", 0) == 1)
+        if (sp.getInt("chexiao", 0) == 1)
         {
             mChehui.setChecked(true);
-        } else if (sp.getInt("", 0) == 0)
+        } else if (sp.getInt("chexiao", 0) == 0)
         {
             mChehui.setChecked(false);
         }

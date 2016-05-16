@@ -202,9 +202,8 @@ public class MainActivity extends Activity
         public void onClick(View v)
         {
             Intent intent = new Intent(getApplicationContext(),
-                    RightActivity.class);
+                    SeniorActivity.class);
             startActivity(intent);
-
         }
     };
 

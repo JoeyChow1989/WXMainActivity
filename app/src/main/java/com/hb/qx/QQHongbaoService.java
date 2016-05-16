@@ -379,7 +379,6 @@ public class QQHongbaoService extends AccessibilityService
                 String id = getHongbaoText(mReceiveNode.get(size - 1));
                 long now = System.currentTimeMillis();
 
-
                 /**
                  * 触发微信回复
                  */
@@ -398,21 +397,6 @@ public class QQHongbaoService extends AccessibilityService
                         huifu_mm = false;
                     }
                 }
-
-//                //消息撤回
-//                if (rowNode.getText() != null)
-//                {
-//                    if (rowNode.getClassName().equals("android.widget.TextView") && rowNode.getContentDescription() != null && rowNode.isLongClickable())
-//                    {
-//                        System.out.println("--------------------rootNodeInfo------------撤销------" + rowNode);
-//                        rowNode.performAction(AccessibilityNodeInfo.ACTION_LONG_CLICK);
-//                    }
-//
-//                    if (rowNode.getClassName().equals("android.widget.TextView") && rowNode.getText().toString().equals("撤回"))
-//                    {
-//                        rowNode.performAction(AccessibilityNodeInfo.ACTION_CLICK);
-//                    }
-//                }
 
                 /**
                  * 触发QQ的回复
@@ -477,7 +461,6 @@ public class QQHongbaoService extends AccessibilityService
 
                     System.out.println("huifu--------------------------" + huifu);
                     System.out.println("aite----------------------------" + aite);
-
 
                     //触发@发红包人的事件
                     if (huifu == true && cellNode.getPackageName().equals("com.tencent.mobileqq") && user != null)
