@@ -120,6 +120,12 @@ public class QQHongbaoService extends AccessibilityService
         super.onStart(intent, startId);
     }
 
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId)
+    {
+        flags = START_STICKY;
+        return super.onStartCommand(intent, flags, startId);
+    }
 
     /**
      * 遍历控件，自动发送口令红包
@@ -480,10 +486,6 @@ public class QQHongbaoService extends AccessibilityService
                             }
                         }, yanshi * 1000);
                     }
-
-                    System.out.println("huifu--------------------------" + huifu);
-                    System.out.println("aite----------------------------" + aite);
-
                 }
 
                 /**
@@ -680,7 +682,6 @@ public class QQHongbaoService extends AccessibilityService
             mNeedUnpack = true;
             return;
         }
-
     }
 
     /**

@@ -5,9 +5,11 @@
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowAnimationStyle">@style/AnimFade</item>
     </style>
-     <style name="Widget.GifMoviewView" parent="@android:style/Widget"></style>
+
+    <style name="Widget.GifMoviewView" parent="@android:style/Widget"></style>
+
     <style name="AnimFade" parent="@android:style/Animation.Activity">
         <item name="android:windowIsTranslucent">true</item>
     </style>
-    
+
 </resources>

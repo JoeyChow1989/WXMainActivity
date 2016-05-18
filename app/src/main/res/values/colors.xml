@@ -2,7 +2,7 @@
 <resources>
     <color name="actionbar_bg">#FF0099CC</color>
     <color name="statusbar_bg">#FF006080</color>
-    
+
     <color name="gradient_slide_text_color">#ffffff</color>
      <color name="gradient_text_color">#ffffff</color>
      <color name="gradient_text_color2">#aaffffff</color>
