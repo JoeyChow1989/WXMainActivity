@@ -30,11 +30,10 @@ public class QQHongbaoService extends AccessibilityService
     private AccessibilityNodeInfo mUnpackNode;
     //判断是否抢过了
     private boolean mNeedUnpack;
-
-    private static final String WECHAT_DETAILS_EN = "Details";
-    private static final String WECHAT_DETAILS_CH = "红包详情";
-    private static final String WECHAT_BETTER_LUCK_EN = "Better luck next time!";
-    private static final String WECHAT_BETTER_LUCK_CH = "手慢了";
+//    private static final String WECHAT_DETAILS_EN = "Details";
+//    private static final String WECHAT_DETAILS_CH = "红包详情";
+//    private static final String WECHAT_BETTER_LUCK_EN = "Better luck next time!";
+//    private static final String WECHAT_BETTER_LUCK_CH = "手慢了";
 
     /**
      * 各种文字判断
@@ -100,7 +99,6 @@ public class QQHongbaoService extends AccessibilityService
     //判断是否是否自动抢
     private int buzidong;
     private boolean huiche = false;
-
     //配置文件
     SharedPreferences sp;
 

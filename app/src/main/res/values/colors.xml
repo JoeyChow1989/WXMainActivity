@@ -6,4 +6,8 @@
     <color name="gradient_slide_text_color">#ffffff</color>
      <color name="gradient_text_color">#ffffff</color>
      <color name="gradient_text_color2">#aaffffff</color>
+
+    <color name="orange">#E23A39</color>
+    <color name="white">#ffffff</color>
+    <color name="whiteTrans80">#AFFF</color>
 </resources>
