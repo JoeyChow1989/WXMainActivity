@@ -109,9 +109,6 @@
             android:name="com.baidu.mobad.feeds.BaiduActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"/>
 
-        <!-- 弹出广告 -->
-
-
         <!-- 友盟appid -->
         <meta-data
             android:name="UMENG_APPKEY"

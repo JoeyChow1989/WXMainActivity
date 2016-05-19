@@ -15,7 +15,7 @@
     <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/orange</item>
-        <item name="colorPrimaryDark">@color/orange</item>
+        <item name="colorPrimaryDark">@color/orange_drak</item>
         <item name="colorAccent">@color/orange</item>
     </style>
 
@@ -26,7 +26,7 @@
     <style name="AppThemeDark" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/orange</item>
-        <item name="colorPrimaryDark">@color/orange</item>
+        <item name="colorPrimaryDark">@color/orange_drak</item>
         <item name="colorAccent">@color/orange</item>
     </style>
 
