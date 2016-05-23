@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -54,7 +55,11 @@ public class NoKickActivity extends Activity
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b)
             {
-                if (b)
+
+                if (sp.getInt("share", 0) == 0)
+                {
+                    share();
+                } else if (b)
                 {
                     editor.putInt("huifu", 1);
                 } else
@@ -70,7 +75,11 @@ public class NoKickActivity extends Activity
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b)
             {
-                if (b)
+
+                if (sp.getInt("share", 0) == 0)
+                {
+                    share();
+                } else if (b)
                 {
                     editor.putInt("buzidong", 1);
                 } else
@@ -86,7 +95,10 @@ public class NoKickActivity extends Activity
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b)
             {
-                if (b)
+                if (sp.getInt("share", 0) == 0)
+                {
+                    share();
+                } else if (b)
                 {
                     editor.putInt("chexiao", 1);
                 } else
@@ -102,7 +114,10 @@ public class NoKickActivity extends Activity
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b)
             {
-                if (b)
+                if (sp.getInt("share", 0) == 0)
+                {
+                    share();
+                } else if (b)
                 {
                     editor.putInt("qianshu", 1);
                 } else
@@ -118,7 +133,10 @@ public class NoKickActivity extends Activity
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b)
             {
-                if (b)
+                if (sp.getInt("share", 0) == 0)
+                {
+                    share();
+                } else if (b)
                 {
                     editor.putInt("aite", 1);
                 } else
@@ -134,7 +152,10 @@ public class NoKickActivity extends Activity
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b)
             {
-                if (b)
+                if (sp.getInt("share", 0) == 0)
+                {
+                    share();
+                } else if (b)
                 {
                     editor.putInt("ganxie", 1);
                     ganxieyu.setVisibility(View.VISIBLE);
@@ -206,7 +227,6 @@ public class NoKickActivity extends Activity
         nokick_view_back = (ImageView) findViewById(R.id.nokick_view_back);
         mAutoHuiFu = (ToggleButton) findViewById(R.id.accessibility_kick_zidonghuifu);
         mBuzidong = (ToggleButton) findViewById(R.id.accessibility_kick_buzidong);
-        // mDianzan = (ToggleButton) findViewById(R.id.accessibility_kick_dianzan);
         mChehui = (ToggleButton) findViewById(R.id.accessibility_kick_zidongchehui);
         mHuifuqiangshu = (ToggleButton) findViewById(R.id.accessibility_kick_huifuqianshu);
         mHuifuHongbaoren = (ToggleButton) findViewById(R.id.accessibility_kick_huifuhongbaoren);
@@ -318,6 +338,25 @@ public class NoKickActivity extends Activity
             }
         });
         interAd.loadAd();
+    }
+
+    private void share()
+    {
+        YqhyDialog1 yyDialog = new YqhyDialog1(NoKickActivity.this, 0);
+        try
+        {
+            yyDialog.showAtLocation(NoKickActivity.this.getWindow()
+                    .getDecorView(), Gravity.CENTER, 0, 0);
+        } catch (Exception e)
+        {
+            if (yyDialog != null)
+            {
+                if (yyDialog.isShowing())
+                {
+                    yyDialog.dismiss();
+                }
+            }
+        }
     }
 
     @Override

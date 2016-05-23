@@ -29,7 +29,7 @@ import com.umeng.socialize.weixin.controller.UMWXHandler;
 import com.umeng.socialize.weixin.media.CircleShareContent;
 import com.umeng.socialize.weixin.media.WeiXinShareContent;
 
-public class YqhyDialog extends PopupWindow implements OnClickListener {
+public class YqhyDialog1 extends PopupWindow implements OnClickListener {
 	private UMSocialService mController = UMServiceFactory.getUMSocialService("com.umeng.share");
 	private Activity mActivity;
 	private LinearLayout linearLayout;
@@ -52,7 +52,7 @@ public class YqhyDialog extends PopupWindow implements OnClickListener {
 
 
 
-	public YqhyDialog(Activity activity,int type) {
+	public YqhyDialog1(Activity activity, int type) {
 		mActivity = activity;
 		this.type=type;
 		initView();
@@ -70,17 +70,17 @@ public class YqhyDialog extends PopupWindow implements OnClickListener {
 	}
 
 	public void initView() {
-		View rootView = LayoutInflater.from(mActivity).inflate(R.layout.dialog_share, null);
-		linearLayout = (LinearLayout) rootView.findViewById(R.id.context_view);
-		wx_py_image = (ImageView) rootView.findViewById(R.id.wx_py_image);
+		View rootView = LayoutInflater.from(mActivity).inflate(R.layout.dialog_share1, null);
+		linearLayout = (LinearLayout) rootView.findViewById(R.id.context_view1);
+		wx_py_image = (ImageView) rootView.findViewById(R.id.wx_py_image1);
 		wx_py_image.setOnClickListener(this);
-		wx_image = (ImageView) rootView.findViewById(R.id.wx_image);
+		wx_image = (ImageView) rootView.findViewById(R.id.wx_image1);
 		wx_image.setOnClickListener(this);
-		wx_py_text = (TextView) rootView.findViewById(R.id.wx_py_text);
+		wx_py_text = (TextView) rootView.findViewById(R.id.wx_py_text1);
 		wx_py_text.setOnClickListener(this);
-		wx_text = (TextView) rootView.findViewById(R.id.wx_text);
+		wx_text = (TextView) rootView.findViewById(R.id.wx_text1);
 		wx_text.setOnClickListener(this);
-		main_textLayout = (LinearLayout) rootView.findViewById(R.id.main_linearlayout);
+		main_textLayout = (LinearLayout) rootView.findViewById(R.id.main_linearlayout1);
 		main_textLayout.setOnClickListener(this);
 		setContentView(rootView);
 		setWidth(LayoutParams.MATCH_PARENT);
@@ -111,25 +111,24 @@ public class YqhyDialog extends PopupWindow implements OnClickListener {
 			int id = v.getId();
 			switch (id) {
 			// 微信朋友圈
-			case R.id.wx_py_image:
+			case R.id.wx_py_image1:
 				// wxf11f76680d531d8c是你在微信开发平台注册应用的AppID, 这里需要替换成你注册的AppID
 				// 支持微信朋友圈
 				init_wechatmoments();
 				return;
-			case R.id.wx_py_text:
+			case R.id.wx_py_text1:
 				// wxf11f76680d531d8c是你在微信开发平台注册应用的AppID, 这里需要替换成你注册的AppID
 				// 支持微信朋友圈
 				init_wechatmoments();
 				return;
-
 				// 微信好友
-			case R.id.wx_image:
+			case R.id.wx_image1:
 				// wxf11f76680d531d8c是你在微信开发平台注册应用的AppID, 这里需要替换成你注册的AppID
 				// 支持微信朋友圈
 				// 微信好友
 				init_wechathy();
 				return;
-			case R.id.wx_text:
+			case R.id.wx_text1:
 				// wxf11f76680d531d8c是你在微信开发平台注册应用的AppID, 这里需要替换成你注册的AppID
 				// 支持微信朋友圈
 				// 微信好友
@@ -265,6 +264,8 @@ public class YqhyDialog extends PopupWindow implements OnClickListener {
 		@Override
 		public void onComplete(SHARE_MEDIA platform, int eCode, SocializeEntity entity) {
 			if (eCode == 200) {
+                editor.putInt("share",1);
+                editor.commit();
 				Toast.makeText(mActivity, "分享成功", 0).show();
 			}
 			if (isShowing()) {
@@ -300,6 +301,8 @@ public class YqhyDialog extends PopupWindow implements OnClickListener {
 		@Override
 		public void onComplete(SHARE_MEDIA platform, int eCode, SocializeEntity entity) {
 			if (eCode == 200) {
+                editor.putInt("share",1);
+                editor.commit();
 				Toast.makeText(mActivity, "分享成功", 0).show();
 			}
 			if (isShowing()) {

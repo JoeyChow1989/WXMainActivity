@@ -1,25 +1,5 @@
 package com.hb.qx;
 
-import in.srain.cube.request.JsonData;
-import in.srain.cube.request.RequestJsonHandler;
-import in.srain.cube.views.GridViewWithHeaderAndFooter;
-import in.srain.cube.views.list.PagedListViewDataAdapter;
-
-import java.io.UnsupportedEncodingException;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-
-import com.baidu.location.BDLocation;
-import com.baidu.location.BDLocationListener;
-import com.baidu.location.LocationClient;
-import com.data.bean.JournalismListDataMode;
-import com.data.bean.JournalismViewHolder;
-import com.data.bean.NewBean;
-import com.hb.tool.NetUtil;
-import com.hb.ui.SlideBar;
-import com.hb.ui.SlideBar.OnTriggerListener;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -33,11 +13,31 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Toast;
+
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
+import com.baidu.location.LocationClient;
+import com.data.bean.JournalismListDataMode;
+import com.data.bean.JournalismViewHolder;
+import com.data.bean.NewBean;
+import com.hb.tool.NetUtil;
+import com.hb.ui.SlideBar;
+import com.hb.ui.SlideBar.OnTriggerListener;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.io.UnsupportedEncodingException;
+
+import in.srain.cube.request.JsonData;
+import in.srain.cube.request.RequestJsonHandler;
+import in.srain.cube.views.GridViewWithHeaderAndFooter;
+import in.srain.cube.views.list.PagedListViewDataAdapter;
 
 
 

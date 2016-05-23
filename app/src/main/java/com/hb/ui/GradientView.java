@@ -107,8 +107,6 @@ public class GradientView extends View {
 				/ 2 - mSlideIconOffSetTop, mTextPaint); // slide_unlock
 	} 
 
-	
-
 	public void stopAnimatorAndChangeColor() {
 		//if(DEBUG)
 		Log.w(TAG, "stopGradient");

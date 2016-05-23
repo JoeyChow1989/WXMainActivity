@@ -13,6 +13,8 @@ import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.baidu.mobstat.StatService;
 
@@ -268,6 +270,7 @@ public class QQHongbaoService extends AccessibilityService
         }
     }
 
+
     /**
      * 接收事件过滤红包并处理的核心方法
      *
@@ -347,14 +350,6 @@ public class QQHongbaoService extends AccessibilityService
             }
         }
 
-
-//        if (rootNodeInfo.getClassName().equals("android.widget.TextView") && rootNodeInfo.isLongClickable() && rootNodeInfo.getText() != null && !rootNodeInfo.getText().toString().contains("你领取了"))
-//        {
-//            System.out.println("-----------------root------------" + rootNodeInfo);
-//            rootNodeInfo.performAction(AccessibilityNodeInfo.ACTION_LONG_CLICK);
-//        }
-
-
         //消息撤回
         if (huiche == true && rootNodeInfo.getText() != null && sp.getInt("chexiao", 1) == 1)
         {
@@ -370,6 +365,9 @@ public class QQHongbaoService extends AccessibilityService
                 huiche = false;
             }
         }
+
+        System.out.println("----------------rootNodeInfo---------------"+rootNodeInfo);
+
 
         //list先初始化;
         mReceiveNode = null;

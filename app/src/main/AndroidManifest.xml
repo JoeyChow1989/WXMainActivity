@@ -231,12 +231,6 @@
             android:theme="@style/FullBleedTheme">
         </activity>
         <activity
-            android:name=".OpenUseActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@style/FullBleedTheme">
-        </activity>
-        <activity
             android:name=".NoKickActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
