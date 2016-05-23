@@ -105,16 +105,21 @@ public class SeniorActivity extends Activity
                 if (sp.getInt("share", 0) == 0)
                 {
                     share();
-                } else if (isChecked)
-                {
-                    editor.putInt("chatpage", 1);
-                    Toast.makeText(SeniorActivity.this, "已开启", Toast.LENGTH_SHORT).show();
                 } else
                 {
-                    editor.putInt("chatpage", 0);
-                    Toast.makeText(SeniorActivity.this, "已关闭", Toast.LENGTH_SHORT).show();
+                    if (isChecked)
+                    {
+                        editor.putInt("chatpage", 1);
+                        Toast.makeText(SeniorActivity.this, "已开启", Toast.LENGTH_SHORT).show();
+                    } else
+                    {
+                        editor.putInt("chatpage", 0);
+                        Toast.makeText(SeniorActivity.this, "已关闭", Toast.LENGTH_SHORT).show();
+                    }
+                    editor.commit();
                 }
-                editor.commit();
+
+
             }
         });
 
@@ -127,28 +132,48 @@ public class SeniorActivity extends Activity
                 if (sp.getInt("share", 0) == 0)
                 {
                     share();
-                } else if (b)
-                {
-                    editor.putInt("sreen", 1);
-                    Toast.makeText(SeniorActivity.this, "已开启", Toast.LENGTH_SHORT).show();
                 } else
+
                 {
-                    editor.putInt("sreen", 0);
-                    Toast.makeText(SeniorActivity.this, "已关闭", Toast.LENGTH_SHORT).show();
+                    if (b)
+                    {
+                        editor.putInt("sreen", 1);
+                        Toast.makeText(SeniorActivity.this, "已开启", Toast.LENGTH_SHORT).show();
+                    } else
+                    {
+                        editor.putInt("sreen", 0);
+                        Toast.makeText(SeniorActivity.this, "已关闭", Toast.LENGTH_SHORT).show();
+                    }
+                    editor.commit();
                 }
-                editor.commit();
+
+
             }
         });
 
-        mVoise.setOnClickListener(new OnClickListener()
+        mVoise.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
         {
             @Override
-            public void onClick(View view)
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b)
             {
-                Toast.makeText(SeniorActivity.this, "敬请期待", Toast.LENGTH_SHORT).show();
+                if (sp.getInt("share", 0) == 0)
+                {
+                    share();
+                } else
+                {
+                    if (b)
+                    {
+                        editor.putInt("voise", 1);
+                        Toast.makeText(SeniorActivity.this, "已开启", Toast.LENGTH_SHORT).show();
+                    } else
+                    {
+                        editor.putInt("voise", 0);
+                        Toast.makeText(SeniorActivity.this, "已关闭", Toast.LENGTH_SHORT).show();
+                    }
+                    editor.commit();
+                }
             }
         });
-
 
         ly_nokick.setOnClickListener(new OnClickListener()
         {
@@ -234,6 +259,15 @@ public class SeniorActivity extends Activity
         {
             mSreenLight.setChecked(false);
         }
+
+        if (sp.getInt("voise", 0) == 1)
+        {
+            mVoise.setChecked(true);
+        } else if (sp.getInt("voise", 0) == 0)
+        {
+            mVoise.setChecked(false);
+        }
+
     }
 
     public void request()

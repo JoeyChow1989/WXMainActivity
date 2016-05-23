@@ -59,14 +59,17 @@ public class NoKickActivity extends Activity
                 if (sp.getInt("share", 0) == 0)
                 {
                     share();
-                } else if (b)
-                {
-                    editor.putInt("huifu", 1);
                 } else
                 {
-                    editor.putInt("huifu", 0);
+                    if (b)
+                    {
+                        editor.putInt("huifu", 1);
+                    } else
+                    {
+                        editor.putInt("huifu", 0);
+                    }
+                    editor.commit();
                 }
-                editor.commit();
             }
         });
 
@@ -79,14 +82,17 @@ public class NoKickActivity extends Activity
                 if (sp.getInt("share", 0) == 0)
                 {
                     share();
-                } else if (b)
-                {
-                    editor.putInt("buzidong", 1);
                 } else
                 {
-                    editor.putInt("buzidong", 0);
+                    if (b)
+                    {
+                        editor.putInt("buzidong", 1);
+                    } else
+                    {
+                        editor.putInt("buzidong", 0);
+                    }
+                    editor.commit();
                 }
-                editor.commit();
             }
         });
 
@@ -98,14 +104,17 @@ public class NoKickActivity extends Activity
                 if (sp.getInt("share", 0) == 0)
                 {
                     share();
-                } else if (b)
-                {
-                    editor.putInt("chexiao", 1);
                 } else
                 {
-                    editor.putInt("chexiao", 0);
+                    if (b)
+                    {
+                        editor.putInt("chexiao", 1);
+                    } else
+                    {
+                        editor.putInt("chexiao", 0);
+                    }
+                    editor.commit();
                 }
-                editor.commit();
             }
         });
 
@@ -117,14 +126,17 @@ public class NoKickActivity extends Activity
                 if (sp.getInt("share", 0) == 0)
                 {
                     share();
-                } else if (b)
-                {
-                    editor.putInt("qianshu", 1);
                 } else
                 {
-                    editor.putInt("qianshu", 0);
+                    if (b)
+                    {
+                        editor.putInt("qianshu", 1);
+                    } else
+                    {
+                        editor.putInt("qianshu", 0);
+                    }
+                    editor.commit();
                 }
-                editor.commit();
             }
         });
 
@@ -136,14 +148,17 @@ public class NoKickActivity extends Activity
                 if (sp.getInt("share", 0) == 0)
                 {
                     share();
-                } else if (b)
-                {
-                    editor.putInt("aite", 1);
                 } else
                 {
-                    editor.putInt("aite", 0);
+                    if (b)
+                    {
+                        editor.putInt("aite", 1);
+                    } else
+                    {
+                        editor.putInt("aite", 0);
+                    }
+                    editor.commit();
                 }
-                editor.commit();
             }
         });
 
@@ -155,17 +170,20 @@ public class NoKickActivity extends Activity
                 if (sp.getInt("share", 0) == 0)
                 {
                     share();
-                } else if (b)
-                {
-                    editor.putInt("ganxie", 1);
-                    ganxieyu.setVisibility(View.VISIBLE);
-
                 } else
                 {
-                    editor.putInt("ganxie", 0);
-                    ganxieyu.setVisibility(View.GONE);
+                    if (b)
+                    {
+                        editor.putInt("ganxie", 1);
+                        ganxieyu.setVisibility(View.VISIBLE);
+
+                    } else
+                    {
+                        editor.putInt("ganxie", 0);
+                        ganxieyu.setVisibility(View.GONE);
+                    }
+                    editor.commit();
                 }
-                editor.commit();
             }
         });
 

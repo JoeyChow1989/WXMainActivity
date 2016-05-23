@@ -6,6 +6,9 @@ import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -366,7 +369,7 @@ public class QQHongbaoService extends AccessibilityService
             }
         }
 
-        System.out.println("----------------rootNodeInfo---------------"+rootNodeInfo);
+        System.out.println("----------------rootNodeInfo---------------" + rootNodeInfo);
 
 
         //list先初始化;
@@ -478,6 +481,11 @@ public class QQHongbaoService extends AccessibilityService
                                 {
                                     cellNode.getParent().performAction(
                                             AccessibilityNodeInfo.ACTION_CLICK);
+
+                                    if (sp.getInt("voise", 0) == 1)
+                                    {
+                                        voise();
+                                    }
                                 }
                             }
                         }, yanshi * 1000);
@@ -559,6 +567,11 @@ public class QQHongbaoService extends AccessibilityService
             AccessibilityNodeInfo cellNode = mUnpackNode;
             cellNode.performAction(AccessibilityNodeInfo.ACTION_CLICK);
 
+            if (sp.getInt("voise", 0) == 1)
+            {
+                voise();
+            }
+
             if (cellNode.getText() != null)
             {
                 if (cellNode.getText().toString().equals(WECHAT_EXPIRES_CH))
@@ -606,6 +619,11 @@ public class QQHongbaoService extends AccessibilityService
                 {
                     resultInfo
                             .performAction(AccessibilityNodeInfo.ACTION_CLICK);
+
+                    if (sp.getInt("voise", 0) == 1)
+                    {
+                        voise();
+                    }
                 }
                 if (cellNodeInfo.getText() != null)
                 {
@@ -819,5 +837,12 @@ public class QQHongbaoService extends AccessibilityService
                 MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+    }
+
+    private void voise()
+    {
+        Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
+        r.play();
     }
 }
