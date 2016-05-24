@@ -58,6 +58,7 @@ public class MainActivity extends Activity
 
     static String qianshu;
     SharedPreferences sp;
+    SharedPreferences.Editor editor;
     public static int YANSHI = 0;
 
     @Override
@@ -67,6 +68,8 @@ public class MainActivity extends Activity
         setContentView(R.layout.activity_main_ui);
 
         sp = getSharedPreferences("chatpage", MODE_PRIVATE);
+        editor = sp.edit();
+
         gifImage = (GifMovieView) findViewById(R.id.gif_iamge);
         more = (ImageView) findViewById(R.id.more_text);
         more_layout = (LinearLayout) findViewById(R.id.more_layout);
@@ -121,6 +124,9 @@ public class MainActivity extends Activity
             startService(lockservice);
         }
         baidu_ad();
+
+        editor.putInt("share",1);
+        editor.commit();
 
         System.out.println("---------------light--------------" + sp.getInt("sreen", 0));
 

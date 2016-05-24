@@ -64,9 +64,11 @@ public class NoKickActivity extends Activity
                     if (b)
                     {
                         editor.putInt("huifu", 1);
+                        Toast.makeText(NoKickActivity.this, "已开启", Toast.LENGTH_SHORT).show();
                     } else
                     {
                         editor.putInt("huifu", 0);
+                        Toast.makeText(NoKickActivity.this, "已开启", Toast.LENGTH_SHORT).show();
                     }
                     editor.commit();
                 }
@@ -88,9 +90,11 @@ public class NoKickActivity extends Activity
                     if (b)
                     {
                         editor.putInt("buzidong", 1);
+                        Toast.makeText(NoKickActivity.this, "已开启", Toast.LENGTH_SHORT).show();
                     } else
                     {
                         editor.putInt("buzidong", 0);
+                        Toast.makeText(NoKickActivity.this, "已开启", Toast.LENGTH_SHORT).show();
                     }
                     editor.commit();
                 }
@@ -111,9 +115,11 @@ public class NoKickActivity extends Activity
                     if (b)
                     {
                         editor.putInt("chexiao", 1);
+                        Toast.makeText(NoKickActivity.this, "已开启", Toast.LENGTH_SHORT).show();
                     } else
                     {
                         editor.putInt("chexiao", 0);
+                        Toast.makeText(NoKickActivity.this, "已开启", Toast.LENGTH_SHORT).show();
                     }
                     editor.commit();
                 }
@@ -134,9 +140,11 @@ public class NoKickActivity extends Activity
                     if (b)
                     {
                         editor.putInt("qianshu", 1);
+                        Toast.makeText(NoKickActivity.this, "已开启", Toast.LENGTH_SHORT).show();
                     } else
                     {
                         editor.putInt("qianshu", 0);
+                        Toast.makeText(NoKickActivity.this, "已开启", Toast.LENGTH_SHORT).show();
                     }
                     editor.commit();
                 }
@@ -157,9 +165,11 @@ public class NoKickActivity extends Activity
                     if (b)
                     {
                         editor.putInt("aite", 1);
+                        Toast.makeText(NoKickActivity.this, "已开启", Toast.LENGTH_SHORT).show();
                     } else
                     {
                         editor.putInt("aite", 0);
+                        Toast.makeText(NoKickActivity.this, "已开启", Toast.LENGTH_SHORT).show();
                     }
                     editor.commit();
                 }

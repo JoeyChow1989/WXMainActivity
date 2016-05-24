@@ -87,6 +87,7 @@ public class SeniorActivity extends Activity
 
                 if (sp.getInt("share", 0) == 1)
                 {
+                    Toast.makeText(SeniorActivity.this, "已开启", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(SeniorActivity.this, LockMainActvity.class);
                     startActivity(intent);
                 } else
@@ -133,7 +134,6 @@ public class SeniorActivity extends Activity
                 {
                     share();
                 } else
-
                 {
                     if (b)
                     {
@@ -324,7 +324,6 @@ public class SeniorActivity extends Activity
             public void onRequestFail(FailData failData)
             {
             }
-
         });
     }
 
@@ -335,10 +334,7 @@ public class SeniorActivity extends Activity
         {
             boolean serviceEnabled = false;
             AccessibilityManager accessibilityManager = (AccessibilityManager) getSystemService(Context.ACCESSIBILITY_SERVICE);
-            System.out
-                    .println("accessibilityManager============================"
-                            + accessibilityManager);
-
+            System.out.println("accessibilityManager============================" + accessibilityManager);
             List<AccessibilityServiceInfo> accessibilityServices = accessibilityManager
                     .getEnabledAccessibilityServiceList(AccessibilityServiceInfo.FEEDBACK_GENERIC);
             for (AccessibilityServiceInfo info : accessibilityServices)
