@@ -35,11 +35,6 @@ public class QQHongbaoService extends AccessibilityService
     private AccessibilityNodeInfo mUnpackNode;
     //判断是否抢过了
     private boolean mNeedUnpack;
-//    private static final String WECHAT_DETAILS_EN = "Details";
-//    private static final String WECHAT_DETAILS_CH = "红包详情";
-//    private static final String WECHAT_BETTER_LUCK_EN = "Better luck next time!";
-//    private static final String WECHAT_BETTER_LUCK_CH = "手慢了";
-
     /**
      * 各种文字判断
      */
@@ -422,6 +417,7 @@ public class QQHongbaoService extends AccessibilityService
                         huifu_QQ = false;
                     } else if (huifu_QQ == true && sp.getInt("qianshu", 0) == 1)
                     {
+
                         recycle1(rowNode);
                         huifu_QQ = false;
                     }
@@ -533,7 +529,7 @@ public class QQHongbaoService extends AccessibilityService
                 if (cellNode.getPackageName()
                         .equals("com.tencent.mobileqq"))
                 {
-                    System.out.println("--------------------eventTime----------------" + eventTime);
+                    System.out.println("--------------------eventTime------------------" + eventTime);
 
                     new Handler().postDelayed(new Runnable()
                     {
@@ -653,7 +649,6 @@ public class QQHongbaoService extends AccessibilityService
     }
 
     List<AccessibilityNodeInfo> nodes1;
-
     /**
      * 检查节点信息
      */
