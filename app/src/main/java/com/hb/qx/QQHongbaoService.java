@@ -369,9 +369,6 @@ public class QQHongbaoService extends AccessibilityService
             }
         }
 
-        System.out.println("----------------rootNodeInfo---------------" + rootNodeInfo);
-
-
         //list先初始化;
         mReceiveNode = null;
 
@@ -444,13 +441,6 @@ public class QQHongbaoService extends AccessibilityService
                     aite = false;
                 }
 
-                //缓存判断是否再次点击
-                if (this.shouldReturn(id, now - lastFetchedTime))
-                    return;
-
-                lastFetchedHongbaoId = id;
-                lastFetchedTime = now;
-
                 if (cellNode.getText().toString().equals(QQ_DEFAULT_HAVE_OPENED))
                 {
                     return;
@@ -460,6 +450,13 @@ public class QQHongbaoService extends AccessibilityService
                 {
                     return;
                 }
+
+                //缓存判断是否再次点击
+                if (this.shouldReturn(id, now - lastFetchedTime))
+                    return;
+
+                lastFetchedHongbaoId = id;
+                lastFetchedTime = now;
 
                 //在QQ红包里
                 if (cellNode.getPackageName().equals(
@@ -482,6 +479,7 @@ public class QQHongbaoService extends AccessibilityService
                                     cellNode.getParent().performAction(
                                             AccessibilityNodeInfo.ACTION_CLICK);
 
+                                    //声音提示
                                     if (sp.getInt("voise", 0) == 1)
                                     {
                                         voise();
@@ -532,24 +530,22 @@ public class QQHongbaoService extends AccessibilityService
                 eventTime++;
 
                 //qq 抢完后弹广告
-                if (rootNodeInfo.getPackageName()
+                if (cellNode.getPackageName()
                         .equals("com.tencent.mobileqq"))
                 {
-                    System.out.println("eventTime----------------------------------" + eventTime);
+                    System.out.println("--------------------eventTime----------------" + eventTime);
 
-                    if (eventTime % 13 == 0)
+                    new Handler().postDelayed(new Runnable()
                     {
-                        System.out
-                                .println("jump.............................................................");
-                        new Handler().postDelayed(new Runnable()
+                        public void run()
                         {
-                            public void run()
+                            // 发送百度统计
+                            if (eventTime % 30 == 0)
                             {
-                                // 发送百度统计
                                 sendBaidu();
                             }
-                        }, 4000);
-                    }
+                        }
+                    }, 4000);
                 }
                 mLuckyMoneyReceived = false;
             }
@@ -567,6 +563,7 @@ public class QQHongbaoService extends AccessibilityService
             AccessibilityNodeInfo cellNode = mUnpackNode;
             cellNode.performAction(AccessibilityNodeInfo.ACTION_CLICK);
 
+            //声音提示
             if (sp.getInt("voise", 0) == 1)
             {
                 voise();
@@ -620,6 +617,7 @@ public class QQHongbaoService extends AccessibilityService
                     resultInfo
                             .performAction(AccessibilityNodeInfo.ACTION_CLICK);
 
+                    //声音提示
                     if (sp.getInt("voise", 0) == 1)
                     {
                         voise();

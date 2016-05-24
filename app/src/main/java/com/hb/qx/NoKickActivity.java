@@ -40,7 +40,6 @@ public class NoKickActivity extends Activity
         initViews();
         baidu_ad();
 
-        //抢自己发出的红包
         nokick_view_back.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -50,6 +49,7 @@ public class NoKickActivity extends Activity
             }
         });
 
+        //自动抢红包
         mAutoHuiFu.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
         {
             @Override
@@ -73,6 +73,7 @@ public class NoKickActivity extends Activity
             }
         });
 
+        //提示但不自动抢
         mBuzidong.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
         {
             @Override
@@ -96,6 +97,7 @@ public class NoKickActivity extends Activity
             }
         });
 
+        //口令撤回
         mChehui.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
         {
             @Override
@@ -118,6 +120,7 @@ public class NoKickActivity extends Activity
             }
         });
 
+        //回复抢到的钱数
         mHuifuqiangshu.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
         {
             @Override
@@ -140,6 +143,7 @@ public class NoKickActivity extends Activity
             }
         });
 
+        //@回复红包人
         mHuifuHongbaoren.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
         {
             @Override
@@ -162,6 +166,7 @@ public class NoKickActivity extends Activity
             }
         });
 
+        //自定义感谢语
         mGanxieyu.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
         {
             @Override
@@ -187,6 +192,7 @@ public class NoKickActivity extends Activity
             }
         });
 
+        //延时抢红包
         mSeekBar_yanshi.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
         {
             @Override
@@ -213,7 +219,7 @@ public class NoKickActivity extends Activity
             }
         });
 
-
+       //回复时间
         mSeekBar_huifu.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
         {
             @Override

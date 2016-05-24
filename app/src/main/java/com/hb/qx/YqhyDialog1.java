@@ -163,7 +163,6 @@ public class YqhyDialog1 extends PopupWindow implements OnClickListener {
 		wxCircleHandler.addToSocialSDK();
 		wxCircleHandler.showCompressToast(false);
 		mController.postShare(mActivity, SHARE_MEDIA.WEIXIN_CIRCLE, wechatmomentsListener);
-
 	}
 
 	// 回调微信朋友圈
@@ -181,7 +180,7 @@ public class YqhyDialog1 extends PopupWindow implements OnClickListener {
 					HbApplication.instance.editor.putString("get_share", "yes");
 					HbApplication.instance.editor.commit();
 				}
-				Toast.makeText(mActivity, "分享成功", 0).show();
+				Toast.makeText(mActivity, "分享成功", Toast.LENGTH_SHORT).show();
 			}
 			if (isShowing()) {
 				dismiss();
@@ -199,7 +198,6 @@ public class YqhyDialog1 extends PopupWindow implements OnClickListener {
 		weixinContent.setShareMedia(defaulturlImage);
 		mController.setShareMedia(weixinContent);
 		wechatht_listener();
-
 	}
 
 	// 启动微信好友
@@ -221,7 +219,7 @@ public class YqhyDialog1 extends PopupWindow implements OnClickListener {
 		@Override
 		public void onComplete(SHARE_MEDIA platform, int eCode, SocializeEntity entity) {
 			if (eCode == 200) {
-				Toast.makeText(mActivity, "分享成功", 0).show();
+				Toast.makeText(mActivity, "分享成功", Toast.LENGTH_SHORT).show();
                 editor.putInt("share",1);
                 editor.commit();
 				if(type!=0){
@@ -266,7 +264,7 @@ public class YqhyDialog1 extends PopupWindow implements OnClickListener {
 			if (eCode == 200) {
                 editor.putInt("share",1);
                 editor.commit();
-				Toast.makeText(mActivity, "分享成功", 0).show();
+				Toast.makeText(mActivity, "分享成功", Toast.LENGTH_SHORT).show();
 			}
 			if (isShowing()) {
 				dismiss();
@@ -303,7 +301,7 @@ public class YqhyDialog1 extends PopupWindow implements OnClickListener {
 			if (eCode == 200) {
                 editor.putInt("share",1);
                 editor.commit();
-				Toast.makeText(mActivity, "分享成功", 0).show();
+				Toast.makeText(mActivity, "分享成功", Toast.LENGTH_SHORT).show();
 			}
 			if (isShowing()) {
 				dismiss();
