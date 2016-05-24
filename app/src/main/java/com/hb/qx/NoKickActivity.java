@@ -81,7 +81,6 @@ public class NoKickActivity extends Activity
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b)
             {
-
                 if (sp.getInt("share", 0) == 0)
                 {
                     share();
@@ -191,7 +190,6 @@ public class NoKickActivity extends Activity
                     {
                         editor.putInt("ganxie", 1);
                         ganxieyu.setVisibility(View.VISIBLE);
-
                     } else
                     {
                         editor.putInt("ganxie", 0);
