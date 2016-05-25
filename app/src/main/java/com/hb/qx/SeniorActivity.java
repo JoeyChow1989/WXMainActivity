@@ -231,7 +231,7 @@ public class SeniorActivity extends Activity
 
         v_code = (TextView) findViewById(R.id.id_v_code);
         code_name = HbApplication.instance.vsername;
-        v_code.setText(code_name);
+        v_code.setText("版本：v"+code_name);
 
         ly_check = (LinearLayout) findViewById(R.id.id_check);
         ly_check.setOnClickListener(new OnClickListener()
@@ -352,12 +352,12 @@ public class SeniorActivity extends Activity
             if (serviceEnabled)
             {
                 // Prevent screen from dimming
-                mTB_open.setButtonDrawable(R.drawable.ic_switch_on);
+                mTB_open.setChecked(true);
                 getWindow().addFlags(
                         WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
             } else
             {
-                mTB_open.setButtonDrawable(R.drawable.ic_switch_off);
+                mTB_open.setChecked(false);
                 getWindow().clearFlags(
                         WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
             }

@@ -316,6 +316,8 @@ public class QQHongbaoService extends AccessibilityService
             return;
         }
 
+        System.out.println("--------------------rootNodeInfo----------------------" + rootNodeInfo);
+
         //获取抢到的钱数(微信);
         if (rootNodeInfo.getText() != null)
         {
@@ -649,6 +651,7 @@ public class QQHongbaoService extends AccessibilityService
     }
 
     List<AccessibilityNodeInfo> nodes1;
+
     /**
      * 检查节点信息
      */
