@@ -66,7 +66,6 @@ public class MainActivity extends Activity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_ui);
-
         sp = getSharedPreferences("chatpage", MODE_PRIVATE);
         editor = sp.edit();
 
@@ -82,6 +81,7 @@ public class MainActivity extends Activity
 
         gifImage.setMovieResource(R.drawable.qiang_progress);
         gifImage.setVisibility(View.VISIBLE);
+
         // 服务未启动
         no_layout = (LinearLayout) findViewById(R.id.no_commit);
         start_but = (TextView) findViewById(R.id.start_but);
@@ -109,9 +109,6 @@ public class MainActivity extends Activity
             }
         });
 
-        // 趣米广告
-        //QMCPConnect.ConnectQuMi(this, "7329fa7f5fb5910d", "370581b46533383b"); // 初始化
-        //QMCPConnect.getQumiConnectInstance(this).initPopAd(this); // 插屏广告初始化
 
         mApplication = HbApplication.getInstance();
         //handleMIUIStatusBar();
@@ -285,6 +282,7 @@ public class MainActivity extends Activity
 //       } catch (Exception e) {
 //        }
 //    }
+
     @Override
     protected void onPause()
     {
