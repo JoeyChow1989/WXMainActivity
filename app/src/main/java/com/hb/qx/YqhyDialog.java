@@ -38,15 +38,15 @@ public class YqhyDialog extends PopupWindow implements OnClickListener
     private TextView wx_text;
     private ImageView wx_py_image;
     private TextView wx_py_text;
-    private ImageView qq_image;
-    private TextView qq_text;
-    private ImageView qq_qzone_image;
-    private TextView qq_qzone_text;
+//    private ImageView qq_image;
+//    private TextView qq_text;
+//    private ImageView qq_qzone_image;
+//    private TextView qq_qzone_text;
     private LinearLayout main_textLayout;
     private int type = 0;
 
     // 分享的内容
-    private int count;
+//    private int count;
 
     private SharedPreferences sp;
     private SharedPreferences.Editor editor;
