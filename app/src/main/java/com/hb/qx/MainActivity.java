@@ -166,6 +166,7 @@ public class MainActivity extends Activity
                 }
 
             });
+
             interAd.loadAd();
             mApplication.editor.putString("show_ad_type", "no");
             mApplication.editor.commit();

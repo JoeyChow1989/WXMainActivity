@@ -439,14 +439,20 @@ public class QQHongbaoService extends AccessibilityService
                     aite = false;
                 }
 
-                if (cellNode.getText().toString().equals(QQ_DEFAULT_HAVE_OPENED))
+                if (cellNode.getText() != null)
                 {
-                    return;
+                    if (cellNode.getText().toString().equals(QQ_DEFAULT_HAVE_OPENED))
+                    {
+                        return;
+                    }
                 }
 
-                if (cellNode.getText().toString().equals(QQ_HONG_BAO_PASSWORD_OPENED))
+                if (cellNode.getText() != null)
                 {
-                    return;
+                    if (cellNode.getText().toString().equals(QQ_HONG_BAO_PASSWORD_OPENED))
+                    {
+                        return;
+                    }
                 }
 
                 //缓存判断是否再次点击
@@ -462,7 +468,6 @@ public class QQHongbaoService extends AccessibilityService
                 {
                     yanshi = MainActivity.YANSHI;
                     buzidong = sp.getInt("buzidong", 0);
-
                     System.out.println("yanshi------------service:" + yanshi);
                     // execute the task
                     if (cellNode != null)

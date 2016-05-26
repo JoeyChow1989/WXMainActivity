@@ -56,7 +56,7 @@ public class NoKickActivity extends Activity
             public void onCheckedChanged(CompoundButton compoundButton, boolean b)
             {
 
-                if (sp.getInt("share", 0) == 0)
+                if (sp.getInt("share1", 0) == 0)
                 {
                     share();
                 } else
@@ -81,7 +81,7 @@ public class NoKickActivity extends Activity
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b)
             {
-                if (sp.getInt("share", 0) == 0)
+                if (sp.getInt("share1", 0) == 0)
                 {
                     share();
                 } else
@@ -106,7 +106,7 @@ public class NoKickActivity extends Activity
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b)
             {
-                if (sp.getInt("share", 0) == 0)
+                if (sp.getInt("share1", 0) == 0)
                 {
                     share();
                 } else
@@ -131,7 +131,7 @@ public class NoKickActivity extends Activity
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b)
             {
-                if (sp.getInt("share", 0) == 0)
+                if (sp.getInt("share1", 0) == 0)
                 {
                     share();
                 } else
@@ -156,7 +156,7 @@ public class NoKickActivity extends Activity
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b)
             {
-                if (sp.getInt("share", 0) == 0)
+                if (sp.getInt("share1", 0) == 0)
                 {
                     share();
                 } else
@@ -181,7 +181,7 @@ public class NoKickActivity extends Activity
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b)
             {
-                if (sp.getInt("share", 0) == 0)
+                if (sp.getInt("share1", 0) == 0)
                 {
                     share();
                 } else
@@ -374,7 +374,7 @@ public class NoKickActivity extends Activity
 
     private void share()
     {
-        YqhyDialog1 yyDialog = new YqhyDialog1(NoKickActivity.this, 0);
+        YqhyDialog2 yyDialog = new YqhyDialog2(NoKickActivity.this, 0);
         try
         {
             yyDialog.showAtLocation(NoKickActivity.this.getWindow()

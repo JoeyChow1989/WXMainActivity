@@ -348,7 +348,6 @@ public class SeniorActivity extends Activity
                     }
                 }
             }
-
             if (serviceEnabled)
             {
                 // Prevent screen from dimming
