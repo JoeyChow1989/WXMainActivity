@@ -68,10 +68,7 @@ public class AlertDialogContainer
             {
                 ad.dismiss();
             }
-            ;
         }
-
-        ;
     };
 
     public void setCallBack(AlertDialogCallBack callBack)
