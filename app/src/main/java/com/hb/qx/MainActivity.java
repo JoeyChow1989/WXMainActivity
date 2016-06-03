@@ -59,11 +59,21 @@ public class MainActivity extends Activity
     static String qianshu;
     public static int YANSHI = 0;
 
+    private SharedPreferences sp;
+    private SharedPreferences.Editor editor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_ui);
+        sp = getSharedPreferences("chatpage", MODE_PRIVATE);
+        editor = sp.edit();
+        editor.putInt("share",1);
+        editor.putInt("share1",1);
+
+        editor.commit();
+
         gifImage = (GifMovieView) findViewById(R.id.gif_iamge);
         more = (ImageView) findViewById(R.id.more_text);
         more_layout = (LinearLayout) findViewById(R.id.more_layout);
@@ -258,20 +268,6 @@ public class MainActivity extends Activity
         {
         }
     };
-
-    /**
-     * 适配MIUI沉浸状态栏
-     */
-//    private void handleMIUIStatusBar() {
-//        try {
-//            SystemBarTintManager tintManager = new SystemBarTintManager(this);
-//            tintManager = new SystemBarTintManager(this);
-//            tintManager.setStatusBarTintEnabled(true);
-//            tintManager.setNavigationBarTintEnabled(true);
-//
-//       } catch (Exception e) {
-//        }
-//    }
 
     @Override
     protected void onPause()
