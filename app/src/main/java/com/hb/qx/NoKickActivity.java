@@ -313,7 +313,6 @@ public class NoKickActivity extends Activity
             mGanxieyu.setChecked(true);
             ganxieyu.setVisibility(View.VISIBLE);
             tv_GanXieyu.setText(sp.getString("ganxieyu", "谢谢"));
-
         } else if (sp.getInt("ganxie", 0) == 0)
         {
             mGanxieyu.setChecked(false);

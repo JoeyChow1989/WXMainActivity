@@ -72,7 +72,7 @@ public class MainActivity extends Activity
         editor.putInt("share",1);
         editor.putInt("share1",1);
 
-        editor.commit();
+      //  editor.commit();
 
         gifImage = (GifMovieView) findViewById(R.id.gif_iamge);
         more = (ImageView) findViewById(R.id.more_text);

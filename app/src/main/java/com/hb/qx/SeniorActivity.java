@@ -267,7 +267,6 @@ public class SeniorActivity extends Activity
         {
             mVoise.setChecked(false);
         }
-
     }
 
     public void request()
