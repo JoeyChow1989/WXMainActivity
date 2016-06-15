@@ -233,7 +233,7 @@ public class QQHongbaoService extends AccessibilityService
     }
 
     /**
-     * 艾特发红包的人的判断
+     * 艾特发红包的人的遍历寻找控件
      *
      * @param info
      */
@@ -351,7 +351,7 @@ public class QQHongbaoService extends AccessibilityService
         }
 
         //消息撤回
-        if (huiche == true && rootNodeInfo.getText() != null && sp.getInt("chexiao", 1) == 1)
+        if (rootNodeInfo.getText() != null && sp.getInt("chexiao", 1) == 1)
         {
             if (rootNodeInfo.getClassName().equals("android.widget.TextView") && rootNodeInfo.isLongClickable() && !rootNodeInfo.getText().toString().contains("你领取了"))
             {
@@ -362,7 +362,7 @@ public class QQHongbaoService extends AccessibilityService
             if (rootNodeInfo.getClassName().equals("android.widget.TextView") && rootNodeInfo.getText().toString().equals("撤回"))
             {
                 rootNodeInfo.performAction(AccessibilityNodeInfo.ACTION_CLICK);
-                huiche = false;
+                //huiche = false;
             }
         }
 
