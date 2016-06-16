@@ -31,14 +31,15 @@
 
     <uses-permission
         android:name="android.permission.PACKAGE_USAGE_STATS"
-        tools:ignore="ProtectedPermissions" />
-    
+        tools:ignore="ProtectedPermissions"/>
+
     <application
         android:name=".HbApplication"
         android:allowBackup="true"
         android:icon="@mipmap/icon"
         android:label="@string/app_name"
-        android:supportsRtl="true">
+        android:supportsRtl="true"
+        android:theme="@style/FullBleedTheme">
 
         <!-- 您从百度网站获取的APP KEY -->
         <meta-data
@@ -175,6 +176,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_REMOVED"/>
                 <action android:name="android.intent.action.PACKAGE_ADDED"/>
+
                 <data android:scheme="package"/>
             </intent-filter>
             <intent-filter>
