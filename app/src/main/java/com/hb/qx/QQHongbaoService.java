@@ -268,7 +268,6 @@ public class QQHongbaoService extends AccessibilityService
         }
     }
 
-
     /**
      * 接收事件过滤红包并处理的核心方法
      *

@@ -296,11 +296,13 @@ public class SplashActivity extends XActivity
         {
             super.onPostExecute(s);
 
-            System.out.println("------------onPostExecute-------------");
+            System.out.println("------------onPostExecute-------------"+s);
             try
             {
                 JSONObject object = new JSONObject(s);
-                String s1 = object.getString("dowurl");
+                String s1 = object.getString("msg");
+
+                System.out.println("s1--------------------------" + s1.toString());
 
             } catch (JSONException e)
             {
@@ -333,7 +335,7 @@ public class SplashActivity extends XActivity
                     {
                         bos.write(buffer, 0, len);
                     }
-                    s = new String(bos.toByteArray(), "gb2312");
+                    s = new String(bos.toByteArray(), "UTF-8");
                 }
             } catch (Exception e)
             {
