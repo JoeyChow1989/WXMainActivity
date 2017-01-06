@@ -40,7 +40,6 @@
 -keepattributes *Annotation*
 -keepattributes SourceFile,LineNumberTable
 
-
 -keep public interface com.tencent.**
 -keep public interface com.umeng.socialize.**
 -keep public interface com.umeng.socialize.sensor.**

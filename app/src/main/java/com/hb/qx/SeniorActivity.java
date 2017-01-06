@@ -31,9 +31,8 @@ import in.srain.cube.request.RequestJsonHandler;
 
 public class SeniorActivity extends Activity
 {
-    private ToggleButton mTB_open;
-    private ToggleButton mOpenLock, mChatpage, mSreenLight, mVoise;
-    private LinearLayout ly_check, ly_nokick;
+    private LinearLayout ly_check, ly_nokick, mTB_open, mOpenLock, mChatpage, mSreenLight, mVoise;
+    private ToggleButton openService, openLock, chatPage, sreenLight, voise;
     private ImageView mBack;
     private TextView v_code;
     private String code_name;
@@ -69,106 +68,109 @@ public class SeniorActivity extends Activity
             @Override
             public void onClick(View v)
             {
-                // TODO Auto-generated method stub
-                Intent intent = new Intent(
-                        Settings.ACTION_ACCESSIBILITY_SETTINGS);
-                startActivity(intent);
+                if (openService.isChecked() == true)
+                {
+                    openService.setChecked(false);
+                } else
+                {
+                    openService.setChecked(true);
+                    Intent intent = new Intent(
+                            Settings.ACTION_ACCESSIBILITY_SETTINGS);
+                    startActivity(intent);
+                }
             }
         });
 
         mOpenLock.setOnClickListener(new OnClickListener()
         {
-
             @Override
             public void onClick(View v)
             {
-
-                System.out.println("---------------------share-------------" + sp.getInt("share", 0));
-
-                if (sp.getInt("share", 0) == 1)
-                {
-                    Toast.makeText(SeniorActivity.this, "已开启", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(SeniorActivity.this, LockMainActvity.class);
-                    startActivity(intent);
-                } else
-                {
-                    share();
-                }
-            }
-        });
-
-        mChatpage.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-        {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
-            {
-                // TODO Auto-generated method stub
                 if (sp.getInt("share", 0) == 0)
                 {
                     share();
                 } else
                 {
-                    if (isChecked)
+                    if (openLock.isChecked() == true)
                     {
-                        editor.putInt("chatpage", 1);
-                        Toast.makeText(SeniorActivity.this, "已开启", Toast.LENGTH_SHORT).show();
+                        openLock.setChecked(false);
+                        editor.putInt("lock", 0);
                     } else
                     {
+                        openLock.setChecked(true);
+                        editor.putInt("lock", 1);
+                    }
+                    editor.commit();
+                }
+            }
+        });
+
+        mChatpage.setOnClickListener(new OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                if (sp.getInt("share", 0) == 0)
+                {
+                    share();
+                } else
+                {
+                    if (chatPage.isChecked() == true)
+                    {
+                        chatPage.setChecked(false);
                         editor.putInt("chatpage", 0);
-                        Toast.makeText(SeniorActivity.this, "已关闭", Toast.LENGTH_SHORT).show();
+                    } else
+                    {
+                        chatPage.setChecked(true);
+                        editor.putInt("chatpage", 1);
                     }
                     editor.commit();
                 }
-
-
             }
         });
 
-        mSreenLight.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        mSreenLight.setOnClickListener(new OnClickListener()
         {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b)
+            public void onClick(View view)
             {
-
                 if (sp.getInt("share", 0) == 0)
                 {
                     share();
                 } else
                 {
-                    if (b)
+                    if (sreenLight.isChecked() == true)
                     {
-                        editor.putInt("sreen", 1);
-                        Toast.makeText(SeniorActivity.this, "已开启", Toast.LENGTH_SHORT).show();
-                    } else
-                    {
+                        sreenLight.setChecked(false);
                         editor.putInt("sreen", 0);
-                        Toast.makeText(SeniorActivity.this, "已关闭", Toast.LENGTH_SHORT).show();
+                    } else
+                    {
+                        chatPage.setChecked(true);
+                        editor.putInt("sreen", 1);
                     }
                     editor.commit();
                 }
-
-
             }
         });
 
-        mVoise.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        mVoise.setOnClickListener(new OnClickListener()
         {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b)
+            public void onClick(View view)
             {
                 if (sp.getInt("share", 0) == 0)
                 {
                     share();
                 } else
                 {
-                    if (b)
+                    if (voise.isChecked() == true)
                     {
-                        editor.putInt("voise", 1);
-                        Toast.makeText(SeniorActivity.this, "已开启", Toast.LENGTH_SHORT).show();
+                        voise.setChecked(false);
+                        editor.putInt("voise", 0);
                     } else
                     {
-                        editor.putInt("voise", 0);
-                        Toast.makeText(SeniorActivity.this, "已关闭", Toast.LENGTH_SHORT).show();
+                        voise.setChecked(true);
+                        editor.putInt("voise", 1);
                     }
                     editor.commit();
                 }
@@ -214,24 +216,68 @@ public class SeniorActivity extends Activity
         System.out.println("cccccccccc" + sp.getInt("sreen", 0));
     }
 
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        if (sp.getInt("chatpage", 0) == 1)
+        {
+            chatPage.setChecked(true);
+        } else if (sp.getInt("chatpage", 0) == 0)
+        {
+            chatPage.setChecked(false);
+        }
+
+        if (sp.getInt("chatpage", 0) == 1)
+        {
+            chatPage.setChecked(true);
+        } else if (sp.getInt("chatpage", 0) == 0)
+        {
+            chatPage.setChecked(false);
+        }
+
+        if (sp.getInt("sreen", 0) == 1)
+        {
+            sreenLight.setChecked(true);
+        } else if (sp.getInt("sreen", 0) == 0)
+        {
+            sreenLight.setChecked(false);
+        }
+
+        if (sp.getInt("voise", 0) == 1)
+        {
+            voise.setChecked(true);
+        } else if (sp.getInt("voise", 0) == 0)
+        {
+            voise.setChecked(false);
+        }
+    }
+
     private void init()
     {
         // TODO Auto-generated method stub
         sp = getSharedPreferences("chatpage", MODE_PRIVATE);
         editor = sp.edit();
 
-        mTB_open = (ToggleButton) findViewById(R.id.accessibility_open_tbutton);
+        openService = (ToggleButton) findViewById(R.id.accessibility_open_tbutton);
         mBack = (ImageView) findViewById(R.id.img_senior_back);
-        mOpenLock = (ToggleButton) findViewById(R.id.ly_open_lock);
-        mChatpage = (ToggleButton) findViewById(R.id.accessibility_chatpage_tbutton);
-        mSreenLight = (ToggleButton) findViewById(R.id.accessibility_sceen_tbutton);
-        mVoise = (ToggleButton) findViewById(R.id.accessibility_voicenotice_tbutton);
+        openLock = (ToggleButton) findViewById(R.id.ly_open_lock);
+        chatPage = (ToggleButton) findViewById(R.id.accessibility_chatpage_tbutton);
+        sreenLight = (ToggleButton) findViewById(R.id.accessibility_sceen_tbutton);
+        voise = (ToggleButton) findViewById(R.id.accessibility_voicenotice_tbutton);
         ly_nokick = (LinearLayout) findViewById(R.id.id_nokick);
         ly_check = (LinearLayout) findViewById(R.id.id_check);
 
+        mTB_open = (LinearLayout) findViewById(R.id.id_senior_openservice);
+        mOpenLock = (LinearLayout) findViewById(R.id.id_senior_lock);
+        mChatpage = (LinearLayout) findViewById(R.id.id_senior_chatpage);
+        mSreenLight = (LinearLayout) findViewById(R.id.id_senior_sreenlight);
+        mVoise = (LinearLayout) findViewById(R.id.id_senior_voice);
+
+
         v_code = (TextView) findViewById(R.id.id_v_code);
         code_name = HbApplication.instance.vsername;
-        v_code.setText("版本：v"+code_name);
+        v_code.setText("版本：v" + code_name);
 
         ly_check = (LinearLayout) findViewById(R.id.id_check);
         ly_check.setOnClickListener(new OnClickListener()
@@ -242,31 +288,6 @@ public class SeniorActivity extends Activity
                 request();
             }
         });
-
-
-        if (sp.getInt("chatpage", 0) == 1)
-        {
-            mChatpage.setChecked(true);
-        } else if (sp.getInt("chatpage", 0) == 0)
-        {
-            mChatpage.setChecked(false);
-        }
-
-        if (sp.getInt("sreen", 0) == 1)
-        {
-            mSreenLight.setChecked(true);
-        } else if (sp.getInt("sreen", 0) == 0)
-        {
-            mSreenLight.setChecked(false);
-        }
-
-        if (sp.getInt("voise", 0) == 1)
-        {
-            mVoise.setChecked(true);
-        } else if (sp.getInt("voise", 0) == 0)
-        {
-            mVoise.setChecked(false);
-        }
     }
 
     public void request()
@@ -276,9 +297,12 @@ public class SeniorActivity extends Activity
             @Override
             public void onRequestFinish(final JsonData data)
             {
+
                 if (data != null)
                 {
                     int vsercode = data.optInt("vsercode");
+                    System.out.println("-----vsercode-----:" + vsercode);
+
                     if (vsercode > HbApplication.instance.vsercode)
                     {
                         View view = getLayoutInflater().inflate(
@@ -312,6 +336,8 @@ public class SeniorActivity extends Activity
                         });
                     } else
                     {
+
+                        System.out.println("-----vsercode-----:" + vsercode);
                         Toast.makeText(getApplicationContext(),
                                 "已是最新版本，当版本" + HbApplication.instance.vsername,
                                 Toast.LENGTH_SHORT).show();
@@ -350,12 +376,12 @@ public class SeniorActivity extends Activity
             if (serviceEnabled)
             {
                 // Prevent screen from dimming
-                mTB_open.setChecked(true);
+                openService.setChecked(true);
                 getWindow().addFlags(
                         WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
             } else
             {
-                mTB_open.setChecked(false);
+                openService.setChecked(false);
                 getWindow().clearFlags(
                         WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
             }

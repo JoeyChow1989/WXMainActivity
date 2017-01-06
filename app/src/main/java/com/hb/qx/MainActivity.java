@@ -227,21 +227,21 @@ public class MainActivity extends Activity
         @Override
         public void onClick(View v)
         {
-            YqhyDialog yyDialog = new YqhyDialog(MainActivity.this, 0);
-            try
-            {
-                yyDialog.showAtLocation(MainActivity.this.getWindow()
-                        .getDecorView(), Gravity.CENTER, 0, 0);
-            } catch (Exception e)
-            {
-                if (yyDialog != null)
-                {
-                    if (yyDialog.isShowing())
-                    {
-                        yyDialog.dismiss();
-                    }
-                }
-            }
+//            YqhyDialog yyDialog = new YqhyDialog(MainActivity.this, 0);
+//            try
+//            {
+//                yyDialog.showAtLocation(MainActivity.this.getWindow()
+//                        .getDecorView(), Gravity.CENTER, 0, 0);
+//            } catch (Exception e)
+//            {
+//                if (yyDialog != null)
+//                {
+//                    if (yyDialog.isShowing())
+//                    {
+//                        yyDialog.dismiss();
+//                    }
+//                }
+//            }
         }
     };
 

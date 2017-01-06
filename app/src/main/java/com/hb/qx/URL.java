@@ -1,11 +1,11 @@
 package com.hb.qx;
 
 public class URL {
-	   public static final String UP_URL="http://hb.kuaihuala.com/config.txt";
+	   public static final String UP_URL="http://www.hbboku.com/config.txt";
 	   
-	   public static final String FX_URL="http://hb.kuaihuala.com/index.html";
+	   public static final String FX_URL="http://www.hbboku.com/index.html";
 	   
-	   public static final String LOCK_URL="http://www.kuaihuala.com/lock.txt";
+	   public static final String LOCK_URL="http://www.hbboku.com/lock.txt";
 	   
 	   public static final String NEW_URL="http://iphone.myzaker.com/zaker/article_telecom.php?app_id=660&for=kuaihua";
 	   
@@ -18,5 +18,4 @@ public class URL {
 	   public static String qq_appId = "1104014697";
 	   public static String qq_appSecret = "fjWhPGYe17gHmvid";
 	   public static String TQ_URL="http://apis.baidu.com/heweather/weather/free";
-	   
 }

@@ -57,7 +57,6 @@ public class YqhyDialog extends PopupWindow implements OnClickListener
         mActivity = activity;
         this.type = type;
         initView();
-
     }
 
     /**

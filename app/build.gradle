@@ -2,14 +2,14 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    buildToolsVersion "25.0.0"
 
     defaultConfig {
         applicationId "com.hb.qx"
         minSdkVersion 16
         targetSdkVersion 22
         versionCode 8
-        versionName "8.7"
+        versionName "8.9"
     }
     buildTypes {
         release {

@@ -26,8 +26,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:paddingLeft="10dp"
-            android:text="防踢高级设置"
+            android:textSize="18dp"
+            android:text="VIP高级功能"
             android:textColor="#ffffff"/>
 
         <ImageView
@@ -36,10 +36,42 @@
             android:layout_weight="3"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="12"
+        android:background="@android:color/white"
+        >
+
+        <TextView
+            android:id="@+id/id_nokick_tv_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center|left"
+            android:paddingLeft="20dp"
+            android:text="您不是VIP用户，没有VIP权限哟！"
+            android:textColor="@color/cube_holo_red_dark"
+            android:textSize="16dp"
+            />
+
+        <Button
+            android:id="@+id/id_nokick_bt_openvip"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:layout_weight="4"
+            android:background="@drawable/vip_open_shape"
+            android:text="开通"
+            android:textColor="@android:color/white"/>
+
+    </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_weight="2.5"
         android:scrollbars="none"
         >
 
@@ -64,6 +96,7 @@
                     >
 
                     <LinearLayout
+                        android:id="@+id/id_nokick_buzidong"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
@@ -85,6 +118,7 @@
                             android:layout_marginLeft="12dp"
                             android:layout_marginRight="12dp"
                             android:layout_marginTop="15dp"
+                            android:clickable="false"
                             android:layout_weight="4"
                             android:background="@drawable/toggle_btn"
                             android:checked="false"
@@ -104,6 +138,7 @@
                     android:orientation="vertical">
 
                     <LinearLayout
+                        android:id="@+id/id_nokick_zidongchehui"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1">
@@ -126,6 +161,7 @@
                             android:layout_marginLeft="12dp"
                             android:layout_marginRight="12dp"
                             android:layout_marginTop="15dp"
+                            android:clickable="false"
                             android:layout_weight="4"
                             android:background="@drawable/toggle_btn"
                             android:gravity="center"
@@ -138,12 +174,13 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="#ededed"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
+                        android:background="#ededed"
                         />
 
                     <LinearLayout
+                        android:id="@+id/id_nokick_yanshi"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1.2">
@@ -188,6 +225,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/id_nokick_zidonghuifu"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1.1"
@@ -217,6 +255,7 @@
                             android:layout_marginLeft="12dp"
                             android:layout_marginRight="12dp"
                             android:layout_marginTop="15dp"
+                            android:clickable="false"
                             android:layout_weight="4"
                             android:background="@drawable/toggle_btn"
                             android:gravity="center"
@@ -229,9 +268,9 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="#ededed"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
+                        android:background="#ededed"
                         />
 
                     <LinearLayout
@@ -287,12 +326,13 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:background="#ededed"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
+                            android:background="#ededed"
                             />
 
                         <LinearLayout
+                            android:id="@+id/id_nokick_huifuqianshu"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1">
@@ -315,6 +355,7 @@
                                 android:layout_marginLeft="12dp"
                                 android:layout_marginRight="12dp"
                                 android:layout_marginTop="15dp"
+                                android:clickable="false"
                                 android:layout_weight="4"
                                 android:background="@drawable/toggle_btn"
                                 android:gravity="center"
@@ -333,6 +374,7 @@
                             />
 
                         <LinearLayout
+                            android:id="@+id/id_nokick_huifuhongbaoren"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1">
@@ -357,6 +399,7 @@
                                 android:layout_marginTop="15dp"
                                 android:layout_weight="4"
                                 android:background="@drawable/toggle_btn"
+                                android:clickable="false"
                                 android:gravity="center"
                                 android:text=""
                                 android:textOff=""
@@ -373,6 +416,7 @@
                             />
 
                         <LinearLayout
+                            android:id="@+id/id_nokick_zidingyiganxieyu"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1">
@@ -398,6 +442,7 @@
                                 android:layout_weight="4"
                                 android:background="@drawable/toggle_btn"
                                 android:gravity="center"
+                                android:clickable="false"
                                 android:text=""
                                 android:textOff=""
                                 android:textOn=""/>
@@ -415,9 +460,9 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="#ededed"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
+                        android:background="#ededed"
                         />
 
                     <LinearLayout

@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="15dip"
+            android:layout_margin="15dp"
             android:src="@drawable/back" />
 
         <TextView
@@ -36,7 +36,7 @@
             android:text="抢红包帮助"
             android:textColor="#ffffff"
             android:layout_marginLeft="10dip"
-            android:textSize="18sp" />
+            android:textSize="18dp" />
     </RelativeLayout>
 
     <ScrollView

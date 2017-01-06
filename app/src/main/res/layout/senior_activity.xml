@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="3"
-            android:padding="15dp"
+            android:padding="12dp"
             android:src="@drawable/back"/>
 
         <TextView
@@ -25,6 +25,7 @@
             android:layout_weight="1"
             android:gravity="left|center_vertical"
             android:paddingLeft="5dp"
+            android:textSize="18dp"
             android:text="设置"
             android:textColor="@android:color/white"/>
 
@@ -44,11 +45,46 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_weight="1.1"
+            android:layout_weight="1"
             android:background="@android:color/white"
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/id_nokick"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/layout_bg_selector"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:src="@drawable/speed_icon_vip"
+                    android:paddingLeft="10dp"
+                    android:paddingBottom="8dp"
+                    android:paddingTop="8dp"
+                    />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="left|center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="VIP高级功能"
+                    android:textColor="#333333"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="10dp"
+                android:background="#ededed"
+                />
+
+            <LinearLayout
+                android:id="@+id/id_senior_openservice"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
@@ -68,13 +104,9 @@
                     android:id="@+id/accessibility_open_tbutton"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
+                    android:layout_margin="12dp"
                     android:layout_weight="4"
                     android:background="@drawable/toggle_btn"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginRight="12dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="15dp"
-
                     android:gravity="center"
                     android:text=""
                     android:textOff=""
@@ -84,19 +116,20 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#ededed"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:background="#ededed"
                 />
 
             <LinearLayout
+                android:id="@+id/id_senior_chatpage"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
                 android:background="@drawable/layout_bg_selector"
                 android:orientation="horizontal">
 
-                 <TextView
+                <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
@@ -109,12 +142,9 @@
                     android:id="@+id/accessibility_chatpage_tbutton"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
+                    android:layout_margin="12dp"
                     android:layout_weight="4"
                     android:background="@drawable/toggle_btn"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginRight="12dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="15dp"
                     android:gravity="center"
                     android:text=""
                     android:textOff=""
@@ -124,9 +154,9 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#ededed"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:background="#ededed"
                 />
 
             <TextView
@@ -136,6 +166,7 @@
                 />
 
             <LinearLayout
+                android:id="@+id/id_senior_voice"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
@@ -155,13 +186,10 @@
                     android:id="@+id/accessibility_voicenotice_tbutton"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
+                    android:layout_margin="12dp"
                     android:layout_weight="4"
                     android:background="@drawable/toggle_btn"
                     android:gravity="center"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginRight="12dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="15dp"
                     android:text=""
                     android:textOff=""
                     android:textOn=""/>
@@ -170,12 +198,13 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#ededed"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:background="#ededed"
                 />
 
             <LinearLayout
+                android:id="@+id/id_senior_sreenlight"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
@@ -195,13 +224,10 @@
                     android:id="@+id/accessibility_sceen_tbutton"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
+                    android:layout_margin="12dp"
                     android:layout_weight="4"
                     android:background="@drawable/toggle_btn"
                     android:gravity="center"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginRight="12dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="15dp"
                     android:text=""
                     android:textOff=""
                     android:textOn=""/>
@@ -210,13 +236,14 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#ededed"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:background="#ededed"
                 />
 
 
             <LinearLayout
+                android:id="@+id/id_senior_lock"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
@@ -236,13 +263,10 @@
                     android:id="@+id/ly_open_lock"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
+                    android:layout_margin="12dp"
                     android:layout_weight="4"
                     android:background="@drawable/toggle_btn"
                     android:gravity="center"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginRight="12dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="15dp"
                     android:text=""
                     android:textOff=""
                     android:textOn=""/>
@@ -251,50 +275,15 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#ededed"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:background="#ededed"
                 />
 
             <TextView
                 android:layout_width="fill_parent"
-                android:background="#ededed"
-                android:layout_height="10dp"/>
-
-            <LinearLayout
-                android:id="@+id/id_nokick"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:background="@android:color/white"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="1"
-                    android:gravity="left|center_vertical"
-                    android:paddingLeft="10dp"
-                    android:text="防踢高级设置"
-                    android:textColor="#E23A39"/>
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="4"
-                    android:src="@drawable/pass_into"
-                    android:padding="18dp"
-                    />
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#ededed"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                />
+                android:layout_height="10dp"
+                android:background="#ededed"/>
 
         </LinearLayout>
 
@@ -307,16 +296,16 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#ededed"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
+            android:background="#ededed"
             />
 
         <LinearLayout
             android:id="@+id/id_check"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="2.35"
+            android:layout_weight="2.3"
             android:orientation="vertical">
 
             <TextView

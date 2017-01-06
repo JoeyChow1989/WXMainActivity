@@ -68,8 +68,7 @@ public class HbApplication extends Application {
 		option.disableCache(true);
 		return option;
 	}
-	
-	
+
 	public String getDate() {
 		String temp_str = "";
 		Date dt = new Date();
@@ -78,5 +77,4 @@ public class HbApplication extends Application {
 		temp_str = sdf.format(dt);
 		return temp_str;
 	}
-
 }

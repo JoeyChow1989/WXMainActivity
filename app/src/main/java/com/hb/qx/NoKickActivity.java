@@ -1,11 +1,14 @@
 package com.hb.qx;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.webkit.WebView;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -22,12 +25,15 @@ public class NoKickActivity extends Activity
 {
 
     private ImageView nokick_view_back;
+    private LinearLayout autoHuiFu, buzidong, chehui, huifuqianshu, huifuhongbaoren, ganxieyu;
     private ToggleButton mAutoHuiFu, mBuzidong, mChehui, mHuifuqiangshu, mHuifuHongbaoren, mGanxieyu;
     private SeekBar mSeekBar_yanshi, mSeekBar_huifu;
     private TextView tv_yanshi, tv_huifu;
     private InterstitialAd interAd;
-    private LinearLayout ganxieyu;
     private EditText tv_GanXieyu;
+
+    private TextView mTextView_openvip;
+    private Button mbt_openvip;
 
     SharedPreferences sp;
     SharedPreferences.Editor editor;
@@ -49,151 +55,145 @@ public class NoKickActivity extends Activity
             }
         });
 
-        //自动抢红包
-        mAutoHuiFu.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        autoHuiFu.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b)
+            public void onClick(View view)
             {
-
                 if (sp.getInt("share1", 0) == 0)
                 {
                     share();
                 } else
                 {
-                    if (b)
+                    if (mAutoHuiFu.isChecked() == true)
                     {
-                        editor.putInt("huifu", 1);
-                        Toast.makeText(NoKickActivity.this, "已开启", Toast.LENGTH_SHORT).show();
-                    } else
-                    {
+                        mAutoHuiFu.setChecked(false);
                         editor.putInt("huifu", 0);
-                        Toast.makeText(NoKickActivity.this, "已开启", Toast.LENGTH_SHORT).show();
+                    } else
+                    {
+                        mAutoHuiFu.setChecked(true);
+                        editor.putInt("huifu", 1);
                     }
                     editor.commit();
                 }
             }
         });
 
-        //提示但不自动抢
-        mBuzidong.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        buzidong.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b)
+            public void onClick(View view)
             {
                 if (sp.getInt("share1", 0) == 0)
                 {
                     share();
                 } else
                 {
-                    if (b)
+                    if (mBuzidong.isChecked() == false)
                     {
+                        mBuzidong.setChecked(true);
                         editor.putInt("buzidong", 1);
-                        Toast.makeText(NoKickActivity.this, "已开启", Toast.LENGTH_SHORT).show();
                     } else
                     {
+                        mBuzidong.setChecked(false);
                         editor.putInt("buzidong", 0);
-                        Toast.makeText(NoKickActivity.this, "已开启", Toast.LENGTH_SHORT).show();
                     }
                     editor.commit();
                 }
             }
         });
 
-        //口令撤回
-        mChehui.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        chehui.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b)
+            public void onClick(View view)
             {
                 if (sp.getInt("share1", 0) == 0)
                 {
                     share();
                 } else
                 {
-                    if (b)
+                    if (mChehui.isChecked() == false)
                     {
+                        mChehui.setChecked(true);
                         editor.putInt("chexiao", 1);
-                        Toast.makeText(NoKickActivity.this, "已开启", Toast.LENGTH_SHORT).show();
                     } else
                     {
+                        mChehui.setChecked(false);
                         editor.putInt("chexiao", 0);
-                        Toast.makeText(NoKickActivity.this, "已开启", Toast.LENGTH_SHORT).show();
                     }
                     editor.commit();
                 }
             }
         });
 
-        //回复抢到的钱数
-        mHuifuqiangshu.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        huifuqianshu.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b)
+            public void onClick(View view)
             {
                 if (sp.getInt("share1", 0) == 0)
                 {
                     share();
                 } else
                 {
-                    if (b)
+                    if (mHuifuqiangshu.isChecked() == false)
                     {
+                        mHuifuqiangshu.setChecked(true);
                         editor.putInt("qianshu", 1);
-                        Toast.makeText(NoKickActivity.this, "已开启", Toast.LENGTH_SHORT).show();
                     } else
                     {
+                        mHuifuqiangshu.setChecked(false);
                         editor.putInt("qianshu", 0);
-                        Toast.makeText(NoKickActivity.this, "已开启", Toast.LENGTH_SHORT).show();
                     }
                     editor.commit();
                 }
             }
         });
 
-        //@回复红包人
-        mHuifuHongbaoren.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+
+        huifuhongbaoren.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b)
+            public void onClick(View view)
             {
                 if (sp.getInt("share1", 0) == 0)
                 {
                     share();
                 } else
                 {
-                    if (b)
+                    if (mHuifuHongbaoren.isChecked() == false)
                     {
+                        mHuifuHongbaoren.setChecked(true);
                         editor.putInt("aite", 1);
-                        Toast.makeText(NoKickActivity.this, "已开启", Toast.LENGTH_SHORT).show();
                     } else
                     {
+                        mHuifuHongbaoren.setChecked(false);
                         editor.putInt("aite", 0);
-                        Toast.makeText(NoKickActivity.this, "已开启", Toast.LENGTH_SHORT).show();
                     }
                     editor.commit();
                 }
             }
         });
 
-        //自定义感谢语
-        mGanxieyu.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        ganxieyu.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b)
+            public void onClick(View view)
             {
                 if (sp.getInt("share1", 0) == 0)
                 {
                     share();
                 } else
                 {
-                    if (b)
+                    if (mGanxieyu.isChecked() == false)
                     {
+                        mGanxieyu.setChecked(true);
                         editor.putInt("ganxie", 1);
-                        ganxieyu.setVisibility(View.VISIBLE);
                     } else
                     {
+                        mGanxieyu.setChecked(false);
                         editor.putInt("ganxie", 0);
-                        ganxieyu.setVisibility(View.GONE);
                     }
                     editor.commit();
                 }
@@ -227,7 +227,7 @@ public class NoKickActivity extends Activity
             }
         });
 
-       //回复时间
+        //回复时间
         mSeekBar_huifu.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
         {
             @Override
@@ -250,6 +250,16 @@ public class NoKickActivity extends Activity
 
             }
         });
+
+        mbt_openvip.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(NoKickActivity.this,VIPOpenActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void initViews()
@@ -267,12 +277,24 @@ public class NoKickActivity extends Activity
         tv_yanshi = (TextView) findViewById(R.id.nokick_tv_yanshi);
         mSeekBar_huifu = (SeekBar) findViewById(R.id.seekbar_huifu);
         tv_huifu = (TextView) findViewById(R.id.nokick_tv_huifu);
-        ganxieyu = (LinearLayout) findViewById(R.id.ganxieyu);
         tv_GanXieyu = (EditText) findViewById(R.id.tv_ganxieyu);
 
+        autoHuiFu = (LinearLayout) findViewById(R.id.id_nokick_zidonghuifu);
+        buzidong = (LinearLayout) findViewById(R.id.id_nokick_buzidong);
+        chehui = (LinearLayout) findViewById(R.id.id_nokick_zidongchehui);
+        huifuqianshu = (LinearLayout) findViewById(R.id.id_nokick_huifuqianshu);
+        huifuhongbaoren = (LinearLayout) findViewById(R.id.id_nokick_huifuhongbaoren);
+        ganxieyu = (LinearLayout) findViewById(R.id.ganxieyu);
 
-        System.out.println("huifu------------------" + sp.getInt("huifu", 0));
+        mTextView_openvip = (TextView) findViewById(R.id.id_nokick_tv_text);
+        mbt_openvip = (Button) findViewById(R.id.id_nokick_bt_openvip);
+    }
 
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
         if (sp.getInt("huifu", 0) == 1)
         {
             mAutoHuiFu.setChecked(true);

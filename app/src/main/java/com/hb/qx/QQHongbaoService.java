@@ -418,7 +418,6 @@ public class QQHongbaoService extends AccessibilityService
                         huifu_QQ = false;
                     } else if (huifu_QQ == true && sp.getInt("qianshu", 0) == 1)
                     {
-
                         recycle1(rowNode);
                         huifu_QQ = false;
                     }
@@ -720,12 +719,12 @@ public class QQHongbaoService extends AccessibilityService
     }
 
     /**
-     * 判断是否返回,减少点击次数 现在的策略是当红包文本和缓存不一致时,戳 文本一致且间隔大于MAX_CACHE_TOLERANCE时,戳
-     *
-     * @param id       红包id
-     * @param duration 红包到达与缓存的间隔
-     * @return 是否应该返回
-     */
+        * 判断是否返回,减少点击次数 现在的策略是当红包文本和缓存不一致时,戳 文本一致且间隔大于MAX_CACHE_TOLERANCE时,戳
+    *
+            * @param id       红包id
+    * @param duration 红包到达与缓存的间隔
+    * @return 是否应该返回
+    */
     private boolean shouldReturn(String id, long duration)
     {
         // ID为空

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="actionbar_bg">#FF0099CC</color>
+    <color name="actionbar_bg1">#04b7f2</color>
     <color name="statusbar_bg">#FF006080</color>
 
     <color name="gradient_slide_text_color">#ffffff</color>
      <color name="gradient_text_color">#ffffff</color>
-     <color name="gradient_text_color2">#aaffffff</color>
+     <color name="gradient_text_color2">#aafff8f8</color>
 
     <color name="orange">#E23A39</color>
     <color name="orange_drak">#b40402</color>
